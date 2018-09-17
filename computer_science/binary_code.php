@@ -35,7 +35,8 @@ for ($i = 0; $i < $len; ++$i) {
 }
 
 $bin_text = implode($binarray);
-?>
+
+echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,9 @@ $bin_text = implode($binarray);
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
 </head>
 <body>
-
+<script>
+	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+</script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.html" style="color: #007BFF;">#Информатика</a>
@@ -90,12 +93,12 @@ $bin_text = implode($binarray);
   <div class="form-row form-col">
     <div class="col col1">
       <p>Текст-></p>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text"><?php $text ?></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text">$text</textarea>
     </div>
 
     <div class="col col2">
       <p>->Бинарный код</p>
-      <textarea class="form-control" id="exampleFormControlTextarea2" rows="5" name="bin"><?php $bin_text ?></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea2" rows="5" name="bin">$bin_text</textarea>
     </div>    
   </div>
 
@@ -112,3 +115,5 @@ $bin_text = implode($binarray);
 
 </body>
 </html>
+_END;
+?>
