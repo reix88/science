@@ -35,8 +35,7 @@ for ($i = 0; $i < $len; ++$i) {
 }
 
 $bin_text = implode($binarray);
-
-echo <<<_END
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,12 +90,12 @@ echo <<<_END
   <div class="form-row form-col">
     <div class="col col1">
       <p>Текст-></p>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text">$text</textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="text"><?php $text ?></textarea>
     </div>
 
     <div class="col col2">
       <p>->Бинарный код</p>
-      <textarea class="form-control" id="exampleFormControlTextarea2" rows="5" name="bin">$bin_text</textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea2" rows="5" name="bin"><?php $bin_text ?></textarea>
     </div>    
   </div>
 
@@ -113,5 +112,3 @@ echo <<<_END
 
 </body>
 </html>
-_END;
-?>
