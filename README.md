@@ -1,1 +1,1 @@
-# science1.0
+Assistant in Basic Technical Sciences.
