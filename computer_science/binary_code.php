@@ -49,9 +49,7 @@ echo <<<_END
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
 </head>
 <body>
-<script>
-	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-</script>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.html" style="color: #007BFF;">#Информатика</a>
