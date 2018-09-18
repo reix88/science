@@ -1,4 +1,4 @@
-Site: <a href="https://thesci.000webhostapp.com" targe="_blanc">thescience.com</a>
+Site: <a href="https://thesci.000webhostapp.com" target="_blanc">thescience.com</a>
 <br>
 <br>
 <br>
