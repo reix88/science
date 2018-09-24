@@ -10,6 +10,8 @@ echo <<<_END
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Десятичная система в шестнадцатиричную | Информатика</title>
+  <meta name="description" content="Кодировать шестнадцатиричный-hex код">
+  <meta name="keywords" content="hex-code, hexocode, кодировать hex код, кодировать">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
@@ -54,7 +56,7 @@ echo <<<_END
   </div>
 </nav>
 
-<center><h1>Десятичная система в шестнадцатиричную:</h1></center>
+<center><h1>Десятичная система в шестнадцатиричную</h1></center>
 
 <form method="post" action="hex_number.php">
   <div class="form-row form-col">

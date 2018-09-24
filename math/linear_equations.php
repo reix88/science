@@ -11,6 +11,8 @@ echo <<<_END
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Линейные уравнения | Математика</title>
+  <meta name="description" content="Решить линейные уравнений онлайн, просто и быстро!">
+  <meta name="keywords" content="линейные уравнения,линейные уравнения онлайн, решить линейные уравнения онлайн">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
@@ -70,7 +72,7 @@ echo <<<_END
 </nav>
 
 <center>
-  <h1>Решение Линейных Уравнений!</h1>
+  <h1>Решение линейных уравнений</h1>
   <p class="podskazka">Введите Коэффициент перед Х:</p>
 </center>
 

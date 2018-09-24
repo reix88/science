@@ -9,7 +9,9 @@ echo <<<_END
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Кодировать в бинарный код | Информатика</title>
+	<title>Декодировать двоичную систему в десятичную | Информатика</title>
+  <meta name="description" content="Декодировать бинарный код в число">
+  <meta name="keywords" content="декодировать бинарный код, bin code, bin">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
@@ -54,7 +56,7 @@ echo <<<_END
   </div>
 </nav>
 
-<center><h1>Двоичная система в десятичную:</h1></center>
+<center><h1>Двоичная система в десятичную</h1></center>
 
 <form method="post" action="bin_number_reverse.php">
   <div class="form-row form-col">

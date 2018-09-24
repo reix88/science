@@ -11,6 +11,8 @@ echo <<<_END
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Система линейных уравнений | Математика</title>
+  <meta name="description" content="Решить систему линейных уравнений онлайн, просто и быстро!">
+  <meta name="keywords" content="система линейных уравнения, система линейных уравнений онлайн, решить систему линейных уравнений онлайн">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">

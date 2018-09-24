@@ -11,6 +11,8 @@ echo <<<_END
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Квадратные уравнения | Математика</title>
+  <meta name="description" content="Решить квадратные уравнения онлайн, просто и быстро!">
+  <meta name="keywords" content="квадратные уравнения, квадратные уравнения онлайн, решить квадратные уравнения онлайн">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
@@ -69,7 +71,7 @@ echo <<<_END
   </div>
 </nav>
 
-<center><h1>Решение Квадратных Уравнений!</h1></center>
+<center><h1>Решение квадратных уравнений</h1></center>
 
 <div class="borderright">
 <h6 style="color: #007BFF;">Квадратное уравнение обычно имеет вид:<br></h3>
