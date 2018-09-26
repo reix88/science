@@ -68,6 +68,11 @@ echo <<<_END
         <a class="nav-link" href="#">Справка</a>
       </li>
     </ul>
+
+    <a href="../other_prog/calculator.php" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
+      Калькулятор <span style="color: #00ef00">online</span>
+    </a>
+
   </div>
 </nav>
 

@@ -33,3 +33,8 @@ h1 {
 .podskazka {
   font-size: 17px;
 }
+
+/* CALC */
+.button-circle {
+  border-radius: 20px;
+}
