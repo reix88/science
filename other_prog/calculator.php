@@ -67,6 +67,9 @@
 		.admiral {
 			margin-top: 100px;
 		}
+		.button-circle {
+			border-radius: 20px;
+		}
 	</style>
 </head>
 <body>
