@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Линейные уравнения | Математика</title>
-  <meta name="description" content="Решить линейные уравнений онлайн, просто и быстро!">
+  <meta name="description" content="Решить линейные уравнения онлайн, просто и быстро!">
   <meta name="keywords" content="линейные уравнения,линейные уравнения онлайн, решить линейные уравнения онлайн">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
@@ -14,6 +14,9 @@
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
+<script>
+  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+</script>
 
 <script>
     function funcSuccess(data) {
@@ -67,10 +70,6 @@
     Request_Ajax_num('#enter','#num3')
     Request_Ajax_num('#enter','#num4')
     Request_Ajax_num('#enter','#num5')
-  </script>
-  
-  <script>
-  	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
   </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -130,7 +129,8 @@
   <h1>Решение линейных уравнений</h1>
   <p class="podskazka">Введите Коэффициент перед Х:</p>
 </center>
-  <h1 id="text2"></h1>
+
+<form method="post" action="linear_equations.php">
 
 	<div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">1-Коэффициент</label>
@@ -172,7 +172,7 @@
   </center>
 
   <div class="borderright">
-  <h6 style="color: #007BFF;">ВНИМАНИЕ:<br></h3>
+  <h6 style="color: #007BFF;">ВНИМАНИЕ:<br></h6>
     <p style="color: gray">
       Если какие-то из значений находятся после знака Равно "=", то их значения Отрицательное, то есть пишити перед ними знак Минус "-"!
     </p>
@@ -214,6 +214,14 @@
   </div>
 
   <input class="btn btn-outline-success btn-lg" type="submit" value="Решить" id="enter">
+  
+</form>
+
+<div class="jumbotron">
+  <h1 class="display-5 margin-top">Ответ:</h1>
+  <hr class="my-4">
+  <h1 class="display-4 margin-bottom">X = $answer_a</h1>
+</div>
 
 <!-- Scripts! -->
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -221,9 +229,4 @@
 
 </body>
 </html>
-<div class="jumbotron">
-  <h1 class="display-5 margin-top">Ответ:</h1>
-  <hr class="my-4">
-  <h1 class="display-4 margin-bottom">X = $answer_a</h1>
-</div>
 
