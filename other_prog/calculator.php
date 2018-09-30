@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 
+	<link rel="icon" type="image/x-icon" href="../favicon.ico">
+
 	<style>
 		.form-control {
 			margin-top: 10px;
