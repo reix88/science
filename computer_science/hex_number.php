@@ -1,9 +1,3 @@
-<?php
-$dec = $_POST['dec']; $hex = $_POST['hex'];
-
-$hex = dechex($dec);
-
-echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +10,36 @@ echo <<<_END
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
+  <script src="../js/jquery-3.3.1.min.js"></script>
+  <script >
+function funcSuccess(data)
+{
+	if ($("#text2").val() != '') 
+	{
+		elText = $("#text2").val();
+		elText = elText.replace(elText,data);
+		$("#text2").val(elText); 
+	} else 
+	{
+		$("#text2").val(data);
+	}
+}  	
+function Request_Ajax(click,val) 
+{
+	$(document).ready (function () {
+		$(click).bind("click", function () {
+		$.ajax({
+		 url: 'hex_value.php',
+		type: "POST",                     
+		 data:({dec: $(val).val()}),
+		 dataType: "html",
+		 success:funcSuccess
+			});
+		});
+	});
+}
+Request_Ajax('#enter','#text1')
+ </script>
 </head>
 <body>
 <script>
@@ -23,7 +47,7 @@ echo <<<_END
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html" style="color: #007BFF;">#Информатика</a>
+  <a class="navbar-brand" href="index.html" style="color:#007BFF;">#Информатика</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -58,31 +82,27 @@ echo <<<_END
 
 <center><h1>Десятичная система в шестнадцатиричную</h1></center>
 
-<form method="post" action="hex_number.php">
+
   <div class="form-row form-col">
     <div class="col col1">
       <p>Dec-></p>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="dec">$dec</textarea>
+      <textarea class="form-control" id="text1" rows="5" name="dec" value=""></textarea>
     </div>
 
     <div class="col col2">
       <p>->Hex</p>
-      <textarea class="form-control" id="exampleFormControlTextarea2" rows="5" name="hex">$hex</textarea>
+      <textarea class="form-control" id="text2" rows="5" name="hex"></textarea>
     </div>    
   </div>
 
   <center>
-  <input class="btn btn-primary btn-lg btn-margin" type="submit" value="Кодировать">
+  <input class="btn btn-primary btn-lg btn-margin" type="submit" value="Кодировать" id="enter">
   <a class="btn btn-secondary btn-margin btn-lg" href="hex_number_reverse.php" role="button"><img src="../img/arrows.png" width="26"></a>
   </center>
-</form>
 
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-_END;
-?>

@@ -12,24 +12,6 @@
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
-
-	<script>
-		    function funcSuccess(data)
-			{
-			   $("#result").text(data);
-			}
-		    $(document).ready (function () {
-		    $('#number#num').bind("click", function () {
-			$.ajax({
-		    url: 'value.php',
-		    type: "POST",                     
-		    data:({name: $("#number#num").val()}),
-		    dataType: "html",
-		    success:funcSuccess
-		  });
-		});
-	</script>
-
 	<style>
 		.form-control {
 			margin-top: 10px;
@@ -71,6 +53,8 @@
 			border-radius: 20px;
 		}
 	</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/my_ajax.js"></script>
 </head>
 <body>
 <script>
@@ -134,48 +118,44 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 
 	<img src="../img/gif/matrix.gif" width="288">
 
-	<form action='calculator.php' method='post'>
 		<div class="input-group input-group-lg input-calc">
 			<input type="text" name="result" id="result" class="form-control" placeholder="Введите значения" aria-describedby="inputGroup-sizing-lg">
 		</div>
 
 		<div id='operations'>
-			<button class="btn button-class-lol-2" style="background-color: #fc3232" value="del" >Delete</button>
+			<button id="clear" class="btn btn-danger button-class-lol-2" value="del" >Delete</button>
 			<button class="btn btn-success button-class-lol" value="percent" >%</button>
 			<button class="btn btn-success button-class-lol" value="root" >√</button>
-			<button class="btn btn-success button-class-lol" value="x2" >x<sup>2</sup></button>
+			<button id="squad" class="btn btn-success button-class-lol" value="x2" >x<sup>2</sup></button>
 		</div>
 
 		<div id='number' class="mb-3">
-			<button class="btn btn-primary button-class-lol" value="1" >1</button>
-			<button class="btn btn-primary button-class-lol" value="2" id='num'>2</button>
-			<button class="btn btn-primary button-class-lol" value="3">3</button>
-			<button class="btn btn-success button-class-lol" value="/">/</button>
+			<button id="num" class="btn btn-primary button-class-lol" value="1" >1</button>
+			<button id="num1" class="btn btn-primary button-class-lol" value="2" >2</button>
+			<button id="num2" class="btn btn-primary button-class-lol" value="3">3</button>
+			<button  id="operations1" class="btn btn-success button-class-lol" value="/">/</button>
 			<button class="btn btn-success button-class-lol" value="xy" >x<sup>y</sup></button><br>
-			<button class="btn btn-primary button-class-lol" value="4">4</button>
-			<button class="btn btn-primary button-class-lol" value="5" >5</button>
-			<button class="btn btn-primary button-class-lol" value="6" >6</button>
-			<button class="btn btn-success button-class-lol" value="*">*</button>
+			<button id="num3" class="btn btn-primary button-class-lol" value="4">4</button>
+			<button id="num4" class="btn btn-primary button-class-lol" value="5" >5</button>
+			<button id="num5" class="btn btn-primary button-class-lol" value="6" >6</button>
+			<button  id="operations2" class="btn btn-success button-class-lol" value="*">*</button>
 			<button class="btn btn-success button-class-lol" value="n">n!</button><br>
-			<button class="btn btn-primary button-class-lol" value="7" >7</button>
-			<button class="btn btn-primary button-class-lol" value="8" >8</button>
-			<button class="btn btn-primary button-class-lol" value="9" >9</button>
-			<button class="btn btn-success button-class-lol" value="-">-</button>
+			<button id="num6" class="btn btn-primary button-class-lol" value="7" >7</button>
+			<button id="num7" class="btn btn-primary button-class-lol" value="8" >8</button>
+			<button id="num8" class="btn btn-primary button-class-lol" value="9" >9</button>
+			<button  id="operations3" class="btn btn-success button-class-lol" value="-">-</button>
 			<button class="btn btn-success button-class-lol" value="log">log</button><br>
-			<button class="btn btn-primary button-class-lol-2" value="0" >0</button>
-			<button class="btn btn-primary button-class-lol" value="dot" >.</button>
-			<button class="btn btn-success button-class-lol" value="+">+</button>
-			<button class="btn btn-primary button-class-lol" value="=">=</button>
+			<button id="num9" class="btn btn-primary button-class-lol-2" value="0" >0</button>
+			<button class="btn btn-primary button-class-lol" value="." >.</button>
+			<button  id="operations4" class="btn btn-success button-class-lol" value="+">+</button>
+			<button id="enter" class="btn btn-primary button-class-lol" value="=">=</button>
 		</div>
-	</form>
 </div>
 
 <center><p class="admiral" style="color: silver">Created by admiral-shepard</p></center>
 
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <!-- End -->
 
 </body>

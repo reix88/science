@@ -1,9 +1,3 @@
-<?php
-$bin = $_POST['bin']; $dec = $_POST['dec'];
-
-$dec = bindec($bin);
-
-echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +10,36 @@ echo <<<_END
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
+ <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script>
+function funcSuccess(data)
+{
+	if ($("#text2").val() != '') 
+	{
+		elText = $("#text2").val();
+		elText = elText.replace(elText,data);
+		$("#text2").val(elText); 
+	} else 
+	{
+		$("#text2").val(data);
+	}
+}  	
+function Request_Ajax(click,val) 
+{
+	$(document).ready (function () {
+		$(click).bind("click", function () {
+		$.ajax({
+		 url: 'hex_value.php',
+		type: "POST",                     
+		 data:({dec_bin_r: $(val).val()}),
+		 dataType: "html",
+		 success:funcSuccess
+			});
+		});
+	});
+}
+Request_Ajax('#enter','#text1')
+  </script>
 </head>
 <body>
 <script>
@@ -58,31 +82,26 @@ echo <<<_END
 
 <center><h1>Двоичная система в десятичную</h1></center>
 
-<form method="post" action="bin_number_reverse.php">
   <div class="form-row form-col">
     <div class="col col1">
       <p>Bin-></p>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="bin">$bin</textarea>
+      <textarea class="form-control" id="text1" rows="5" name="bin"></textarea>
     </div>
 
     <div class="col col2">
       <p>->Dec</p>
-      <textarea class="form-control" id="exampleFormControlTextarea2" rows="5" name="dec">$dec</textarea>
+      <textarea class="form-control" id="text2" rows="5" name="dec"></textarea>
     </div>    
   </div>
 
   <center>
-  <input class="btn btn-primary btn-lg btn-margin" type="submit" value="Декодировать">
+  <input class="btn btn-primary btn-lg btn-margin" type="submit" value="Декодировать" id="enter">
   <a class="btn btn-secondary btn-margin btn-lg" href="bin_number.php" role="button"><img src="../img/arrows.png" width="26"></a>
   </center>
-</form>
 
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-_END;
-?>
