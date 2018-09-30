@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +9,7 @@
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+
 	<style>
 		.form-control {
 			margin-top: 10px;
@@ -70,11 +68,11 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Решить Уравнение
+          Выбрать задачу
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../math/linear_equations.php">Линейные уравнения</a>
@@ -115,41 +113,41 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 </nav>
 
 <div class="calc">
-
+	<h1 class="display-4" style="margin-bottom: 10px; margin-top: -25px;">Калькулятор</h1>
 	<img src="../img/gif/matrix.gif" width="288">
 
-		<div class="input-group input-group-lg input-calc">
-			<input type="text" name="result" id="result" class="form-control" placeholder="Введите значения" aria-describedby="inputGroup-sizing-lg">
-		</div>
+	<div class="input-group input-group-lg input-calc">
+		<input type="text" name="result" id="result" class="form-control" placeholder="Введите значение" aria-describedby="inputGroup-sizing-lg">
+	</div>
 
-		<div id='operations'>
-			<button id="clear" class="btn btn-danger button-class-lol-2" value="del" >Delete</button>
-			<button class="btn btn-success button-class-lol" value="percent" >%</button>
-			<button class="btn btn-success button-class-lol" value="root" >√</button>
-			<button id="squad" class="btn btn-success button-class-lol" value="x2" >x<sup>2</sup></button>
-		</div>
+	<div id='operations'>
+		<button id="clear" class="btn btn-danger button-class-lol-2" value="del" >Delete</button>
+		<button class="btn btn-success button-class-lol" value="percent" >%</button>
+		<button class="btn btn-success button-class-lol" value="root" >√</button>
+		<button id="squad" class="btn btn-success button-class-lol" value="x2" >x<sup>2</sup></button>
+	</div>
 
-		<div id='number' class="mb-3">
-			<button id="num" class="btn btn-primary button-class-lol" value="1" >1</button>
-			<button id="num1" class="btn btn-primary button-class-lol" value="2" >2</button>
-			<button id="num2" class="btn btn-primary button-class-lol" value="3">3</button>
-			<button  id="operations1" class="btn btn-success button-class-lol" value="/">/</button>
-			<button class="btn btn-success button-class-lol" value="xy" >x<sup>y</sup></button><br>
-			<button id="num3" class="btn btn-primary button-class-lol" value="4">4</button>
-			<button id="num4" class="btn btn-primary button-class-lol" value="5" >5</button>
-			<button id="num5" class="btn btn-primary button-class-lol" value="6" >6</button>
-			<button  id="operations2" class="btn btn-success button-class-lol" value="*">*</button>
-			<button class="btn btn-success button-class-lol" value="n">n!</button><br>
-			<button id="num6" class="btn btn-primary button-class-lol" value="7" >7</button>
-			<button id="num7" class="btn btn-primary button-class-lol" value="8" >8</button>
-			<button id="num8" class="btn btn-primary button-class-lol" value="9" >9</button>
-			<button  id="operations3" class="btn btn-success button-class-lol" value="-">-</button>
-			<button class="btn btn-success button-class-lol" value="log">log</button><br>
-			<button id="num9" class="btn btn-primary button-class-lol-2" value="0" >0</button>
-			<button class="btn btn-primary button-class-lol" value="." >.</button>
-			<button  id="operations4" class="btn btn-success button-class-lol" value="+">+</button>
-			<button id="enter" class="btn btn-primary button-class-lol" value="=">=</button>
-		</div>
+	<div id='number' class="mb-3">
+		<button id="num" class="btn btn-primary button-class-lol" value="1" >1</button>
+		<button id="num1" class="btn btn-primary button-class-lol" value="2" >2</button>
+		<button id="num2" class="btn btn-primary button-class-lol" value="3">3</button>
+		<button  id="operations1" class="btn btn-success button-class-lol" value="/">/</button>
+		<button class="btn btn-success button-class-lol" value="xy" >x<sup>y</sup></button><br>
+		<button id="num3" class="btn btn-primary button-class-lol" value="4">4</button>
+		<button id="num4" class="btn btn-primary button-class-lol" value="5" >5</button>
+		<button id="num5" class="btn btn-primary button-class-lol" value="6" >6</button>
+		<button  id="operations2" class="btn btn-success button-class-lol" value="*">*</button>
+		<button class="btn btn-success button-class-lol" value="n">n!</button><br>
+		<button id="num6" class="btn btn-primary button-class-lol" value="7" >7</button>
+		<button id="num7" class="btn btn-primary button-class-lol" value="8" >8</button>
+		<button id="num8" class="btn btn-primary button-class-lol" value="9" >9</button>
+		<button  id="operations3" class="btn btn-success button-class-lol" value="-">-</button>
+		<button class="btn btn-success button-class-lol" value="log">log</button><br>
+		<button id="num9" class="btn btn-primary button-class-lol-2" value="0" >0</button>
+		<button class="btn btn-primary button-class-lol" value="." >.</button>
+		<button  id="operations4" class="btn btn-success button-class-lol" value="+">+</button>
+		<button id="enter" class="btn btn-primary button-class-lol" value="=">=</button>
+	</div>
 </div>
 
 <center><p class="admiral" style="color: silver">Created by admiral-shepard</p></center>
