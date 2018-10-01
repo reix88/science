@@ -13,6 +13,18 @@
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
   <style>
+    h1, h2 {
+      font-weight: 400;
+      width: 100%;
+    }
+    @media (max-width: 460px) {
+      .h1-size {
+        font-size: 40px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+    }
   	.jumbotron {
   		margin-top: 10%;
   	}
@@ -26,9 +38,6 @@
   	.list-group-item:hover {
   		color: #007BFF;
   	}
-    h2 {
-      font-weight: 400;
-    }
 	</style>
 </head>
 <body>
@@ -72,7 +81,7 @@
 
 
 <div class="jumbotron">
-  <h1 class="display-4" style="color: #007BFF;">Информатика</h1>
+  <h1 class="display-4 h1-size" style="color: #007BFF;">Информатика</h1>
   <p class="lead">Сайт который решит за вас все информатические задачи. Впешите значения, а остальное мы сделаем за вас. Используйте разумно и не злоупотребляйте!</p>
   <hr class="my-4">
   <p style="color: #007BFF;"><cite title="Source Title">- Администрация сайта</cite></p>

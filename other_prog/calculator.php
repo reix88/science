@@ -52,6 +52,15 @@
 		.button-circle {
 			border-radius: 20px;
 		}
+		h1 {
+			font-weight: 400;
+			width: 100%;
+		}
+		@media (max-width: 460px) {
+			.h1-size {
+				font-size: 42px;
+			}
+		}
 	</style>
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="../js/my_ajax.js"></script>
@@ -115,7 +124,7 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 </nav>
 
 <div class="calc">
-	<h1 class="display-4" style="margin-bottom: 10px; margin-top: -25px;">Калькулятор</h1>
+	<center><h1 class="display-4 h1-size" style="margin-bottom: 10px; margin-top: -25px;">Калькулятор</h1></center>
 	<img src="../img/gif/matrix.gif" width="288">
 
 	<div class="input-group input-group-lg input-calc">
