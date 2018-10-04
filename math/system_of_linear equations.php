@@ -1,10 +1,3 @@
-<script>
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-</script>
-
-<?php
-# Форма для Ввода
-echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +10,36 @@ echo <<<_END
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
+  <script  src="../js/jquery-3.3.1.min.js"></script>
+  <script>
+        function funcSuccess(data) {
+          if ($("#done").text() != '') {
+            elText = $("#done").text();
+            elText = elText.replace(elText,data);
+            $("#done").html(elText); 
+          } else {
+            $("#done").html(data);
+          }
+        }
+        $(document).ready (function () {
+        $('#enter').bind("click", function () {
+        $.ajax({
+         url: 'math.php',
+         type: "POST",
+         data:({
+          a1: $('#a1').val(),
+          b1: $('#b1').val(),
+          c1: $('#c1').val(),
+          a2: $('#a2').val(),
+          b2: $('#b2').val(),
+          c2: $('#c2').val()
+        }),
+         dataType: "html",
+         success:funcSuccess
+          });
+        });
+      });
+  </script>
 </head>
 <body>
 <script>
@@ -75,7 +98,7 @@ echo <<<_END
     
   </div>
 </nav>
-
+<div class="form">
 <center>
   <h1>Система линейных уравнений!</h1>
 </center>
@@ -87,31 +110,27 @@ echo <<<_END
       <font style="color: red;">a</font><sub>1</sub>x + <font style="color: green;">b</font><sub>1</sub>y = <font style="color: blue;">c</font><sub>1</sub>
     </p>
   </div>
-
 <center>
   <p class="podskazka">Введите Коэффициент от 1-го Уравнения:</p>
 </center>
-
-<form method="post" action="system_of_linear equations.php">
-
 	<div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: red;">a</font>:</label>
       <div class="col-sm-9">
-        <input type="text" name="a" class="form-control" id="fora" placeholder="Enter Number">
+        <input type="text" name="a" class="form-control" id="a1" placeholder="Enter Number">
       </div>
   </div>
 
   <div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: green;">b</font>:</label>
       <div class="col-sm-9">
-        <input type="text" name="b" class="form-control" id="fora" placeholder="Enter Number">
+        <input type="text" name="b" class="form-control" id="b1" placeholder="Enter Number">
       </div>
   </div>
 
   <div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: blue;">c</font>:</label>
       <div class="col-sm-9">
-        <input type="text" name="c" class="form-control" id="fora" placeholder="Enter Number">
+        <input type="text" name="c" class="form-control" id="c1" placeholder="Enter Number">
       </div>
   </div>
 
@@ -122,70 +141,34 @@ echo <<<_END
   <div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: red;">a</font><sub>1</sub>:</label>
       <div class="col-sm-9">
-        <input type="text" name="a1" class="form-control" id="fora" placeholder="Enter Number">
+        <input type="text" name="a1" class="form-control" id="a2" placeholder="Enter Number">
       </div>
   </div>
 
   <div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: green;">b</font><sub>1</sub>:</label>
       <div class="col-sm-9">
-        <input type="text" name="b1" class="form-control" id="fora" placeholder="Enter Number">
+        <input type="text" name="b1" class="form-control" id="b2" placeholder="Enter Number">
       </div>
   </div>
 
   <div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: blue;">c</font><sub>1</sub>:</label>
       <div class="col-sm-9">
-        <input type="text" name="c1" class="form-control" id="fora" placeholder="Enter Number">
+        <input type="text" name="c1" class="form-control" id="c2" placeholder="Enter Number">
       </div>
   </div>
 
-  <input class="btn btn-outline-success btn-lg" type="submit" value="Решить">
-</form>
-
+  <input class="btn btn-outline-success btn-lg" type="submit" value="Решить" id="enter" style="margin-bottom:15px;">
+</div>
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-_END;
-
-/* $number = $_POST['number'];
-
-while ($number > 0) {
-  echo <<<_END
-  <div class="form-group row">
-      <div class="col-sm-10">
-        <input type="text" name="number" class="form-control" id="fora" placeholder="Enter Number">
-      </div>
-  </div>
-_END;
-  --$number;
-} */
-
-# Значения из 1-го Ур.
-$a = $_POST['a'];
-$b = $_POST['b'];
-$c = $_POST['c'];
-
-# Значения из 2-го Ур.
-$a1 = $_POST['a1'];
-$b1 = $_POST['b1'];
-$c1 = $_POST['c1'];
-
-# Решение
-$x = ($b1*$c - $b*$c1) / ($a*$b1 - $a1*$b);
-$y = ($a*$c1 - $a1*$c) / ($a*$b1 - $a1*$b);
-
-# Ответ
-echo <<<_END
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
-  <h1 class="display-4 margin-bottom">X = $x</h1>
-  <h1 class="display-4 margin-bottom">Y = $y</h1>
+  <div id="done"></div>
 </div>
-_END;
-?>

@@ -12,66 +12,46 @@
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
 
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script>
+    function funcSuccess(data) {
+      if ($("#done").text() != '') {
+        elText = $("#done").html();
+        elText = elText.replace(elText,data);
+        $("#done").html(elText); 
+      } else {
+        $("#done").html(data);
+      }
+    }
+
+
+      $(document).ready (function () {
+        $('#enter').bind("click", function () {
+        $.ajax({
+         url: 'math.php',
+         type: "POST",
+         data:({
+          x1: $('#x1').val(),
+          x2: $('#x2').val(),
+          x3: $('#x3').val(),
+          x4: $('#x4').val(),
+          x5: $('#x5').val(),
+          num1: $('#num1').val(),
+          num2: $('#num2').val(),
+          num3: $('#num3').val(),
+          num4: $('#num4').val(),
+          num5: $('#num5').val()
+        }),
+         dataType: "html",
+         success:funcSuccess
+          });
+        });
+      });
+  </script>
 </head>
 <body>
 <script>
   document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 </script>
-
-<script>
-    function funcSuccess(data) {
-      if ($("#text2").text() != '') {
-        elText = $("#text2").text();
-        elText = elText.replace(elText,data);
-        $("#text2").text(elText); 
-      } else {
-        $("#text2").text(data);
-      }
-    }
-
-    function Request_Ajax(click,val) {
-      $(document).ready (function () {
-        $(click).bind("click", function () {
-        $.ajax({
-         url: 'math.php',
-         type: "POST",
-         timeout: 2000,                     
-         data:({val_x: $(val).val()}),
-         dataType: "html",
-         success:funcSuccess
-          });
-        });
-      });
-    }
-
-    function Request_Ajax_num(click,val) {
-      $(document).ready (function () {
-        $(click).bind("click", function () {
-        $.ajax({
-         url: 'math.php',
-         type: "POST",
-         timeout: 2000,                     
-         data:({val_num: $(val).val()}),
-         dataType: "html",
-         success:funcSuccess
-          });
-        });
-      });
-    }
-
-    Request_Ajax('#enter','#x1')
-    Request_Ajax('#enter','#x2')
-    Request_Ajax('#enter','#x3')
-    Request_Ajax('#enter','#x4')
-    Request_Ajax('#enter','#x5')
-
-    Request_Ajax_num('#enter','#num1')
-    Request_Ajax_num('#enter','#num2')
-    Request_Ajax_num('#enter','#num3')
-    Request_Ajax_num('#enter','#num4')
-    Request_Ajax_num('#enter','#num5')
-  </script>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.html" style="color: #007BFF;">#Математика</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,13 +104,11 @@
     
   </div>
 </nav>
-
+<div class="form">
 <center>
   <h1>Решение линейных уравнений</h1>
   <p class="podskazka">Введите Коэффициент перед Х:</p>
 </center>
-
-<form method="post" action="linear_equations.php">
 
 	<div class="form-group row">
     <label for="fora" class="col-sm-3 col-form-label">1-Коэффициент</label>
@@ -213,14 +191,13 @@
       </div>
   </div>
 
-  <input class="btn btn-outline-success btn-lg" type="submit" value="Решить" id="enter">
-  
-</form>
+  <input class="btn btn-outline-success btn-lg" type="submit" value="Решить" id="enter" style="margin-bottom:15px;">
+</div>
 
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
-  <h1 class="display-4 margin-bottom">X = $answer_a</h1>
+  <div id="done"></div>
 </div>
 
 <!-- Scripts! -->
