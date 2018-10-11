@@ -101,77 +101,81 @@
     
   </div>
 </nav>
+
 <div class="form">
-<center>
-  <h1>Система линейных уравнений!</h1>
-</center>
-
-  <div class="borderright">
-  <h6 style="color: #007BFF;">Стандартный вид:<br></h3>
-    <p class="podskazka">
-      <font style="color: red;">a</font>x + <font style="color: green;">b</font>y = <font style="color: blue;">c</font> <br>
-      <font style="color: red;">a</font><sub>1</sub>x + <font style="color: green;">b</font><sub>1</sub>y = <font style="color: blue;">c</font><sub>1</sub>
-    </p>
-  </div>
-<center>
-  <p class="podskazka">Введите Коэффициент от 1-го Уравнения:</p>
-</center>
-	<div class="form-group row">
-    <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: red;">a</font>:</label>
-      <div class="col-sm-9">
-        <input type="text" name="a" class="form-control" id="a1" placeholder="Enter Number">
-      </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: green;">b</font>:</label>
-      <div class="col-sm-9">
-        <input type="text" name="b" class="form-control" id="b1" placeholder="Enter Number">
-      </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: blue;">c</font>:</label>
-      <div class="col-sm-9">
-        <input type="text" name="c" class="form-control" id="c1" placeholder="Enter Number">
-      </div>
-  </div>
-
   <center>
-    <p class="podskazka">Введите Коэффициент от 2-го Уравнения:</p>
+    <h1>Система линейных уравнений!</h1>
   </center>
 
-  <div class="form-group row">
-    <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: red;">a</font><sub>1</sub>:</label>
-      <div class="col-sm-9">
-        <input type="text" name="a1" class="form-control" id="a2" placeholder="Enter Number">
-      </div>
-  </div>
+    <div class="borderright">
+    <h6 style="color: #007BFF;">Стандартный вид:<br></h3>
+      <p class="podskazka">
+        <font style="color: red;">a</font>x + <font style="color: green;">b</font>y = <font style="color: blue;">c</font> <br>
+        <font style="color: red;">a</font><sub>1</sub>x + <font style="color: green;">b</font><sub>1</sub>y = <font style="color: blue;">c</font><sub>1</sub>
+      </p>
+    </div>
 
-  <div class="form-group row">
-    <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: green;">b</font><sub>1</sub>:</label>
-      <div class="col-sm-9">
-        <input type="text" name="b1" class="form-control" id="b2" placeholder="Enter Number">
-      </div>
-  </div>
+  <center>
+    <p class="podskazka">Введите Коэффициент от 1-го Уравнения:</p>
+  </center>
+  	<div class="form-group row">
+      <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: red;">a</font>:</label>
+        <div class="col-sm-9">
+          <input type="text" name="a" class="form-control" id="a1" placeholder="Enter Number">
+        </div>
+    </div>
 
-  <div class="form-group row">
-    <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: blue;">c</font><sub>1</sub>:</label>
-      <div class="col-sm-9">
-        <input type="text" name="c1" class="form-control" id="c2" placeholder="Enter Number">
-      </div>
-  </div>
+    <div class="form-group row">
+      <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: green;">b</font>:</label>
+        <div class="col-sm-9">
+          <input type="text" name="b" class="form-control" id="b1" placeholder="Enter Number">
+        </div>
+    </div>
 
-  <input class="btn btn-outline-success btn-lg" type="submit" value="Решить" id="enter" style="margin-bottom:15px;">
+    <div class="form-group row">
+      <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: blue;">c</font>:</label>
+        <div class="col-sm-9">
+          <input type="text" name="c" class="form-control" id="c1" placeholder="Enter Number">
+        </div>
+    </div>
+
+    <center>
+      <p class="podskazka">Введите Коэффициент от 2-го Уравнения:</p>
+    </center>
+
+    <div class="form-group row">
+      <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: red;">a</font><sub>1</sub>:</label>
+        <div class="col-sm-9">
+          <input type="text" name="a1" class="form-control" id="a2" placeholder="Enter Number">
+        </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: green;">b</font><sub>1</sub>:</label>
+        <div class="col-sm-9">
+          <input type="text" name="b1" class="form-control" id="b2" placeholder="Enter Number">
+        </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: blue;">c</font><sub>1</sub>:</label>
+        <div class="col-sm-9">
+          <input type="text" name="c1" class="form-control" id="c2" placeholder="Enter Number">
+        </div>
+    </div>
+
+    <input class="btn btn-outline-success btn-lg" type="submit" value="Решить" id="enter" style="margin-bottom:15px;">
 </div>
+
+<div class="jumbotron">
+  <h1 class="display-5 margin-top">Ответ:</h1>
+  <hr class="my-4">
+  <div id="done"></div>
+</div>
+
 <!-- Scripts! -->
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-<div class="jumbotron">
-  <h1 class="display-5 margin-top">Ответ:</h1>
-  <hr class="my-4">
-  <div id="done"></div>
-</div>

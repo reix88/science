@@ -17,8 +17,6 @@ echo <<<_END
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
-
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
 <body>
 <script>
