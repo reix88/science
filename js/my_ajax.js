@@ -36,21 +36,21 @@ function Request_Ajax(click,val)
 	});
 }
 
-Request_Ajax('#num','#num','number')
-Request_Ajax('#num1','#num1','number')
-Request_Ajax('#num2','#num2','number')
-Request_Ajax('#num3','#num3','number')
-Request_Ajax('#num4','#num4','number')
-Request_Ajax('#num5','#num5','number')
-Request_Ajax('#num6','#num6','number')
-Request_Ajax('#num7','#num7','number')
-Request_Ajax('#num8','#num8','number')
+Request_Ajax('#num','#num')
+Request_Ajax('#num1','#num1')
+Request_Ajax('#num2','#num2')
+Request_Ajax('#num3','#num3')
+Request_Ajax('#num4','#num4')
+Request_Ajax('#num5','#num5')
+Request_Ajax('#num6','#num6')
+Request_Ajax('#num7','#num7')
+Request_Ajax('#num8','#num8')
 
-Request_Ajax('#operations1','#operations1','number')
-Request_Ajax('#operations2','#operations2','number')
-Request_Ajax('#operations3','#operations3','number')
-Request_Ajax('#operations4','#operations4','number')
-Request_Ajax('#sqrt','#sqrt','sqrt')
+Request_Ajax('#operations1','#operations1')
+Request_Ajax('#operations2','#operations2')
+Request_Ajax('#operations3','#operations3')
+Request_Ajax('#operations4','#operations4')
+Request_Ajax('#operations5','#operations5')
 Request_Ajax('#squad','#result','squad')
 
 			$(document).ready (function () {
@@ -70,6 +70,17 @@ Request_Ajax('#squad','#result','squad')
 		    url: 'value.php',
 		    type: "POST",                     
 		    data:({squad: $('#result').val()}),
+		    dataType: "html",
+		    success:funcResult
+		  });
+		});
+	})
+			$(document).ready (function () {
+		    $('#sqrt').bind("click", function () {
+			$.ajax({
+		    url: 'value.php',
+		    type: "POST",                     
+		    data:({sqrt: $('#result').val()}),
 		    dataType: "html",
 		    success:funcResult
 		  });

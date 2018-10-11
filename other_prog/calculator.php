@@ -87,14 +87,15 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="../math/linear_equations.php">Линейные уравнения</a>
-          <a class="dropdown-item" href="../math/system_of_linear equations.php">Система линейных уравнений</a>
+          <a class="dropdown-item" href="../math/system_of_linear equations.php">Система линейных уравнений c 2 неизвестными</a>
+          <a class="dropdown-item" href="../math/system_of_linear equations_3.php">Система линейных уравнений c 3 неизвестными</a>
           <a class="dropdown-item" href="../math/quadratic_equations.php">Квадратые уравнения</a>
           <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
           <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="#">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="#">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="arithmetic_progression.php">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -134,7 +135,7 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 	<div id='operations'>
 		<button id="clear" class="btn btn-danger button-class-lol-2" value="del" >Delete</button>
 		<button class="btn btn-success button-class-lol" value="percent" >%</button>
-		<button class="btn btn-success button-class-lol" value="root" >√</button>
+		<button class="btn btn-success button-class-lol" id="sqrt" value="" >√</button>
 		<button id="squad" class="btn btn-success button-class-lol" value="x2" >x<sup>2</sup></button>
 	</div>
 
@@ -143,7 +144,7 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 		<button id="num1" class="btn btn-primary button-class-lol" value="2" >2</button>
 		<button id="num2" class="btn btn-primary button-class-lol" value="3">3</button>
 		<button  id="operations1" class="btn btn-success button-class-lol" value="/">/</button>
-		<button class="btn btn-success button-class-lol" value="xy" >x<sup>y</sup></button><br>
+		<button id="operations5" class="btn btn-success button-class-lol" value="^" >x<sup>y</sup></button><br>
 		<button id="num3" class="btn btn-primary button-class-lol" value="4">4</button>
 		<button id="num4" class="btn btn-primary button-class-lol" value="5" >5</button>
 		<button id="num5" class="btn btn-primary button-class-lol" value="6" >6</button>

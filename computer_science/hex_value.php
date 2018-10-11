@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) || 
-	isset($_POST['binary_r']) || isset($_POST['dec_bin']) || isset($_POST['dec_bin_r'])) 
-{
+	isset($_POST['binary_r']) || isset($_POST['dec_bin']) || isset($_POST['dec_bin_r'])) {
+
 	$dec_bin = $_POST['dec_bin'];
 	$dec_bin_r = $_POST['dec_bin_r'];
 	$binary_r = $_POST['binary_r'];
@@ -9,18 +9,13 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 	$hex1 = $_POST['hex'];
 	$dec = $_POST['dec'];
 
-	if (!empty($dec)) 
-	{
+	if (!empty($dec)) {
 		$hex = dechex($dec);
 		echo $hex;
-	}
-	elseif (!empty($hex1)) 
-	{
+	} elseif (!empty($hex1)) {
 		$dec_r = hexdec($hex1);
 		echo $dec_r;
-	}
-	elseif (!empty($binary_c)) 
-	{
+	} elseif (!empty($binary_c)) {
 		$chars = preg_split('//u', $binary_c, NULL, PREG_SPLIT_NO_EMPTY);
 
 		$len = mb_strlen($binary_c);
@@ -30,7 +25,7 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 		                 'F' => "01000110", 'G' => "01000111", 'H' => "01001000",
 		                 'I' => "01001001", 'J' => "01001010", 'K' => "01001011",
 		                 'L' => "01001100", 'M' => "01001101", 'N' => "01001110",
-		                 'O' => "01001111", 'P' => "01010000"	, 'Q' => "01010001",
+		                 'O' => "01001111", 'P' => "01010000", 'Q' => "01010001",
 		                 'R' => "01010010", 'S' => "01010011", 'T' => "01010100",
 		                 'U' => "01010101", 'V' => "01010110", 'W' => "01010111",
 		                 'X' => "01011000", 'Y' => "01011001", 'Z' => "01011010",
@@ -78,22 +73,18 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 		                 '' => "", '' => ""
 		                );
 
-		for ($i = 0; $i < $len; ++$i) 
-		{
-		  foreach($bincode as $item => $description) 
-		  {
-			   if ($item == $chars[$i])
-			   {
-			     $binarray[] = $description;
-			   }
-		    }
-		}
-
-		$bin_text = implode($binarray);
-		echo $bin_text;
+	for ($i = 0; $i < $len; ++$i) {
+	  foreach($bincode as $item => $description) {
+		   if ($item == $chars[$i]) {
+		     $binarray[] = $description;
+		   }
+	    }
 	}
-	elseif (!empty($binary_r)) 
-	{
+
+	$bin_text = implode($binarray);
+	echo $bin_text;
+
+	} elseif (!empty($binary_r))  {
 		$bins = str_split($binary_r, 8);
 
 		$bincode = array(' ' => "00100000", 'A' => "01000001", 'B' => "01000010",
@@ -151,27 +142,23 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 
 		$len = count($bins);
 
-		for ($i = 0; $i < $len; ++$i) 
-		{
-		  foreach($bincode as $item => $description) 
-		  {
-		    if ($description == $bins[$i]) 
-		    {
+		for ($i = 0; $i < $len; ++$i) {
+		  foreach($bincode as $item => $description) {
+		    if ($description == $bins[$i]) {
 		      $textarray[] = $item;
 		    }
 		  }
 		}
+
 		$bin_text_r = implode($textarray);
 		echo $bin_text_r;
-	}
-	elseif (!empty($dec_bin))
-	{
+	} elseif (!empty($dec_bin)) {
 		$bin = decbin($dec_bin);
 		echo $bin;
-	}elseif (!empty($dec_bin_r))
-	{	
+	} elseif (!empty($dec_bin_r)) {	
 		$bin_r = bindec($dec_bin_r);
 		echo $bin_r;
 	}
 }
+
 ?>

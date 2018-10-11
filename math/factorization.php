@@ -32,7 +32,7 @@ echo <<<_END
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,14 +40,15 @@ echo <<<_END
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="linear_equations.php">Линейные уравнеия</a>
-          <a class="dropdown-item" href="system_of_linear equations.php">Система линейных уравнений</a>
+          <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
           <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
           <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
           <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="#">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="#">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="arithmetic_progression.php">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -85,7 +86,7 @@ echo <<<_END
 	</p>
 </div>
 
-<form method="post" action="factorization.php">
+<form method="post" action="factorization.php" class="form">
 	<div class="form-group row">
     <label for="fora" class="col-sm-2 col-form-label">Значение <font style='color: red'>A</font></label>
 	    <div class="col-sm-10">

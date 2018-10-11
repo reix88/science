@@ -10,32 +10,34 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
+
   <script  src="../js/jquery-3.3.1.min.js"></script>
+
   <script>
-        function funcSuccess(data) {
-          if ($("#done").text() != '') {
-            elText = $("#done").text();
-            elText = elText.replace(elText,data);
-            $("#done").html(elText); 
-          } else {
-            $("#done").html(data);
-          }
-        }
-        $(document).ready (function () {
-        $('#enter').bind("click", function () {
-        $.ajax({
-         url: 'math.php',
-         type: "POST",
-         data:({
-          a: $('#a').val(),
-          b: $('#b').val(),
-          c: $('#c').val()
-        }),
-         dataType: "html",
-         success:funcSuccess
-          });
-        });
+    function funcSuccess(data) {
+      if ($("#done").text() != '') {
+        elText = $("#done").text();
+        elText = elText.replace(elText,data);
+        $("#done").html(elText); 
+      } else {
+        $("#done").html(data);
+      }
+    }
+    $(document).ready (function () {
+    $('#enter').bind("click", function () {
+    $.ajax({
+     url: 'math.php',
+     type: "POST",
+     data:({
+      a: $('#a').val(),
+      b: $('#b').val(),
+      c: $('#c').val()
+    }),
+     dataType: "html",
+     success:funcSuccess
       });
+    });
+  });
   </script>
 </head>
 <body>
@@ -52,7 +54,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,14 +62,15 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="linear_equations.php">Линейные уравнеия</a>
-          <a class="dropdown-item" href="system_of_linear equations.php">Система линейных уравнений</a>
+          <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
           <a class="dropdown-item" href="#">Квадратые уравнения</a>
           <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
           <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="#">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="#">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="arithmetic_progression.php">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
