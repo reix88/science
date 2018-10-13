@@ -3,24 +3,46 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 </script>
 
 <?php
-# Форма для Ввода
 echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Геометрическая прогрессия | Математика</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Геометрическая прогрессия | Математика</title>
   <meta name="description" content="Геометрическая прогрессия онлайн, просто и быстро!">
   <meta name="keywords" content="геометрическая прогрессия онлайн, геометрическая прогрессия">
 
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+  <style>
+    sub {
+      font-size: 12px;
+    }
+    .buttons-link {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      width: 90%;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hover-a {
+      background-color: #17A2B8;
+      color: white;
+    }
+    .text-font {
+      font-size: 40px;
+    }
+  </style>
 </head>
 <body>
 <script>
-	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,15 +54,16 @@ echo <<<_END
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Решить Уравнение
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="linear_equations.php">Линейные уравнеия</a>
-          <a class="dropdown-item" href="system_of_linear equations.php">Система линейных уравнений</a>
+          <a class="dropdown-item" href="linear_equations.php">Линейные уравнения</a>
+          <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
           <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
           <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
@@ -79,33 +102,44 @@ echo <<<_END
 <center><h1>Геометрическая прогрессия</h1></center>
 
 <div class="borderright">
-<h6 style="color: #007BFF;">Квадратное уравнение обычно имеет вид:<br></h3>
-	<p class="podskazka">
-		<font style="color: red;">a</font><sup>2</sup>x + <font style="color: green;">b</font>x + <font style="color: blue;">c</font> = 0
-	</p>
+<h6 style="color: #007BFF;">Геометрическая прогрессия имеет вид:</h6>
+  <p class="podskazka">
+    (b<sub>1</sub>, b<sub>2</sub>, b<sub>3</sub> ... b<sub>n</sub>) или (2, 4, 8 ... 32)
+  </p>
 </div>
 
-<form method="post" action="factorization.php">
-	<div class="form-group row">
-    <label for="fora" class="col-sm-2 col-form-label">Значение <font style='color: red'>A</font></label>
-	    <div class="col-sm-10">
-	    	<input type="text" name="a" class="form-control" id="fora" placeholder="Enter A">
-	    </div>
-	</div>
 
-	<div class="form-group row">
-    <label for="forb" class="col-sm-2 col-form-label">Значение <font style='color: green;'>B</font></label>
-	    <div class="col-sm-10">
-	    	<input type="text" name="b" class="form-control" id="forb" placeholder="Enter B">
-	    </div>
-	</div>
+  <div class="buttons-link">
+    <a href="#" class="btn btn-outline-info btn-lg hover-a btn-block">Найти n-й член прогрессии</a>
+    <a href="geometric_progression_sum.php" class="btn btn-outline-info btn-lg btn-block">Найти сумму первых n членов прогрессии</a>
+    <a href="geometric_progression_composition.php" class="btn btn-outline-info btn-lg btn-block">Найти произведение первых n членов прогрессии</a>
+  </div>
+  
+<center>
+  <p class="podskazka">Найти n-й член прогрессии:</p>
+</center>
 
-	<div class="form-group row">
-    <label for="forc" class="col-sm-2 col-form-label">Значение <font style='color: blue;'>C</font></label>
-	    <div class="col-sm-10">
-	    	<input type="text" name="c" class="form-control" id="forc" placeholder="Enter C">
-	    </div>
-	</div>
+<form method="post" action="geometric_progression.php" class="form">
+  <div class="form-group row">
+    <label for="fora" class="col-sm-2 col-form-label">Значение b<sub>1</sub></label>
+      <div class="col-sm-10">
+        <input type="text" name="b1" class="form-control" id="fora" placeholder="Enter b1">
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="forb" class="col-sm-2 col-form-label">Значение b<sub>2</sub></label>
+      <div class="col-sm-10">
+        <input type="text" name="b2" class="form-control" id="forb" placeholder="Enter b2">
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="forn" class="col-sm-4 col-form-label">Какой член прог. найти? (n)</label>
+      <div class="col-sm-8">
+        <input type="text" name="n" class="form-control" id="forn" placeholder="Enter n">
+      </div>
+  </div>
 
   <input class="btn btn-outline-success btn-lg" type="submit" value="Найти">
 </form>
@@ -119,34 +153,38 @@ echo <<<_END
 </html>
 _END;
 # Ввод значения Уравнения
-$a = $_POST['a'];
-$b = $_POST['b'];
-$c = $_POST['c'];
+$b1 = $_POST['b1'];
+$b2 = $_POST['b2'];
+$n = $_POST['n'];
 
-# Проверки
-if ($a == 0 xor $b == 0) {
-	echo "<center><h4 style='color: red'>Это не квадратное уравнение!</h4></center><br>";
-} else {
-	# Дискриминант
-	$d = ($b*$b) - 4*($a*$c);
+$q = $b2/$b1;
+
+$power = $n - 1;
+$bn = $b1 * ($q**$power);
+
+if ($q != 1 and $q < 1 and $q > 0) {
+  $text = "Убывающая";
+  $color = "blue";
+} elseif ($q != 1 and $q > 1) {
+  $text = "Возрастающая";
+  $color = "red";
+} elseif ($q == 1) {
+  $text = "Стационарная";
+  $color = "yellow";
+} elseif ($q < 0) {
+  $text = "Знакочередующиеся";
+  $color = "green";
 }
 
-if ($d > 0) {
-	# Корни
-	$x1 = (($b * -1) + sqrt($d)) / (2*$a);
-	$x2 = (($b * -1) - sqrt($d)) / (2*$a);
-} elseif ($d == 0) {
-	$x1 = (($b * -1) / (2*$a));
-} else {
-	echo "<center><h4 style='color: red'>Квадратное Уравнение не имеет решения!</h4></center><br>";
-}
 
 # Ответ
 echo <<<_END
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
-  <h1 class="display-4 margin-bottom">$a(x - ($x1))(x - ($x2))</h1>
+  <h1 class="display-4 margin-bottom">b<sub>$n</sub> = $bn</h1>
+  <hr class="my-4">
+  <h1 class="display-4 margin-bottom text-font">Тип прогрессии - <<span style="color: $color;">$text</span>></h1>
 </div>
 _END;
 ?>

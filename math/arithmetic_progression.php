@@ -3,7 +3,6 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 </script>
 
 <?php
-# Форма для Ввода
 echo <<<_END
 <!DOCTYPE html>
 <html>
@@ -17,6 +16,24 @@ echo <<<_END
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
+
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+  <style>
+    sub {
+      font-size: 12px;
+    }
+    .buttons-link {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .hover-a {
+      background-color: rgba(8, 165, 42, 0.5);
+    }
+    .text-font {
+      font-size: 40px;
+    }
+  </style>
 </head>
 <body>
 <script>
@@ -32,15 +49,16 @@ echo <<<_END
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Решить Уравнение
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="linear_equations.php">Линейные уравнеия</a>
-          <a class="dropdown-item" href="system_of_linear equations.php">Система линейных уравнений</a>
+          <a class="dropdown-item" href="linear_equations.php">Линейные уравнения</a>
+          <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
           <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
           <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
@@ -79,33 +97,42 @@ echo <<<_END
 <center><h1>Арифметическая прогрессия</h1></center>
 
 <div class="borderright">
-<h6 style="color: #007BFF;">Квадратное уравнение обычно имеет вид:<br></h3>
+<h6 style="color: #007BFF;">Арифметическая прогрессия имеет вид:</h6>
 	<p class="podskazka">
-		<font style="color: red;">a</font><sup>2</sup>x + <font style="color: green;">b</font>x + <font style="color: blue;">c</font> = 0
+		(a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub> ... a<sub>n</sub>) или (2, 4, 6 ... 16)
 	</p>
 </div>
 
-<form method="post" action="factorization.php">
+<center>
+  <div class="buttons-link">
+    <a href="#" class="btn btn-outline-success btn-lg hover-a">Найти n-й член прогрессии</a>
+    <a href="arithmetic_progression_sum.php" class="btn btn-outline-success btn-lg">Найти сумму первых n членов прогрессии</a>
+  </div>
+
+  <p class="podskazka">Найти n-й член прогрессии:</p>
+</center>
+
+<form method="post" action="arithmetic_progression.php" class="form">
 	<div class="form-group row">
-    <label for="fora" class="col-sm-2 col-form-label">Значение <font style='color: red'>A</font></label>
+    <label for="fora" class="col-sm-2 col-form-label">Значение a<sub>1</sub></label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="a" class="form-control" id="fora" placeholder="Enter A">
+	    	<input type="text" name="a1" class="form-control" id="fora" placeholder="Enter a1">
 	    </div>
 	</div>
 
 	<div class="form-group row">
-    <label for="forb" class="col-sm-2 col-form-label">Значение <font style='color: green;'>B</font></label>
+    <label for="forb" class="col-sm-2 col-form-label">Значение a<sub>2</sub></label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="b" class="form-control" id="forb" placeholder="Enter B">
+	    	<input type="text" name="a2" class="form-control" id="forb" placeholder="Enter a2">
 	    </div>
 	</div>
 
-	<div class="form-group row">
-    <label for="forc" class="col-sm-2 col-form-label">Значение <font style='color: blue;'>C</font></label>
-	    <div class="col-sm-10">
-	    	<input type="text" name="c" class="form-control" id="forc" placeholder="Enter C">
-	    </div>
-	</div>
+  <div class="form-group row">
+    <label for="forn" class="col-sm-4 col-form-label">Какой член прог. найти? (n)</label>
+      <div class="col-sm-8">
+        <input type="text" name="n" class="form-control" id="forn" placeholder="Enter n">
+      </div>
+  </div>
 
   <input class="btn btn-outline-success btn-lg" type="submit" value="Найти">
 </form>
@@ -119,34 +146,33 @@ echo <<<_END
 </html>
 _END;
 # Ввод значения Уравнения
-$a = $_POST['a'];
-$b = $_POST['b'];
-$c = $_POST['c'];
+$a1 = $_POST['a1'];
+$a2 = $_POST['a2'];
+$n = $_POST['n'];
 
-# Проверки
-if ($a == 0 xor $b == 0) {
-	echo "<center><h4 style='color: red'>Это не квадратное уравнение!</h4></center><br>";
+$d = $a2 - $a1;
+$an = $a1 + $d * ($n - 1);
+
+if ($d < 0) {
+  $text = "Убывающая";
+  $color = "blue";
+} elseif ($d > 0) {
+  $text = "Возрастающая";
+  $color = "red";
 } else {
-	# Дискриминант
-	$d = ($b*$b) - 4*($a*$c);
+  $text = "Стационарная";
+  $color = "yellow";
 }
 
-if ($d > 0) {
-	# Корни
-	$x1 = (($b * -1) + sqrt($d)) / (2*$a);
-	$x2 = (($b * -1) - sqrt($d)) / (2*$a);
-} elseif ($d == 0) {
-	$x1 = (($b * -1) / (2*$a));
-} else {
-	echo "<center><h4 style='color: red'>Квадратное Уравнение не имеет решения!</h4></center><br>";
-}
 
 # Ответ
 echo <<<_END
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
-  <h1 class="display-4 margin-bottom">$a(x - ($x1))(x - ($x2))</h1>
+  <h1 class="display-4 margin-bottom">a<sub>$n</sub> = $an</h1>
+  <hr class="my-4">
+  <h1 class="display-4 margin-bottom text-font">Тип прогрессии - <<span style="color: $color;">$text</span>></h1>
 </div>
 _END;
 ?>
