@@ -134,7 +134,7 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 
 	<div id='operations'>
 		<button id="clear" class="btn btn-danger button-class-lol-2" value="del" >Delete</button>
-		<button class="btn btn-success button-class-lol" value="percent" >%</button>
+		<button id="procent" class="btn btn-success button-class-lol">%</button>
 		<button class="btn btn-success button-class-lol" id="sqrt" value="" >√</button>
 		<button id="squad" class="btn btn-success button-class-lol" value="x2" >x<sup>2</sup></button>
 	</div>
@@ -149,14 +149,14 @@ document.write('<script src="http://' + (location.host || 'localhost').split(':'
 		<button id="num4" class="btn btn-primary button-class-lol" value="5" >5</button>
 		<button id="num5" class="btn btn-primary button-class-lol" value="6" >6</button>
 		<button  id="operations2" class="btn btn-success button-class-lol" value="*">*</button>
-		<button class="btn btn-success button-class-lol" value="n">n!</button><br>
+		<button id="factorial" class="btn btn-success button-class-lol">n!</button><br>
 		<button id="num6" class="btn btn-primary button-class-lol" value="7" >7</button>
 		<button id="num7" class="btn btn-primary button-class-lol" value="8" >8</button>
 		<button id="num8" class="btn btn-primary button-class-lol" value="9" >9</button>
 		<button  id="operations3" class="btn btn-success button-class-lol" value="-">-</button>
 		<button class="btn btn-success button-class-lol" value="log">log</button><br>
 		<button id="num9" class="btn btn-primary button-class-lol-2" value="0" >0</button>
-		<button class="btn btn-primary button-class-lol" value="." >.</button>
+		<button id="operations6" class="btn btn-primary button-class-lol" value="." >.</button>
 		<button  id="operations4" class="btn btn-success button-class-lol" value="+">+</button>
 		<button id="enter" class="btn btn-primary button-class-lol" value="=">=</button>
 	</div>
