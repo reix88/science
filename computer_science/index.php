@@ -1,3 +1,6 @@
+<?php
+require_once 'links.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +41,10 @@
 	  	.list-group-item:hover {
 	  		color: #007BFF;
 	  	}
+      span {
+        color: green;
+        font-weight: 600;
+      }
 	</style>
 </head>
 <body>
@@ -54,19 +61,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?php echo HOME; ?>">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выбрать задачу
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="binary_code.php">Кодировать в бинарный код</a>
-          <a class="dropdown-item" href="binary_code_reverse.php">Декодировать бинарный код</a>
-          <a class="dropdown-item" href="bin_number.php">Десятичная система в двоичную</a>
-          <a class="dropdown-item" href="bin_number_reverse.php">Двоичная система в десятичную</a>
-          <a class="dropdown-item" href="hex_number.php">Десятичная система в шестнадцатиричную</a>
-          <a class="dropdown-item" href="hex_number_reverse.php">Шестнадцатиричная система в десятичную</a>
+          <a class="dropdown-item" href="<?php echo B_C; ?>">Кодировать в бинарный код</a>
+          <a class="dropdown-item" href="<?php echo B_C_R; ?>">Декодировать бинарный код</a>
+          <a class="dropdown-item" href="<?php echo B_N; ?>">Десятичная система в двоичную</a>
+          <a class="dropdown-item" href="<?php echo B_N_R; ?>">Двоичная система в десятичную</a>
+          <a class="dropdown-item" href="<?php echo H_N; ?>">Десятичная система в шестнадцатиричную</a>
+          <a class="dropdown-item" href="<?php echo H_N_R; ?>">Шестнадцатиричная система в десятичную</a>
 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>

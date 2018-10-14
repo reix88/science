@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Арифметическая прогрессия | Математика</title>
-  <meta name="description" content="Арифметическая прогрессия онлайн, просто и быстро!">
-  <meta name="keywords" content="арифметическая прогрессия онлайн, арифметическая прогрессия">
+	<title>Найти НОК | Математика</title>
+  <meta name="description" content="Найти НОК, просто и быстро!">
+  <meta name="keywords" content="Найти НОК онлайн, Найти НОК">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
@@ -13,34 +14,16 @@
 
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+
   <style>
-    sub {
-      font-size: 12px;
-    }
-    .buttons-link {
-      margin-top: 20px;
-      margin-bottom: 30px;
-      width: 90%;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hover-a {
-      background-color: #17A2B8;
-      color: white;
-    }
-    .text-font {
-      font-size: 40px;
-    }
     .jumbotron {
       margin-top: 15px;
     }
   </style>
-  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 
   <script>
-
-    function funcSuccess(data) {
+   function funcSuccess(data) {
       if ($("#done").text() != '') {
         elText = $("#done").html();
         elText = elText.replace(elText,data);
@@ -53,31 +36,29 @@
       $(document).ready (function () {
         $(input).bind("blur",function () {
           inputBlur = $(input).val()
-					if (Number(inputBlur))
-					{
-						$(input).css({
-							'border':'1px solid green'
-						});
+          if (Number(inputBlur))
+          {
+            $(input).css({
+              'border':'1px solid green'
+            });
           }else {
-						$(input).css({
-							'border':'1px solid red'
-						});
+            $(input).css({
+              'border':'1px solid red'
+            });
           }
         });
       });
     }
-		funcFixString('#a1');
-		funcFixString('#a2');
-		funcFixString('#n');
+    funcFixString('#a');
+    funcFixString('#b');
       $(document).ready (function () {
         $('#enter').bind("click", function () {
         $.ajax({
          url: 'math.php',
          type: "POST",
          data:({
-          a1: $('#a1').val(),
-          a2: $('#a2').val(),
-          n: $('#n').val(),
+          a31: $('#a').val(),
+          b31: $('#b').val(),
         }),
          dataType: "html",
          success:funcSuccess
@@ -107,7 +88,7 @@
           Решить Уравнение
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="linear_equations.php">Линейные уравнения</a>
+          <a class="dropdown-item" href="linear_equations.php">Линейные уравнеия</a>
           <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
           <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
           <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
@@ -115,7 +96,7 @@
           <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
           <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="#">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="arithmetic_progression.php">Арифметическая прогрессия</a>
           <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
@@ -128,7 +109,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Найти НОД</a>
           <a class="dropdown-item" href="#">Найти НОК</a>
-          <a class="dropdown-item" href="factorization.php">Разложение квадартного 3-х члена на множ...</a>
+          <a class="dropdown-item" href="#">Разложение квадартного 3-х члена на множ...</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -145,54 +126,39 @@
   </div>
 </nav>
 
-<center><h1>Арифметическая прогрессия</h1></center>
-
+<center><h1>Найти НОК</h1></center>
+<div class="form">
 <div class="borderright">
-<h6 style="color: #007BFF;">Арифметическая прогрессия имеет вид:</h6>
+<h6 style="color: #007BFF;">Найти НОК для А и B<br></h6>
 	<p class="podskazka">
-		(a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub> ... a<sub>n</sub>) или (2, 4, 6 ... 16)
+		Пример: Найти НОК для 36 и 12
 	</p>
 </div>
-
-<div class="buttons-link">
-  <a href="#" class="btn btn-outline-info btn-lg hover-a btn-block">Найти n-й член прогрессии</a>
-  <a href="arithmetic_progression_sum.php" class="btn btn-outline-info btn-lg btn-block">Найти сумму первых n членов прогрессии</a>
-</div>
-
-<center>
-  <p class="podskazka">Найти n-й член прогрессии:</p>
-</center>
-
-<div class="form">
 	<div class="form-group row">
-    <label for="fora" class="col-sm-2 col-form-label">Значение a<sub>1</sub></label>
+    <label for="fora" class="col-sm-2 col-form-label">Значение A</label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="a1" class="form-control" id="a1" placeholder="Enter a1">
+	    	<input type="text" name="a" class="form-control" id="a" placeholder="Enter A">
 	    </div>
 	</div>
 
 	<div class="form-group row">
-    <label for="forb" class="col-sm-2 col-form-label">Значение a<sub>2</sub></label>
+    <label for="forb" class="col-sm-2 col-form-label">Значение B</label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="a2" class="form-control" id="a2" placeholder="Enter a2">
+	    	<input type="text" name="b" class="form-control" id="b" placeholder="Enter B">
 	    </div>
 	</div>
-
-  <div class="form-group row">
-    <label for="forn" class="col-sm-4 col-form-label">Какой член прог. найти? (n)</label>
-      <div class="col-sm-8">
-        <input type="text" name="n" class="form-control" id="n" placeholder="Enter n">
-      </div>
-  </div>
 
   <input class="btn btn-outline-success btn-lg" type="submit" value="Найти" id="enter">
+<div>
+
+</div>
 </div>
 
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
-  <div id="done">
-  </div>
+
+  <div id="done"></div>
 </div>
 
 <!-- Scripts! -->
@@ -201,3 +167,5 @@
 
 </body>
 </html>
+
+

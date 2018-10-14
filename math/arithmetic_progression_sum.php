@@ -1,9 +1,3 @@
-<script>
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-</script>
-
-<?php
-echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,14 +20,70 @@ echo <<<_END
     .buttons-link {
       margin-top: 20px;
       margin-bottom: 30px;
+      width: 90%;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .hover-a {
-      background-color: rgba(8, 165, 42, 0.5);
+      background-color: #17A2B8;
+      color: white;
     }
     .text-font {
       font-size: 40px;
     }
+    .jumbotron {
+      margin-top: 15px;
+    }
   </style>
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+
+  <script>
+    function funcSuccess(data) {
+      if ($("#done").text() != '') {
+        elText = $("#done").html();
+        elText = elText.replace(elText,data);
+        $("#done").html(elText);
+      } else {
+        $("#done").html(data);
+      }
+    }
+		function funcFixString (input){
+      $(document).ready (function () {
+        $(input).bind("blur",function () {
+          inputBlur = $(input).val()
+					if (Number(inputBlur)) {
+						$(input).css({
+							'border':'1px solid green'
+						});
+          }else {
+						$(input).css({
+							'border':'1px solid red'
+						});
+          }
+        });
+      });
+    }
+		funcFixString('#a1');
+		funcFixString('#a2');
+		funcFixString('#n');
+
+      $(document).ready (function () {
+        $('#enter').bind("click", function () {
+        $.ajax({
+         url: 'math.php',
+         type: "POST",
+         data:({
+          a3: $('#a1').val(),
+          a4: $('#a2').val(),
+          n: $('#n').val(),
+        }),
+         dataType: "html",
+         success:funcSuccess
+          });
+        });
+      });
+  </script>
 </head>
 <body>
 <script>
@@ -103,78 +153,49 @@ echo <<<_END
 	</p>
 </div>
 
-<center>
-  <div class="buttons-link">
-    <a href="arithmetic_progression.php" class="btn btn-outline-success btn-lg">Найти n-й член прогрессии</a>
-    <a href="#" class="btn btn-outline-success btn-lg hover-a">Найти сумму первых n членов прогрессии</a>
-  </div>
+<div class="buttons-link">
+  <a href="arithmetic_progression.php" class="btn btn-outline-info btn-lg btn-block">Найти n-й член прогрессии</a>
+  <a href="#" class="btn btn-outline-info btn-lg btn-block hover-a">Найти сумму первых n членов прогрессии</a>
+</div>
 
+<center>
   <p class="podskazka">Найти сумму первых n членов прогрессии:</p>
 </center>
 
-<form method="post" action="arithmetic_progression_sum.php" class="form">
+<div class="form">
 	<div class="form-group row">
     <label for="fora" class="col-sm-2 col-form-label">Значение a<sub>1</sub></label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="a1" class="form-control" id="fora" placeholder="Enter a1">
+	    	<input type="text" name="a1" class="form-control" id="a1" placeholder="Enter a1">
 	    </div>
 	</div>
 
 	<div class="form-group row">
     <label for="forb" class="col-sm-2 col-form-label">Значение a<sub>2</sub></label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="a2" class="form-control" id="forb" placeholder="Enter a2">
+	    	<input type="text" name="a2" class="form-control" id="a2" placeholder="Enter a2">
 	    </div>
 	</div>
 
   <div class="form-group row">
     <label for="forn" class="col-sm-6 col-form-label">До кaкого n члена прог. найти сумму? (n)</label>
       <div class="col-sm-6">
-        <input type="text" name="n" class="form-control" id="forn" placeholder="Enter n">
+        <input type="text" name="n" class="form-control" id="n" placeholder="Enter n">
       </div>
   </div>
 
-  <input class="btn btn-outline-success btn-lg" type="submit" value="Найти">
-</form>
+  <input class="btn btn-outline-success btn-lg" type="submit" value="Найти" id="enter">
+</div>
 
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-_END;
-
-$a1 = $_POST['a1'];
-$a2 = $_POST['a2'];
-$n = $_POST['n'];
-
-$d = $a2 - $a1;
-$an = $a1 + $d * ($n - 1);
-
-$ansum = (($a1 + $an) * $n)/2;
-
-if ($d < 0) {
-  $text = "Убывающая";
-  $color = "blue";
-} elseif ($d > 0) {
-  $text = "Возрастающая";
-  $color = "red";
-} else {
-  $text = "Стационарная";
-  $color = "yellow";
-}
-
-
-# Ответ
-echo <<<_END
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
-  <h1 class="display-4 margin-bottom">S<sub>$n</sub> = $ansum</h1>
-  <hr class="my-4">
-  <h1 class="display-4 margin-bottom text-font">Тип прогрессии - <<span style="color: $color;">$text</span>></h1>
+<div id="done">
 </div>
-_END;
-?>
+</div>

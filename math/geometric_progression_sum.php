@@ -1,9 +1,3 @@
-<script>
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-</script>
-
-<?php
-echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +32,58 @@ echo <<<_END
     .text-font {
       font-size: 40px;
     }
+    .jumbotron {
+      margin-top: 15px;
+    }
   </style>
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+
+  <script>
+    function funcSuccess(data) {
+      if ($("#done").text() != '') {
+        elText = $("#done").html();
+        elText = elText.replace(elText,data);
+        $("#done").html(elText);
+      } else {
+        $("#done").html(data);
+      }
+    }
+    function funcFixString (input){
+      $(document).ready (function () {
+        $(input).bind("blur",function () {
+          inputBlur = $(input).val()
+					if (Number(inputBlur)) {
+						$(input).css({
+							'border':'1px solid green'
+						});
+          }else {
+						$(input).css({
+							'border':'1px solid red'
+						});
+          }
+        });
+      });
+    }
+    funcFixString('#b1');
+		funcFixString('#b2');
+		funcFixString('#n');
+
+      $(document).ready (function () {
+        $('#enter').bind("click", function () {
+        $.ajax({
+         url: 'math.php',
+         type: "POST",
+         data:({
+          b3: $('#b1').val(),
+          b4: $('#b2').val(),
+          n: $('#n').val(),
+        }),
+         dataType: "html",
+         success:funcSuccess
+          });
+        });
+      });
+</script>
 </head>
 <body>
 <script>
@@ -117,77 +162,41 @@ echo <<<_END
 <center>
   <p class="podskazka">Найти сумму первых n членов прогрессии:</p>
 </center>
-
-<form method="post" action="geometric_progression_sum.php" class="form">
+<div class="form">
   <div class="form-group row">
     <label for="fora" class="col-sm-2 col-form-label">Значение b<sub>1</sub></label>
       <div class="col-sm-10">
-        <input type="text" name="b1" class="form-control" id="fora" placeholder="Enter b1">
+        <input type="text" name="b1" class="form-control" id="b1" placeholder="Enter b1">
       </div>
   </div>
 
   <div class="form-group row">
     <label for="forb" class="col-sm-2 col-form-label">Значение b<sub>2</sub></label>
       <div class="col-sm-10">
-        <input type="text" name="b2" class="form-control" id="forb" placeholder="Enter b2">
+        <input type="text" name="b2" class="form-control" id="b2" placeholder="Enter b2">
       </div>
   </div>
 
   <div class="form-group row">
     <label for="forn" class="col-sm-6 col-form-label">До кaкого n члена прог. найти сумму? (n)</label>
       <div class="col-sm-6">
-        <input type="text" name="n" class="form-control" id="forn" placeholder="Enter n">
+        <input type="text" name="n" class="form-control" id="n" placeholder="Enter n">
       </div>
   </div>
 
-  <input class="btn btn-outline-success btn-lg" type="submit" value="Найти">
-</form>
+  <input class="btn btn-outline-success btn-lg" type="submit" value="Найти" id="enter">
+</div>
+
+<div class="jumbotron">
+  <h1 class="display-5 margin-top">Ответ:</h1>
+  <hr class="my-4">
+
+  <div id="done"></div>
+</div>
 
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-_END;
-
-$b1 = $_POST['b1'];
-$b2 = $_POST['b2'];
-$n = $_POST['n'];
-
-$q = $b2/$b1;
-
-$power = $n - 1;
-$bn = $b1 * ($q**$power);
-
-if ($q != 1 and $q < 1 and $q > 0) {
-  $text = "Убывающая";
-  $color = "blue";
-  $sum_n = ($b1 - ($bn * $q))/(1 - $q);
-} elseif ($q != 1 and $q > 1) {
-  $text = "Возрастающая";
-  $color = "red";
-  $sum_n = (($bn * $q) - $b1)/($q - 1);
-} elseif ($q == 1) {
-  $text = "Стационарная";
-  $color = "yellow";
-  $sum_n = $n * $b1;
-} elseif ($q < 0) {
-  $text = "Знакочередующиеся";
-  $color = "green";
-  $sum_n = (($bn * $q) - $b1)/($q - 1);
-}
-
-
-# Ответ
-echo <<<_END
-<div class="jumbotron">
-  <h1 class="display-5 margin-top">Ответ:</h1>
-  <hr class="my-4">
-  <h1 class="display-4 margin-bottom">S<sub>$n</sub> = $sum_n</h1>
-  <hr class="my-4">
-  <h1 class="display-4 margin-bottom text-font">Тип прогрессии - <<span style="color: $color;">$text</span>></h1>
-</div>
-_END;
-?>

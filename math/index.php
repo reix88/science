@@ -1,3 +1,6 @@
+<?php
+require_once 'links.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +44,10 @@
     .button-circle {
       border-radius: 20px;
     }
+    span {
+      color: green;
+      font-weight: 600;
+    }
 	</style>
 </head>
 <body>
@@ -57,23 +64,23 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?php echo HOME; ?>">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выбрать задачу
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="linear_equations.php">Линейные уравнения</a>
-          <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
-          <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
-          <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
+          <a class="dropdown-item" href="<?php echo L_E; ?>">Линейные уравнения</a>
+          <a class="dropdown-item" href="<?php echo S_L_E; ?>">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo S_L_E_3; ?>">Система линейных уравнений с 3 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo Q_E; ?>">Квадратые уравнения</a>
           <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
           <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
           <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="arithmetic_progression.php">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo A_P; ?>">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo G_P; ?>">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -83,9 +90,9 @@
           Дополнительно
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Найти НОД</a>
-          <a class="dropdown-item" href="#">Найти НОК</a>
-          <a class="dropdown-item" href="factorization.php">Разложение квадартного 3-х члена на множ...</a>
+          <a class="dropdown-item" href="<?php echo NOD; ?>">Найти НОД</a>
+          <a class="dropdown-item" href="<?php echo NOK; ?>">Найти НОК</a>
+          <a class="dropdown-item" href="<?php echo F; ?>">Разложение квадартного 3-х члена на множ...</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -95,7 +102,7 @@
       </li>
     </ul>
 
-    <a href="../other_prog/calculator.php" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
+    <a href="<?php echo CALC; ?>" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
       Калькулятор <span style="color: #00ef00">online</span>
     </a>
 
@@ -126,8 +133,8 @@
 
 <center><h2 style="font-weight: 400; margin-top: -60px; color: #007BFF;">Дополнительно</h2></center>
 <div class="list-group">
-  <a class="list-group-item list-group-item-action" href="#">Найти НОД</a>
-  <a class="list-group-item list-group-item-action" href="#">Найти НОК</a>
+  <a class="list-group-item list-group-item-action" href="#">Найти НОД <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="#">Найти НОК <span style="float: right">✓</span></a>
   <a class="list-group-item list-group-item-action" href="quadratic_equations.php">Разложение квадартного 3-х члена на множители <span style="float: right">✓</span></a>
 </div>
 

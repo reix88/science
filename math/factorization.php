@@ -1,10 +1,3 @@
-<script>
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-</script>
-
-<?php
-# Форма для Ввода
-echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +12,55 @@ echo <<<_END
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
 
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
+      <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+
+  <script>
+
+    function funcSuccess(data) {
+      if ($("#done").text() != '') {
+        elText = $("#done").html();
+        elText = elText.replace(elText,data);
+        $("#done").html(elText);
+      } else {
+        $("#done").html(data);
+      }
+    }
+    function funcFixString (input){
+      $(document).ready (function () {
+        $(input).bind("blur",function () {
+          inputBlur = $(input).val()
+          if (Number(inputBlur))
+          {
+            $(input).css({
+              'border':'1px solid green'
+            });
+          }else {
+            $(input).css({
+              'border':'1px solid red'
+            });
+          }
+        });
+      });
+    }
+    funcFixString('#a');
+    funcFixString('#b');
+    funcFixString('#c');
+      $(document).ready (function () {
+        $('#enter').bind("click", function () {
+        $.ajax({
+         url: 'math.php',
+         type: "POST",
+         data:({
+          a_f: $('#a').val(),
+          b_f: $('#b').val(),
+          c_f: $('#c').val(),
+        }),
+         dataType: "html",
+         success:funcSuccess
+          });
+        });
+      });
+  </script>
 </head>
 <body>
 <script>
@@ -88,68 +130,41 @@ echo <<<_END
 	</p>
 </div>
 
-<form method="post" action="factorization.php" class="form">
+<div class="form">
 	<div class="form-group row">
     <label for="fora" class="col-sm-2 col-form-label">Значение <font style='color: red'>A</font></label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="a" class="form-control" id="fora" placeholder="Enter A">
+	    	<input type="text" name="a" class="form-control" id="a" placeholder="Enter A">
 	    </div>
 	</div>
 
 	<div class="form-group row">
     <label for="forb" class="col-sm-2 col-form-label">Значение <font style='color: green;'>B</font></label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="b" class="form-control" id="forb" placeholder="Enter B">
+	    	<input type="text" name="b" class="form-control" id="b" placeholder="Enter B">
 	    </div>
 	</div>
 
 	<div class="form-group row">
     <label for="forc" class="col-sm-2 col-form-label">Значение <font style='color: blue;'>C</font></label>
 	    <div class="col-sm-10">
-	    	<input type="text" name="c" class="form-control" id="forc" placeholder="Enter C">
+	    	<input type="text" name="c" class="form-control" id="c" placeholder="Enter C">
 	    </div>
 	</div>
 
-  <input class="btn btn-outline-success btn-lg" type="submit" value="Найти">
-</form>
+  <input class="btn btn-outline-success btn-lg" type="submit" value="Найти" id="enter">
+</div>
 
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-_END;
-# Ввод значения Уравнения
-$a = $_POST['a'];
-$b = $_POST['b'];
-$c = $_POST['c'];
 
-# Проверки
-if ($a == 0 xor $b == 0) {
-	echo "<center><h4 style='color: red'>Это не квадратное уравнение!</h4></center><br>";
-} else {
-	# Дискриминант
-	$d = ($b*$b) - 4*($a*$c);
-}
 
-if ($d > 0) {
-	# Корни
-	$x1 = (($b * -1) + sqrt($d)) / (2*$a);
-	$x2 = (($b * -1) - sqrt($d)) / (2*$a);
-} elseif ($d == 0) {
-	$x1 = (($b * -1) / (2*$a));
-} else {
-	echo "<center><h4 style='color: red'>Квадратное Уравнение не имеет решения!</h4></center><br>";
-}
-
-# Ответ
-echo <<<_END
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
-  <h1 class="display-4 margin-bottom">$a(x - ($x1))(x - ($x2))</h1>
+<div id="done"></div>
 </div>
-_END;
-?>
