@@ -1,3 +1,7 @@
+<?php
+  require_once 'links.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +53,7 @@
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html" style="color: #007BFF;">#Математика</a>
+  <a class="navbar-brand" href="index.php" style="color: #007BFF;">#Математика</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -64,16 +68,16 @@
           Решить Уравнение
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="linear_equations.php">Линейные уравнеия</a>
+          <a class="dropdown-item" href="<?php echo LE; ?>">Линейные уравнения</a>
           <a class="dropdown-item" href="#">Система линейных уравнений с 2 неизвестными</a>
-          <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
-          <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
-          <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
-          <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="arithmetic_progression.php">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo SLE3; ?>">Система линейных уравнений с 3 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo QE; ?>">Квадратые уравнения</a>
+          <a class="dropdown-item" href="<?php echo DES; ?>">Система уравнений 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI; ?>">Неравенства 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DIS; ?>">Система Неравенств 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI2; ?>">Неравенства 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo AP; ?>">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo GP; ?>">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -83,9 +87,9 @@
           Дополнительно
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Найти НОД</a>
-          <a class="dropdown-item" href="#">Найти НОК</a>
-          <a class="dropdown-item" href="factorization.php">Разложение квадартного 3-х члена на множ...</a>
+          <a class="dropdown-item" href="<?php echo NOD; ?>">Найти НОД</a>
+          <a class="dropdown-item" href="<?php echo NOK; ?>">Найти НОК</a>
+          <a class="dropdown-item" href="<?php echo FACT; ?>">Разложение квадартного 3-х члена на множ...</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -95,7 +99,7 @@
       </li>
     </ul>
 
-    <a href="../other_prog/calculator.php" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
+    <a href="<?php echo CALC; ?>" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
       Калькулятор <span style="color: #00ef00">online</span>
     </a>
     
@@ -107,13 +111,13 @@
     <h1>Система линейных уравнений!</h1>
   </center>
 
-    <div class="borderright">
-    <h6 style="color: #007BFF;">Стандартный вид:<br></h3>
-      <p class="podskazka">
-        <font style="color: red;">a</font>x + <font style="color: green;">b</font>y = <font style="color: blue;">c</font> <br>
-        <font style="color: red;">a</font><sub>1</sub>x + <font style="color: green;">b</font><sub>1</sub>y = <font style="color: blue;">c</font><sub>1</sub>
-      </p>
-    </div>
+  <div class="borderright">
+  <h6 style="color: #007BFF;">Стандартный вид:<br></h3>
+    <p class="podskazka">
+      <font style="color: red;">a</font>x + <font style="color: green;">b</font>y = <font style="color: blue;">c</font> <br>
+      <font style="color: red;">a</font><sub>1</sub>x + <font style="color: green;">b</font><sub>1</sub>y = <font style="color: blue;">c</font><sub>1</sub>
+    </p>
+  </div>
 
   <center>
     <p class="podskazka">Введите Коэффициент от 1-го Уравнения:</p>
@@ -170,6 +174,7 @@
 <div class="jumbotron">
   <h1 class="display-5 margin-top">Ответ:</h1>
   <hr class="my-4">
+  
   <div id="done"></div>
 </div>
 

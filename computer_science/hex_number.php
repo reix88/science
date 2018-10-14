@@ -1,3 +1,7 @@
+<?php
+require_once 'links.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,35 +14,37 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
+
   <script src="../js/jquery-3.3.1.min.js"></script>
+
   <script >
-function funcSuccess(data)
-{
-	if ($("#text2").val() != '') 
-	{
-		elText = $("#text2").val();
-		elText = elText.replace(elText,data);
-		$("#text2").val(elText); 
-	} else 
-	{
-		$("#text2").val(data);
-	}
-}  	
-function Request_Ajax(click,val) 
-{
-	$(document).ready (function () {
-		$(click).bind("click", function () {
-		$.ajax({
-		 url: 'hex_value.php',
-		type: "POST",                     
-		 data:({dec: $(val).val()}),
-		 dataType: "html",
-		 success:funcSuccess
-			});
-		});
-	});
-}
-Request_Ajax('#enter','#text1')
+    function funcSuccess(data)
+    {
+    	if ($("#text2").val() != '') 
+    	{
+    		elText = $("#text2").val();
+    		elText = elText.replace(elText,data);
+    		$("#text2").val(elText); 
+    	} else 
+    	{
+    		$("#text2").val(data);
+    	}
+    }  	
+    function Request_Ajax(click,val) 
+    {
+    	$(document).ready (function () {
+    		$(click).bind("click", function () {
+    		$.ajax({
+    		 url: 'hex_value.php',
+    		type: "POST",                     
+    		 data:({dec: $(val).val()}),
+    		 dataType: "html",
+    		 success:funcSuccess
+    			});
+    		});
+    	});
+    }
+    Request_Ajax('#enter','#text1')
  </script>
 </head>
 <body>
@@ -47,7 +53,7 @@ Request_Ajax('#enter','#text1')
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html" style="color:#007BFF;">#Информатика</a>
+  <a class="navbar-brand" href="index.php" style="color:#007BFF;">#Информатика</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -55,19 +61,19 @@ Request_Ajax('#enter','#text1')
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выбрать уравнение
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="binary_code.php">Кодировать в бинарный код</a>
-          <a class="dropdown-item" href="binary_code_reverse.php">Декодировать бинарный код</a>
-          <a class="dropdown-item" href="#">Десятичная система в двоичную</a>
-          <a class="dropdown-item" href="bin_number_reverse.php">Двоичная система в десятичную</a>
+          <a class="dropdown-item" href="<?php echo BC; ?>">Кодировать в бинарный код</a>
+          <a class="dropdown-item" href="<?php echo BCR; ?>">Декодировать бинарный код</a>
+          <a class="dropdown-item" href="<?php echo BN; ?>">Десятичная система в двоичную</a>
+          <a class="dropdown-item" href="<?php echo BNR; ?>">Двоичная система в десятичную</a>
           <a class="dropdown-item" href="#">Десятичная система в шестнадцатиричную</a>
-          <a class="dropdown-item" href="hex_number_reverse.php">Шестнадцатиричная система в десятичную</a>
+          <a class="dropdown-item" href="<?php echo HNR; ?>">Шестнадцатиричная система в десятичную</a>
 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
@@ -83,22 +89,22 @@ Request_Ajax('#enter','#text1')
 <center><h1>Десятичная система в шестнадцатиричную</h1></center>
 
 
-  <div class="form-row form-col">
-    <div class="col col1">
-      <p>Dec-></p>
-      <textarea class="form-control" id="text1" rows="5" name="dec" value=""></textarea>
-    </div>
-
-    <div class="col col2">
-      <p>->Hex</p>
-      <textarea class="form-control" id="text2" rows="5" name="hex"></textarea>
-    </div>    
+<div class="form-row form-col">
+  <div class="col col1">
+    <p>Dec-></p>
+    <textarea class="form-control" id="text1" rows="5" name="dec" value=""></textarea>
   </div>
 
-  <center>
+  <div class="col col2">
+    <p>->Hex</p>
+    <textarea class="form-control" id="text2" rows="5" name="hex"></textarea>
+  </div>    
+</div>
+
+<center>
   <input class="btn btn-primary btn-lg btn-margin" type="submit" value="Кодировать" id="enter">
-  <a class="btn btn-secondary btn-margin btn-lg" href="hex_number_reverse.php" role="button"><img src="../img/arrows.png" width="26"></a>
-  </center>
+  <a class="btn btn-secondary btn-margin btn-lg" href="<?php echo HNR; ?>" role="button"><img src="../img/arrows.png" width="26"></a>
+</center>
 
 <!-- Scripts! -->
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>

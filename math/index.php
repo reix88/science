@@ -1,6 +1,7 @@
 <?php
-require_once 'links.php';
+  require_once 'links.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,23 +65,23 @@ require_once 'links.php';
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo HOME; ?>">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выбрать задачу
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo L_E; ?>">Линейные уравнения</a>
-          <a class="dropdown-item" href="<?php echo S_L_E; ?>">Система линейных уравнений с 2 неизвестными</a>
-          <a class="dropdown-item" href="<?php echo S_L_E_3; ?>">Система линейных уравнений с 3 неизвестными</a>
-          <a class="dropdown-item" href="<?php echo Q_E; ?>">Квадратые уравнения</a>
-          <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
-          <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="<?php echo A_P; ?>">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="<?php echo G_P; ?>">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo LE; ?>">Линейные уравнения</a>
+          <a class="dropdown-item" href="<?php echo SLE; ?>">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo SLE3; ?>">Система линейных уравнений с 3 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo QE; ?>">Квадратые уравнения</a>
+          <a class="dropdown-item" href="<?php echo DES; ?>">Система уравнений 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI; ?>">Неравенства 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DIS; ?>">Система Неравенств 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI2; ?>">Неравенства 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo AP; ?>">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo GP; ?>">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -92,7 +93,7 @@ require_once 'links.php';
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?php echo NOD; ?>">Найти НОД</a>
           <a class="dropdown-item" href="<?php echo NOK; ?>">Найти НОК</a>
-          <a class="dropdown-item" href="<?php echo F; ?>">Разложение квадартного 3-х члена на множ...</a>
+          <a class="dropdown-item" href="<?php echo FACT; ?>">Разложение квадартного 3-х члена на множ...</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -109,7 +110,6 @@ require_once 'links.php';
   </div>
 </nav>
 
-
 <div class="jumbotron">
   <h1 class="display-4 h1-size" style="color: #007BFF;">Математика</h1>
   <p class="lead">Сайт который решит за вас все математические задачи. Впешите значения уравнений, а остальное мы сделаем за вас. Используйте разумно и не злоупотребляйте!</p>
@@ -117,25 +117,31 @@ require_once 'links.php';
   <p style="color: #007BFF;"><cite title="Source Title">- Администрация сайта</cite></p>
 </div>
 
-<center><h2>Какое уравнение нужно решить?</h2></center>
+<center>
+  <h2>Какое уравнение нужно решить?</h2>
+</center>
+
 <div class="list-group">
-  <a class="list-group-item list-group-item-action" href="linear_equations.php">Линейные уравнения <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="system_of_linear equations.php">Система линейных уравнений с 2 неизвестными <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="system_of_linear equations_3.php">Система линейных уравнений с 3 неизвестными <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="quadratic_equations.php">Квадратые уравнения <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="#">Система уравнений 2-й степени</a>
-  <a class="list-group-item list-group-item-action" href="#">Неравенства 1-й степени</a>
-  <a class="list-group-item list-group-item-action" href="#">Система Неравенств 1-й степени</a>
-  <a class="list-group-item list-group-item-action" href="#">Неравенства 2-й степени</a>
-  <a class="list-group-item list-group-item-action" href="arithmetic_progression.php">Арифметическая прогрессия <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="geometric_progression.php">Геометрическая прогрессия <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo LE; ?>">Линейные уравнения <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo SLE; ?>">Система линейных уравнений с 2 неизвестными <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo SLE3; ?>">Система линейных уравнений с 3 неизвестными <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo QE; ?>">Квадратые уравнения <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo DES; ?>">Система уравнений 2-й степени</a>
+  <a class="list-group-item list-group-item-action" href="<?php echo DI; ?>">Неравенства 1-й степени</a>
+  <a class="list-group-item list-group-item-action" href="<?php echo DIS; ?>">Система Неравенств 1-й степени</a>
+  <a class="list-group-item list-group-item-action" href="<?php echo DI2; ?>">Неравенства 2-й степени</a>
+  <a class="list-group-item list-group-item-action" href="<?php echo AP; ?>">Арифметическая прогрессия <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo GP; ?>">Геометрическая прогрессия <span style="float: right">✓</span></a>
 </div>
 
-<center><h2 style="font-weight: 400; margin-top: -60px; color: #007BFF;">Дополнительно</h2></center>
+<center>
+  <h2 style="font-weight: 400; margin-top: -60px; color: #007BFF;">Дополнительно</h2>
+</center>
+
 <div class="list-group">
-  <a class="list-group-item list-group-item-action" href="#">Найти НОД <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="#">Найти НОК <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="quadratic_equations.php">Разложение квадартного 3-х члена на множители <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo NOD; ?>">Найти НОД <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo NOK; ?>">Найти НОК <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo FACT; ?>">Разложение квадартного 3-х члена на множители <span style="float: right">✓</span></a>
 </div>
 
 <!-- Scripts! -->

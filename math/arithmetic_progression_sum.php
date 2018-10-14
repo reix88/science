@@ -1,3 +1,7 @@
+<?php
+  require_once 'links.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +40,7 @@
       margin-top: 15px;
     }
   </style>
+
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 
   <script>
@@ -91,7 +96,7 @@
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html" style="color: #007BFF;">#Математика</a>
+  <a class="navbar-brand" href="index.php" style="color: #007BFF;">#Математика</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -106,16 +111,16 @@
           Решить Уравнение
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="linear_equations.php">Линейные уравнения</a>
-          <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
-          <a class="dropdown-item" href="system_of_linear_equations_3.php">Система линейных уравнений с 3 неизвестными</a>
-          <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
-          <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
-          <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="#">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo LE; ?>">Линейные уравнения</a>
+          <a class="dropdown-item" href="<?php echo SLE; ?>">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo SLE3; ?>">Система линейных уравнений с 3 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo QE; ?>">Квадратые уравнения</a>
+          <a class="dropdown-item" href="<?php echo DES; ?>">Система уравнений 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI; ?>">Неравенства 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DIS; ?>">Система Неравенств 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI2; ?>">Неравенства 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo AP; ?>">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo GP; ?>">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -125,9 +130,9 @@
           Дополнительно
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Найти НОД</a>
-          <a class="dropdown-item" href="#">Найти НОК</a>
-          <a class="dropdown-item" href="factorization.php">Разложение квадартного 3-х члена на множ...</a>
+          <a class="dropdown-item" href="<?php echo NOD; ?>">Найти НОД</a>
+          <a class="dropdown-item" href="<?php echo NOK; ?>">Найти НОК</a>
+          <a class="dropdown-item" href="<?php echo FACT; ?>">Разложение квадартного 3-х члена на множ...</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -137,7 +142,7 @@
       </li>
     </ul>
 
-    <a href="../other_prog/calculator.php" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
+    <a href="<?php echo CALC; ?>" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
       Калькулятор <span style="color: #00ef00">online</span>
     </a>
 
@@ -154,7 +159,7 @@
 </div>
 
 <div class="buttons-link">
-  <a href="arithmetic_progression.php" class="btn btn-outline-info btn-lg btn-block">Найти n-й член прогрессии</a>
+  <a href="<?php echo AP; ?>" class="btn btn-outline-info btn-lg btn-block">Найти n-й член прогрессии</a>
   <a href="#" class="btn btn-outline-info btn-lg btn-block hover-a">Найти сумму первых n членов прогрессии</a>
 </div>
 
@@ -187,15 +192,16 @@
   <input class="btn btn-outline-success btn-lg" type="submit" value="Найти" id="enter">
 </div>
 
+<div class="jumbotron">
+  <h1 class="display-5 margin-top">Ответ:</h1>
+  <hr class="my-4">
+
+  <div id="done"></div>
+</div>
+
 <!-- Scripts! -->
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-<div class="jumbotron">
-  <h1 class="display-5 margin-top">Ответ:</h1>
-  <hr class="my-4">
-<div id="done">
-</div>
-</div>

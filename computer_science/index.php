@@ -1,6 +1,7 @@
 <?php
 require_once 'links.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@ require_once 'links.php';
   	<meta name="description" content="Выберите из списка - какую задачу вам нужно решить">
   	<meta name="keywords" content="Кодирование текста, кодирование цифр, декодирование">
 
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 
   	<link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -61,19 +62,19 @@ require_once 'links.php';
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo HOME; ?>">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Выбрать задачу
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo B_C; ?>">Кодировать в бинарный код</a>
-          <a class="dropdown-item" href="<?php echo B_C_R; ?>">Декодировать бинарный код</a>
-          <a class="dropdown-item" href="<?php echo B_N; ?>">Десятичная система в двоичную</a>
-          <a class="dropdown-item" href="<?php echo B_N_R; ?>">Двоичная система в десятичную</a>
-          <a class="dropdown-item" href="<?php echo H_N; ?>">Десятичная система в шестнадцатиричную</a>
-          <a class="dropdown-item" href="<?php echo H_N_R; ?>">Шестнадцатиричная система в десятичную</a>
+          <a class="dropdown-item" href="<?php echo BC; ?>">Кодировать в бинарный код</a>
+          <a class="dropdown-item" href="<?php echo BCR; ?>">Декодировать бинарный код</a>
+          <a class="dropdown-item" href="<?php echo BN; ?>">Десятичная система в двоичную</a>
+          <a class="dropdown-item" href="<?php echo BNR; ?>">Двоичная система в десятичную</a>
+          <a class="dropdown-item" href="<?php echo HN; ?>">Десятичная система в шестнадцатиричную</a>
+          <a class="dropdown-item" href="<?php echo HNR; ?>">Шестнадцатиричная система в десятичную</a>
 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
@@ -86,7 +87,6 @@ require_once 'links.php';
   </div>
 </nav>
 
-
 <div class="jumbotron">
   <h1 class="display-4 h1-size" style="color: #007BFF;">Информатика</h1>
   <p class="lead">Сайт который решит за вас все информатические задачи. Впешите значения, а остальное мы сделаем за вас. Используйте разумно и не злоупотребляйте!</p>
@@ -97,12 +97,12 @@ require_once 'links.php';
 <center><h2>Какую задачу вам нужно решить?</h2></center>
 
 <div class="list-group">
-	<a class="list-group-item list-group-item-action" href="binary_code.php">Кодировать в бинарный код <span style="float: right">✓</span></a>
-	<a class="list-group-item list-group-item-action" href="binary_code_reverse.php">Декодировать бинарный код <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="bin_number.php">Десятичная система в двоичную <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="bin_number_reverse.php">Двоичная система в десятичную <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="hex_number.php">Десятичная система в шестнадцатиричную <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="hex_number_reverse.php">Шестнадцатиричная система в десятичную <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo BC; ?>">Кодировать в бинарный код <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo BCR; ?>">Декодировать бинарный код <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo BN; ?>">Десятичная система в двоичную <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo BNR; ?>">Двоичная система в десятичную <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo HN; ?>">Десятичная система в шестнадцатиричную <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo HNR; ?>">Шестнадцатиричная система в десятичную <span style="float: right">✓</span></a>
 </div>
 
 <!-- Scripts! -->
