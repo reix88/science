@@ -1,11 +1,10 @@
 <?php
-if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) || 
-	isset($_POST['binary_r']) || isset($_POST['dec_bin']) || isset($_POST['dec_bin_r'])) {
+if (isset($_POST['dec'])||isset($_POST['hex'])||isset($_POST['binary_c'])||isset($_POST['binary_r'])||isset($_POST['dec_bin'])||isset($_POST['dec_bin_r'])) {
 
 	$dec_bin = $_POST['dec_bin'];
 	$dec_bin_r = $_POST['dec_bin_r'];
-	$binary_r = $_POST['binary_r'];
 	$binary_c = $_POST['binary_c'];
+	$binary_r = $_POST['binary_r'];
 	$hex1 = $_POST['hex'];
 	$dec = $_POST['dec'];
 
@@ -16,7 +15,8 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 		$dec_r = hexdec($hex1);
 		echo $dec_r;
 	} elseif (!empty($binary_c)) {
-		$chars = preg_split('//u', $binary_c, NULL, PREG_SPLIT_NO_EMPTY);
+
+		$chars = str_split($binary_c, 1);
 
 		$len = mb_strlen($binary_c);
 
@@ -41,12 +41,7 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 		                 'y' => "01111001", 'z' => "01111010",
 
 		                 '!' => "00100001", ',' => "00101100", '.' => "00101111",
-		                 '?' => "00111111", 
-
-		                 '0' => "00110000", '1' => "00110001", '2' => "00110010",
-		                 '3' => "00110011", '4' => "00110101", '5' => "00110101",
-		                 '6' => "00110110", '7' => "00110111", '8' => "00111000",
-		                 '9' => "00111001",
+		                 '?' => "00111111",
 
 		                 'А' => "", 'Б' => "", 'В' => "",
 		                 'Г' => "", 'Д' => "", 'Е' => "",
@@ -85,6 +80,7 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 	echo $bin_text;
 
 	} elseif (!empty($binary_r))  {
+
 		$bins = str_split($binary_r, 8);
 
 		$bincode = array(' ' => "00100000", 'A' => "01000001", 'B' => "01000010",
@@ -108,12 +104,7 @@ if (isset($_POST['dec']) || isset($_POST['hex']) || isset($_POST['binary_c']) ||
 		                 'y' => "01111001", 'z' => "01111010",
 
 		                 '!' => "00100001", ',' => "00101100", '.' => "00101111",
-		                 '?' => "00111111", 
-
-		                 '0' => "00110000", '1' => "00110001", '2' => "00110010",
-		                 '3' => "00110011", '4' => "00110101", '5' => "00110101",
-		                 '6' => "00110110", '7' => "00110111", '8' => "00111000",
-		                 '9' => "00111001",
+		                 '?' => "00111111",
 
 		                 'А' => "", 'Б' => "", 'В' => "",
 		                 'Г' => "", 'Д' => "", 'Е' => "",

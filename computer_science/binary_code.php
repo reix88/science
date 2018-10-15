@@ -91,12 +91,12 @@ require_once 'links.php';
 <div class="form-row form-col">
   <div class="col col1">
     <p>Текст-></p>
-    <textarea class="form-control" id="text1" rows="5" name="text"></textarea>
+    <textarea class="form-control" id="text1" rows="5"></textarea>
   </div>
 
   <div class="col col2">
     <p>->Бинарный код</p>
-    <textarea class="form-control" id="text2" rows="5" name="bin"></textarea>
+    <textarea class="form-control" id="text2" rows="5"></textarea>
   </div>    
 </div>
 
