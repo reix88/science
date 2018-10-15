@@ -13,6 +13,50 @@ function Request(click)
 		});
 	});
 }
+
+function factorial (n)
+{
+	if (n <= 0) return 1 ;
+	return n * factorial (n-1);
+}
+$(document).ready (function () {
+	$('#factorial').bind("click", function () {
+		elText = $("#result").val()
+		elText_factorial = factorial(elText)
+		$("#result").val(elText_factorial)
+	});
+});
+$(document).ready (function () {
+	$('#sqrt').bind("click", function () {
+		elText = $("#result").val()
+		elText_sqrt = Math.sqrt(elText)
+		$("#result").val(elText_sqrt)
+	});
+});
+$(document).ready (function () {
+	$('#squad').bind("click", function () {
+		elText = $("#result").val()
+		elText_squad = Math.pow(elText,2)
+		$("#result").val(elText_squad)
+	});
+});
+$(document).ready (function () {
+	$('#procent').bind("click", function () {
+		multipilied_procent = elText.indexOf('*')
+		if (multipilied_procent != 0)
+		{
+			one_procent = elText.substr(0,multipilied_procent);
+			two_procent = elText.substr(multipilied_procent+1);
+			answer_procent = Number(one_procent)*Number(two_procent)/100;
+			$("#result").val(answer_procent)
+		}
+		else if (multipilied_procent < 0)
+		{
+			answer_procent_2 = Number(elText)/100;
+			$("#result").val(answer_procent)
+		}
+	});
+});
 $(document).ready (function () {
 	$('#clear').bind("click", function () {
 		elText = $("#result").val()
