@@ -5,17 +5,24 @@ require_once 'links.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Кодировать в бинарный код | Информатика</title>
-  <meta name="description" content="Кодировать бинарный код в текст">
-  <meta name="keywords" content="кодировать текст в бинарный код, bin code, bin">
+	<title>Кодировать и декодировать | Информатика</title>
+  <meta name="description" content="Кодировать бинарный код в текст, декодировать бинарный код в текст">
+  <meta name="keywords" content="кодировать текст в бинарный код, bin code, bin, декодировать бинарный код в текст">
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
 
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+
+  <style>
+    .kek-lol {
+      display: none;
+      visibility: hidden;
+    }
+  </style>
 
   <script>
     function funcSuccess(data)
@@ -69,7 +76,7 @@ require_once 'links.php';
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Кодировать в бинарный код</a>
-          <a class="dropdown-item" href="<?php echo BCR; ?>">Декодировать бинарный код</a>
+          <a class="dropdown-item" href="#">Декодировать бинарный код</a>
           <a class="dropdown-item" href="<?php echo BN; ?>">Десятичная система в двоичную</a>
           <a class="dropdown-item" href="<?php echo BNR; ?>">Двоичная система в десятичную</a>
           <a class="dropdown-item" href="<?php echo HN; ?>">Десятичная система в шестнадцатиричную</a>
@@ -86,25 +93,55 @@ require_once 'links.php';
   </div>
 </nav>
 
-<center><h1>Кодировать текст</h1></center>
+<center><h1>Кодировать и декодировать</h1></center>
 
-<div class="form-row form-col">
+<form name="bintext" class="form-row form-col">
   <div class="col col1">
-    <p>Текст-></p>
-    <textarea class="form-control" id="text1" rows="5"></textarea>
+    <p>Текст -></p>
+    <textarea class="form-control" name="source" rows="5"></textarea>
+    <p><button type="button" name="text2bin" class="btn btn-primary btn-lg btn-margin">Кодировать</button></p>
   </div>
 
-  <div class="col col2">
-    <p>->Бинарный код</p>
-    <textarea class="form-control" id="text2" rows="5"></textarea>
-  </div>    
-</div>
+  <div class="col col1">
+    <p>-> Бинарный код</p>
+    <textarea class="form-control" name="result" rows="5"></textarea>
+    <p><button type="button" name="bin2text" class="btn btn-primary btn-lg btn-margin">Декодировать</button></p>
+  </div>
 
-<center>
-  <input class="btn btn-primary btn-lg btn-margin" type="submit" value="Кодировать" id="enter">
-  <a class="btn btn-secondary btn-margin btn-lg" href="<?php echo BCR; ?>" role="button"><img src="../img/arrows.png" width="26"></a>
-</center>
+  <input type="checkbox" name="rep_filled" class="kek-lol">
+</form>
 
+<script src="../js/bhd.min.js"></script>
+
+<script>
+  var source   = document.bintext.source,
+      result   = document.bintext.result,
+      t2b      = document.bintext.text2bin,
+      b2t      = document.bintext.bin2text;
+
+  rep_filled = document.bintext.rep_filled;
+
+  t2b.onclick = function() {
+      var bin = text2bin(source.value);
+
+      if (rep_filled.checked) {
+          bin = bin.replace(/0/ig, " ");
+          result.value = bin.replace(/1/ig, "█");
+      } else {
+          result.value = bin;
+      }
+  }
+
+  b2t.onclick = function() {
+      if (rep_filled.checked) {
+          var bin = result.value.replace(/ /ig, "0");
+          source.value = bin2text(bin.replace(/█/ig, "1"));
+
+      } else {
+          source.value = bin2text(result.value);
+      }
+  }
+</script>
 
 <!-- Scripts! -->
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>

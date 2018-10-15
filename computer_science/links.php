@@ -2,7 +2,7 @@
 // computer science
 
 define('BC',		'binary_code.php');
-define('BCR',		'binary_code_reverse.php');
+define('BCR',		'binary_code.php');
 
 define('BN',		'bin_number.php');
 define('BNR',		'bin_number_reverse.php');

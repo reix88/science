@@ -1,14 +1,7 @@
 <?php
-  require_once 'links.php';
+require_once 'links.php';
 ?>
 
-<script>
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
-</script>
-
-<?php
-# Форма для Ввода
-echo <<<_END
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +14,45 @@ echo <<<_END
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_math.css">
-
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+  <script  src="../js/jquery-3.3.1.min.js"></script>
+
+  <script>
+    function funcSuccess(data) {
+      if ($("#done").text() != '') {
+        elText = $("#done").text();
+        elText = elText.replace(elText,data);
+        $("#done").html(elText); 
+      } else {
+        $("#done").html(data);
+      }
+    }
+    $(document).ready (function () {
+    $('#enter').bind("click", function () {
+    $.ajax({
+     url: 'math.php',
+     type: "POST",
+     data:({
+      a11: $('#a1').val(),
+      b11: $('#b1').val(),
+      c11: $('#c1').val(),
+      d11: $('#d1').val(),
+      a12: $('#a2').val(),
+      b12: $('#b2').val(),
+      c12: $('#c2').val(),
+      d12: $('#d2').val(),
+      a13: $('#a3').val(),
+      b13: $('#b3').val(),
+      c13: $('#c3').val(),
+      d13: $('#d3').val()
+    }),
+     dataType: "html",
+     success:funcSuccess
+      });
+    });
+  });
+  </script>
 </head>
 <body>
 <script>
@@ -30,7 +60,7 @@ echo <<<_END
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.html" style="color: #007BFF;">#Математика</a>
+  <a class="navbar-brand" href="index.php" style="color: #007BFF;">#Математика</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -45,16 +75,16 @@ echo <<<_END
           Решить Уравнение
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="linear_equations.php">Линейные уравнеия</a>
-          <a class="dropdown-item" href="system_of_linear_equations.php">Система линейных уравнений с 2 неизвестными</a>
+          <a class="dropdown-item" href="<?php echo LE; ?>">Линейные уравнения</a>
+          <a class="dropdown-item" href="<?php echo SLE; ?>">Система линейных уравнений с 2 неизвестными</a>
           <a class="dropdown-item" href="#">Система линейных уравнений с 3 неизвестными</a>
-          <a class="dropdown-item" href="quadratic_equations.php">Квадратые уравнения</a>
-          <a class="dropdown-item" href="#">Система уравнений 2-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 1-й степени</a>
-          <a class="dropdown-item" href="#">Система Неравенств 1-й степени</a>
-          <a class="dropdown-item" href="#">Неравенства 2-й степени</a>
-          <a class="dropdown-item" href="arithmetic_progression.php">Арифметическая прогрессия</a>
-          <a class="dropdown-item" href="geometric_progression.php">Геометрическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo QE; ?>">Квадратые уравнения</a>
+          <a class="dropdown-item" href="<?php echo DES; ?>">Система уравнений 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI; ?>">Неравенства 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DIS; ?>">Система Неравенств 1-й степени</a>
+          <a class="dropdown-item" href="<?php echo DI2; ?>">Неравенства 2-й степени</a>
+          <a class="dropdown-item" href="<?php echo AP; ?>">Арифметическая прогрессия</a>
+          <a class="dropdown-item" href="<?php echo GP; ?>">Геометрическая прогрессия</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -64,9 +94,9 @@ echo <<<_END
           Дополнительно
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Найти НОД</a>
-          <a class="dropdown-item" href="#">Найти НОК</a>
-          <a class="dropdown-item" href="factorization.php">Разложение квадартного 3-х члена на множ...</a>
+          <a class="dropdown-item" href="<?php echo NOD; ?>">Найти НОД</a>
+          <a class="dropdown-item" href="<?php echo NOK; ?>">Найти НОК</a>
+          <a class="dropdown-item" href="<?php echo FACT; ?>">Разложение квадартного 3-х члена на множ...</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -76,7 +106,7 @@ echo <<<_END
       </li>
     </ul>
 
-    <a href="../other_prog/calculator.php" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
+    <a href="<?php echo CALC; ?>" class="btn btn-outline-primary my-2 my-sm-0 button-circle">
       Калькулятор <span style="color: #00ef00">online</span>
     </a>
 
@@ -94,10 +124,11 @@ echo <<<_END
     </p>
   </div>
 
-<form method="post" action="system_of_linear_equations_3.php" class="form">
+<div class="form">
   <center>
     <p class="podskazka">Введите Коэффициент от 1-го Уравнения:</p>
   </center>
+
     <div class="form-group row">
       <label for="fora" class="col-sm-3 col-form-label">Значение <font style="color: red;">a</font>:</label>
         <div class="col-sm-9">
@@ -191,59 +222,19 @@ echo <<<_END
     </div>
 
     <input class="btn btn-outline-success btn-lg" type="submit" value="Решить" id="enter" style="margin-bottom:15px;">
-</form>
+<div>
+
+<div class="jumbotron">
+  <h1 class="display-5 margin-top">Ответ:</h1>
+  <hr class="my-4">
+
+  <div id="done"></div>
+</div>
 
 <!-- Scripts! -->
-<script type="text/javascript" src="../js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <!-- End -->
 
 </body>
 </html>
-_END;
-# Ввод значения Уравнения
-$a1 = $_POST['a1'];
-$b1 = $_POST['b1'];
-$d1 = $_POST['d1'];
-$c1 = $_POST['c1'];
 
-$a2 = $_POST['a2'];
-$b2 = $_POST['b2'];
-$d2 = $_POST['d2'];
-$c2 = $_POST['c2'];
-
-$a3 = $_POST['a3'];
-$b3 = $_POST['b3'];
-$d3 = $_POST['d3'];
-$c3 = $_POST['c3'];
-
-# Общий знаменатель
-$denominator = $a1 * $b2 * $c3 + $b1 * $c2 * $a3 + $c1 * $a2 * $b3 - $c1 * $b2 * $a3 - $a1 * $c2 * $b3 - $b1 * $a2 * $c3;
-$numerator_x = $d1 * $b2 * $c3 + $b1 * $c2 * $d3 + $c1 * $d2 * $b3 - $c1 * $b2 * $d3 - $d1 * $c2 * $b3 - $b1 * $d2 * $c3;
-$numerator_y = $a1 * $d2 * $c3 + $d1 * $c2 * $a3 + $c1 * $a2 * $d3 - $c1 * $d2 * $a3 - $a1 * $c2 * $d3 - $d1 * $a2 * $c3;
-$numerator_z = $a1 * $b2 * $d3 + $b1 * $d2 * $a3 + $d1 * $a2 * $b3 - $d1 * $b2 * $a3 - $a1 * $d2 * $b3 - $b1 * $a2 * $d3;
-
-$x = ($numerator_x)/($denominator);
-$y = ($numerator_y)/($denominator);
-$z = ($numerator_z)/($denominator);
-
-if ($denominator == 0 and $numerator_x == 0 and $numerator_y == 0 and $numerator_z == 0) {
-  $text = "Система имеет бесчисленное множество решений!";
-}
-
-if ($denominator == 0 and $numerator_x != 0 and $numerator_y != 0 and $numerator_z != 0) {
-  $text = "Система не имеет решений!";
-}
-
-# Ответ
-echo <<<_END
-<div class="jumbotron">
-  <h1 class="display-5 margin-top">Ответ:</h1>
-  <hr class="my-4">
-  <h1 class="display-4 margin-bottom">X = $x</h1><br>
-  <h1 class="display-4 margin-bottom">Y = $y</h1><br>
-  <h1 class="display-4 margin-bottom">Z = $z</h1><br>
-  <h1 class="display-4 margin-bottom"><span style="color: red;">$text</span></h1>
-</div>
-_END;
-?>
