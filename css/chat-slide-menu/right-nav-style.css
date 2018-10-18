@@ -1,0 +1,116 @@
+.nav {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    right: -300px;
+    -webkit-transition: right 0.3s;
+    -moz-transition: right 0.3s;
+    transition: right 0.3s;
+    z-index: 2000;
+}
+.nav-toggle {
+    position: absolute;
+    right: 273px;
+    top: 4em;
+    padding: 0.5em;
+    background: #007BFF;
+    color: #dadada;
+    cursor: pointer;
+    font-size: 1.4em;
+    line-height: 1;
+    z-index: 2001;
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    border-radius: 0px 0px 10px 10px;
+}
+.nav-toggle:hover {
+    color: #f4f4f4;
+}
+.nav-toggle:after {
+    content: '\2630';
+    text-decoration: none;
+}
+[id='nav-toggle'] {
+    position: absolute;
+    display: none;
+}
+/**
+ * изменение положения переключателя 
+ * при просмотре на мобильных устройствах
+ * когда навигация раскрыта, распологаем внутри панели
+*/
+[id='nav-toggle']:checked ~ .nav > .nav-toggle {
+    left: auto;
+    right: 257px;
+    top: -2px;
+    border-radius: 0px 10px 0px 0px;
+}
+[id='nav-toggle']:checked ~ .nav > .nav-toggle > .text-chat {
+    display: none;
+}
+/**
+ * Когда флажок установлен, открывается панель
+ * используем псевдокласс:checked
+ */
+[id='nav-toggle']:checked ~ .nav {
+    right: 0;
+    box-shadow: -3px 0px 10px rgba(100, 100, 100, 0.4);
+    -moz-box-shadow: -3px 0px 10px rgba(100, 100, 100, 0.4);
+    -webkit-box-shadow: -3px 0px 10px rgba(100, 100, 100, 0.4);
+}
+/* 
+ * смещение контента страницы
+ * на размер ширины панели,
+ * фишка необязательная, на любителя
+*/
+[id='nav-toggle']:checked ~ main > article {
+    -webkit-transform: translateX(-320px);
+    -moz-transform: translateX(-320px);
+    transform: translateX(-320px);
+}
+/*
+ * изменение символа переключателя,
+ * привычный крестик (MULTIPLICATION X), 
+ * вы можете испльзовать любой другой значок
+*/
+
+[id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
+    content: '\2715';
+}
+/**
+ * профиксим баг в Android <= 4.1.2
+ * см: http://timpietrusky.com/advanced-checkbox-hack
+ */
+body {
+    -webkit-animation: bugfix infinite 1s;
+}
+
+@-webkit-keyframes bugfix {
+    to {
+      padding: 0;
+    }
+}
+/**
+ * позаботьтимся о средних и маленьких экранах
+ * мобильных устройств
+ */
+@media screen and (min-width: 320px) {
+    html,
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    html,
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .nav {
+      width: 100%;
+      box-shadow: none
+    }
+}

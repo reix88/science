@@ -2,14 +2,14 @@ function Request(click)
 {
 	$(document).ready (function () {
 		$(click).bind("click", function () {
-				num = $(click).val()
-				elText = $("#result").val()
-				if (elText != '') {
-					elText = elText.replace(elText,elText+num)
-					$("#result").val(elText);
-				} else if (elText == '') {
-					val_input = $('#result').val(num)
-				}
+			num = $(click).val()
+			elText = $("#result").val()
+			if (elText != '') {
+				elText = elText.replace(elText,elText+num)
+				$("#result").val(elText);
+			} else if (elText == '') {
+				val_input = $('#result').val(num)
+			}
 		});
 	});
 }
@@ -43,20 +43,37 @@ $(document).ready (function () {
 $(document).ready (function () {
 	$('#procent').bind("click", function () {
 		multipilied_procent = elText.indexOf('*')
-		if (multipilied_procent != 0)
+		if (multipilied_procent > 0)
 		{
 			one_procent = elText.substr(0,multipilied_procent);
 			two_procent = elText.substr(multipilied_procent+1);
 			answer_procent = Number(one_procent)*Number(two_procent)/100;
 			$("#result").val(answer_procent)
 		}
-		else if (multipilied_procent < 0)
+		else
 		{
 			answer_procent_2 = Number(elText)/100;
-			$("#result").val(answer_procent)
+			$("#result").val(answer_procent_2)
 		}
 	});
 });
+function funcFixString (input){
+      $(document).ready (function () {
+        $(input).bind("blur",function () {
+          inputBlur = $(input).val()
+			if (Number(inputBlur)) {
+				$(input).css({
+					'border':'1px solid green'
+			});
+          	} else {
+			 	$(input).css({
+					'border':'1px solid red'
+			});
+          }
+        });
+      });
+    }
+    funcFixString('#result')
 $(document).ready (function () {
 	$('#clear').bind("click", function () {
 		elText = $("#result").val()

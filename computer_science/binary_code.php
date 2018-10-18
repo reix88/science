@@ -15,13 +15,27 @@ require_once 'links.php';
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
 
+  <link rel="stylesheet" href="../css/chat-slide-menu/right-nav-style.css">
+
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 
   <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    ::-webkit-scrollbar {
+      display: none
+    }
+    iframe {
+      border: none;
+    }
     .kek-lol {
       display: none;
       visibility: hidden;
     }
+
   </style>
 
   <script>
@@ -59,57 +73,69 @@ require_once 'links.php';
 	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 </script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.php" style="color: #007BFF;">#Информатика</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<input type="checkbox" id="nav-toggle" hidden>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная страница <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Выбрать уравнение
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Кодировать в бинарный код</a>
-          <a class="dropdown-item" href="#">Декодировать бинарный код</a>
-          <a class="dropdown-item" href="<?php echo BN; ?>">Десятичная система в двоичную</a>
-          <a class="dropdown-item" href="<?php echo BNR; ?>">Двоичная система в десятичную</a>
-          <a class="dropdown-item" href="<?php echo HN; ?>">Десятичная система в шестнадцатиричную</a>
-          <a class="dropdown-item" href="<?php echo HNR; ?>">Шестнадцатиричная система в десятичную</a>
+<nav class="nav">
+  <label for="nav-toggle" class="nav-toggle" onclick><span class="text-chat">CHAT</span></label>
 
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Справка</a>
-      </li>
-    </ul>
-  </div>
+  <iframe src="../chat/index.php" align="left">
+      Ваш браузер не поддерживает плавающие фреймы!
+  </iframe>
 </nav>
 
-<center><h1>Кодировать и декодировать</h1></center>
+<main role="main">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.php" style="color: #007BFF;">#Информатика</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<form name="bintext" class="form-row form-col">
-  <div class="col col1">
-    <p>Текст -></p>
-    <textarea class="form-control" name="source" rows="5"></textarea>
-    <p><button type="button" name="text2bin" class="btn btn-primary btn-lg btn-margin">Кодировать</button></p>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">Главная страница <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Выбрать уравнение
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Кодировать в бинарный код</a>
+            <a class="dropdown-item" href="#">Декодировать бинарный код</a>
+            <a class="dropdown-item" href="<?php echo BN; ?>">Десятичная система в двоичную</a>
+            <a class="dropdown-item" href="<?php echo BNR; ?>">Двоичная система в десятичную</a>
+            <a class="dropdown-item" href="<?php echo HN; ?>">Десятичная система в шестнадцатиричную</a>
+            <a class="dropdown-item" href="<?php echo HNR; ?>">Шестнадцатиричная система в десятичную</a>
 
-  <div class="col col1">
-    <p>-> Бинарный код</p>
-    <textarea class="form-control" name="result" rows="5"></textarea>
-    <p><button type="button" name="bin2text" class="btn btn-primary btn-lg btn-margin">Декодировать</button></p>
-  </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Справка</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-  <input type="checkbox" name="rep_filled" class="kek-lol">
-</form>
+  <center><h1>Кодировать и декодировать</h1></center>
+
+  <form name="bintext" class="form-row form-col">
+    <div class="col col1">
+      <p>Текст -></p>
+      <textarea class="form-control" name="source" rows="5"></textarea>
+      <p><button type="button" name="text2bin" class="btn btn-primary btn-lg btn-margin">Кодировать</button></p>
+    </div>
+
+    <div class="col col1">
+      <p>-> Бинарный код</p>
+      <textarea class="form-control" name="result" rows="5"></textarea>
+      <p><button type="button" name="bin2text" class="btn btn-primary btn-lg btn-margin">Декодировать</button></p>
+    </div>
+
+    <input type="checkbox" name="rep_filled" class="kek-lol">
+  </form>
+</main>
 
 <script src="../js/bhd.min.js"></script>
 

@@ -1,3 +1,10 @@
 1. Добавить Деление многочленов
-2. Исправить ссылки в Calculator.php
-3. Аккаунт для КОтоведения
+2. Шифр Юлия Цезаря
+3. Bot для Telegram
+4. Math
+	Logarifm log, ln, lg
+5. CHAT -> Username & Text, а не Email & Text 
+	1. Username - Ограничение на 15 символов)
+	2. Срабатываться на конопку Enter
+	3. Перенести текст Shift + Eneter
+6. База данных в 000WebHost для Чата.

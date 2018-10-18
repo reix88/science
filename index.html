@@ -10,10 +10,20 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 
+    <link rel="stylesheet" href="css/chat-slide-menu/right-nav-style.css">
+
   	<link rel="shortcut icon" type="text/css" href="favicon.ico">
   	<link rel="icon" type="image/x-icon" href="favicon.ico">
 
 	<style>
+		html,
+		body {
+			width: 100%;
+    		height: 100%;
+		}
+		::-webkit-scrollbar {
+		    display: none
+		}
 		h1 {
 	    	margin-top: 18px;
 	    	margin-bottom: 20px;
@@ -46,6 +56,9 @@
       small {
         color: green;
       }
+      iframe {
+      	border: none;
+      }
 	</style>
 </head>
 <body>
@@ -53,121 +66,136 @@
 	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 </script>
 
-<center>
-	<h1 class="display-4">The Science</h1>
-	<h2 class="display-4 gray-coloud">Сайт, который решит за вас все задачи</h2>
-</center>
+<input type="checkbox" id="nav-toggle" hidden>
 
-<div id="carouselExampleFade" class="carousel slide carousel-fade mx-auto" data-ride="carousel">
+<nav class="nav">
+	<label for="nav-toggle" class="nav-toggle" onclick><span class="text-chat">CHAT</span></label>
 
-  <div class="carousel-inner">
+	<iframe src="chat/index.php" align="left">
+    	Ваш браузер не поддерживает плавающие фреймы!
+ 	</iframe>
 
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="img/bg/science.jpg" alt="Second slide">
-    </div>
+</nav>
 
-  </div>
+<main role="main">
+	<!-- <article> При открытие меню - содержимое будет сдвигаться --> 
+		<center>
+			<h1 class="display-4">The Science</h1>
+			<h2 class="display-4 gray-coloud">Сайт, который решит за вас все задачи</h2>
+		</center>
 
-  <!-- <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Назад</span>
-  </a>
+		<div id="carouselExampleFade" class="carousel slide carousel-fade mx-auto" data-ride="carousel">
 
-  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Вперед</span>
-  </a> -->
+		  <div class="carousel-inner">
 
-</div>
+		    <div class="carousel-item active">
+		      <img class="d-block w-100" src="img/bg/einstein.gif" alt="Second slide">
+		    </div>
 
-<div class="group-fix mx-auto">
-<div class="list-group">
-  <a href="math/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">МАТЕМАТИКА</h5>
-      <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>
-    </div>
-    <p class="mb-1">Список возможностей:</p>
-    <small>- Решение уравнений, систем уравнений, неравенств</small><br>
-    <small>- Решение арифметических и геометрических прогрессий, etc...</small>
-  </a>
+		  </div>
 
-  <a href="computer_science/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">ИНФОРМАТИКА</h5>
-      <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>
-    </div>
-    <p class="mb-1">Список возможностей:</p>
-    <small>- Кодирование и декодирование текста-бинарного кода</small><br>
-    <small>- Перевод чисел в разные системы счисления, etc...</small>
-  </a>
+		  <!-- <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Назад</span>
+		  </a>
 
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">ФИЗИКА</h5>
-      <!--<span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>-->
-    </div>
-    <p class="mb-1">Список возможностей:</p>
-    <small class="text-muted">- Пока неизвестно</small>
-  </a>
+		  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Вперед</span>
+		  </a> -->
 
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">ХИМИЯ</h5>
-      <!--<span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>-->
-    </div>
-    <p class="mb-1">Список возможностей:</p>
-    <small class="text-muted">- Пока неизвестно</small>
-  </a>
+		</div>
 
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">ЭКОНОМИКА</h5>
-      <!--<span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>-->
-    </div>
-    <p class="mb-1">Список возможностей:</p>
-    <small class="text-muted">- Пока неизвестно</small>
-  </a>
+		<div class="group-fix mx-auto">
+		<div class="list-group">
+		  <a href="math/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">МАТЕМАТИКА</h5>
+		      <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>
+		    </div>
+		    <p class="mb-1">Список возможностей:</p>
+		    <small>- Решение уравнений, систем уравнений, неравенств</small><br>
+		    <small>- Решение арифметических и геометрических прогрессий, etc...</small>
+		  </a>
 
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">КОТОВЕДЕНИЕ</h5>
-      <span class="badge badge-pill badge-danger" style="height: 20px;">Top Secret</span>
-    </div>
-    <p class="mb-1">Список возможностей:</p>
-    <small class="text-muted">- Захват мира подобно клубку шерсти!</small>
-  </a>
+		  <a href="computer_science/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">ИНФОРМАТИКА</h5>
+		      <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>
+		    </div>
+		    <p class="mb-1">Список возможностей:</p>
+		    <small>- Кодирование и декодирование текста-бинарного кода</small><br>
+		    <small>- Перевод чисел в разные системы счисления, etc...</small>
+		  </a>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel" style="color: red;"><img src="img/Achtung.svg" width="30">Ограниченный доступ<img src="img/Achtung.svg" width="30"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form lol kek cheburek>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Username:</label>
-              <input type="email" class="form-control" id="recipient-name">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Password:</label>
-              <input type="password" class="form-control" id="recipient-name">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Войти</button>
-        </div>
-      </div>
-    </div>
-  </div>
+		  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">ФИЗИКА</h5>
+		      <!--<span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>-->
+		    </div>
+		    <p class="mb-1">Список возможностей:</p>
+		    <small class="text-muted">- Пока неизвестно</small>
+		  </a>
 
-</div>
-</div>
+		  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">ХИМИЯ</h5>
+		      <!--<span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>-->
+		    </div>
+		    <p class="mb-1">Список возможностей:</p>
+		    <small class="text-muted">- Пока неизвестно</small>
+		  </a>
+
+		  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">ЭКОНОМИКА</h5>
+		      <!--<span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>-->
+		    </div>
+		    <p class="mb-1">Список возможностей:</p>
+		    <small class="text-muted">- Пока неизвестно</small>
+		  </a>
+
+		  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">КОТОВЕДЕНИЕ</h5>
+		      <span class="badge badge-pill badge-danger" style="height: 20px;">Top Secret</span>
+		    </div>
+		    <p class="mb-1">Список возможностей:</p>
+		    <small class="text-muted">- Захват мира подобно клубку шерсти!</small>
+		  </a>
+
+		  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <div class="modal-dialog" role="document">
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <h5 class="modal-title" id="exampleModalLabel" style="color: red;"><img src="img/Achtung.svg" width="30">Ограниченный доступ<img src="img/Achtung.svg" width="30"></h5>
+		          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		            <span aria-hidden="true">&times;</span>
+		          </button>
+		        </div>
+		        <div class="modal-body">
+		          <form action="scripts/verify.php" method="post">
+		            <div class="form-group">
+		              <label for="recipient-name" class="col-form-label">Username:</label>
+		              <input type="text" name="username" class="form-control" id="recipient-name">
+		            </div>
+		            <div class="form-group">
+		              <label for="message-text" class="col-form-label">Password:</label>
+		              <input type="password" name="passwd" class="form-control" id="recipient-name">
+		              <div class="modal-footer">
+		                <button type="submit" class="btn btn-primary" >Войти</button>
+		              </div>
+		            </div>
+		          </form>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+
+		</div>
+	</div>
+	<!-- </article> -->
+</main>
 
 <!-- Scripts! -->
 <script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
