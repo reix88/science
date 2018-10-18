@@ -59,6 +59,10 @@
       iframe {
       	border: none;
       }
+      .form-cats {
+      	margin-bottom: -250px;
+      	margin-top: 50px;
+      }
 	</style>
 </head>
 <body>
@@ -74,7 +78,6 @@
 	<iframe src="chat/index.php" align="left">
     	Ваш браузер не поддерживает плавающие фреймы!
  	</iframe>
-
 </nav>
 
 <main role="main">
@@ -110,12 +113,21 @@
 		<div class="list-group">
 		  <a href="math/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
 		    <div class="d-flex w-100 justify-content-between">
-		      <h5 class="mb-1">МАТЕМАТИКА</h5>
+		      <h5 class="mb-1">АЛГЕБРА</h5>
 		      <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>
 		    </div>
 		    <p class="mb-1">Список возможностей:</p>
 		    <small>- Решение уравнений, систем уравнений, неравенств</small><br>
 		    <small>- Решение арифметических и геометрических прогрессий, etc...</small>
+		  </a>
+
+		  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+		    <div class="d-flex w-100 justify-content-between">
+		      <h5 class="mb-1">ГЕОМЕТРИЯ</h5>
+		      <!-- <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span> -->
+		    </div>
+		    <p class="mb-1">Список возможностей:</p>
+		    <small class="text-muted">- Пока неизвестно</small>
 		  </a>
 
 		  <a href="computer_science/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -154,43 +166,6 @@
 		    <p class="mb-1">Список возможностей:</p>
 		    <small class="text-muted">- Пока неизвестно</small>
 		  </a>
-
-		  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">
-		    <div class="d-flex w-100 justify-content-between">
-		      <h5 class="mb-1">КОТОВЕДЕНИЕ</h5>
-		      <span class="badge badge-pill badge-danger" style="height: 20px;">Top Secret</span>
-		    </div>
-		    <p class="mb-1">Список возможностей:</p>
-		    <small class="text-muted">- Захват мира подобно клубку шерсти!</small>
-		  </a>
-
-		  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		    <div class="modal-dialog" role="document">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <h5 class="modal-title" id="exampleModalLabel" style="color: red;"><img src="img/Achtung.svg" width="30">Ограниченный доступ<img src="img/Achtung.svg" width="30"></h5>
-		          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		            <span aria-hidden="true">&times;</span>
-		          </button>
-		        </div>
-		        <div class="modal-body">
-		          <form action="scripts/verify.php" method="post">
-		            <div class="form-group">
-		              <label for="recipient-name" class="col-form-label">Username:</label>
-		              <input type="text" name="username" class="form-control" id="recipient-name">
-		            </div>
-		            <div class="form-group">
-		              <label for="message-text" class="col-form-label">Password:</label>
-		              <input type="password" name="passwd" class="form-control" id="recipient-name">
-		              <div class="modal-footer">
-		                <button type="submit" class="btn btn-primary" >Войти</button>
-		              </div>
-		            </div>
-		          </form>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
 
 		</div>
 	</div>

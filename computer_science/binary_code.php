@@ -14,8 +14,9 @@ require_once 'links.php';
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../css/normalize.css">
   <link rel="stylesheet" type="text/css" href="../css/style_compsci.css">
-
   <link rel="stylesheet" href="../css/chat-slide-menu/right-nav-style.css">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 

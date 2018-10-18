@@ -42,9 +42,10 @@
 */
 [id='nav-toggle']:checked ~ .nav > .nav-toggle {
     left: auto;
-    right: 257px;
+    right: 252.6px;
     top: -2px;
     border-radius: 0px 10px 0px 0px;
+    padding: 13.4px;
 }
 [id='nav-toggle']:checked ~ .nav > .nav-toggle > .text-chat {
     display: none;
