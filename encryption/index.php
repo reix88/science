@@ -7,9 +7,9 @@ require_once 'links.php';
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Информатика | Основная страница</title>
-  	<meta name="description" content="Выберите из списка - какую задачу вам нужно решить">
-  	<meta name="keywords" content="Кодирование текста, кодирование цифр, декодирование">
+	<title>Шифрование | Основная страница</title>
+  	<meta name="description" content="Выберите из списка - каким способом шифрование воспользоваться">
+  	<meta name="keywords" content="Шифрование текста, шифрование цифр, декодирование">
 
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
   	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
@@ -46,6 +46,9 @@ require_once 'links.php';
         color: green;
         font-weight: 600;
       }
+      .margin-top-kek {
+        margin-top: 150px;
+      }
 	</style>
 </head>
 <body>
@@ -54,7 +57,7 @@ require_once 'links.php';
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#" style="color: #007BFF;">#Информатика</a>
+  <a class="navbar-brand" href="../computer_science/index.php" style="color: #007BFF;">#Информатика</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -85,7 +88,7 @@ require_once 'links.php';
           Дополнительно
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo ENC; ?>">Шифрование</a>
+          <a class="dropdown-item" href="#">Шифрование</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
@@ -95,28 +98,20 @@ require_once 'links.php';
       </li>
     </ul>
 
-    <a href="<?php echo ENC; ?>" class="btn btn-outline-primary my-2 my-sm-0">
+    <a href="#" class="btn btn-outline-primary my-2 my-sm-0">
       Шифрование <span style="color: #00ef00">online</span>
     </a>
   </div>
 </nav>
 
-<div class="jumbotron">
-  <h1 class="display-4 h1-size" style="color: #007BFF;">Информатика</h1>
-  <p class="lead">Сайт который решит за вас все информатические задачи. Впешите значения, а остальное мы сделаем за вас. Используйте разумно и не злоупотребляйте!</p>
-  <hr class="my-4">
-  <p style="color: #007BFF;"><cite title="Source Title">- Администрация сайта</cite></p>
-</div>
-
-<center><h2>Какую задачу вам нужно решить?</h2></center>
+<center><h2 class="margin-top-kek">Какую задачу вам нужно решить?</h2></center>
 
 <div class="list-group">
-  <a class="list-group-item list-group-item-action" href="<?php echo BC; ?>">Кодировать в бинарный код <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo BCR; ?>">Декодировать бинарный код <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo BN; ?>">Десятичная система в двоичную <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo BNR; ?>">Двоичная система в десятичную <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo HN; ?>">Десятичная система в шестнадцатиричную <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo HNR; ?>">Шестнадцатиричная система в десятичную <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo CAE; ?>">Шифр Цезаря <span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo BCR; ?>">...<span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo BN; ?>">...<span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo BNR; ?>">...<span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="<?php echo HN; ?>">...<span style="float: right">✓</span></a>
 </div>
 
 <!-- Scripts! -->

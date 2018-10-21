@@ -38,36 +38,6 @@ require_once 'links.php';
     }
 
   </style>
-
-  <script>
-    function funcSuccess(data)
-    {
-    	if ($("#text2").val() != '') 
-    	{
-    		elText = $("#text2").val();
-    		elText = elText.replace(elText,data);
-    		$("#text2").val(elText); 
-    	} else 
-    	{
-    		$("#text2").val(data);
-    	}
-    }  	
-    function Request_Ajax(click,val) 
-    {
-    	$(document).ready (function () {
-    		$(click).bind("click", function () {
-    		$.ajax({
-    		 url: 'hex_value.php',
-    		type: "POST",                     
-    		 data:({binary_c: $(val).val()}),
-    		 dataType: "html",
-    		 success:funcSuccess
-    			});
-    		});
-    	});
-    }
-    Request_Ajax('#enter','#text1')
-  </script>
 </head>
 <body>
 <script>

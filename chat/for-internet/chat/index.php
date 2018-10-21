@@ -1,5 +1,15 @@
 <?php
 	session_start();
+
+	function fix_String($all)
+	{
+		global $conn;
+		$all = htmlentities($all);
+		$all = stripslashes($all);
+		$all = strip_tags($all);
+		return $conn->real_escape_string($all);
+	}
+	
 	if (isset($_POST['delete']) && isset($_POST['id']) && isset($_SESSION['admin'])) 
 	{
 		$id=fix_String($_POST['id']);

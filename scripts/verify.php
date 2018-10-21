@@ -1,25 +1,40 @@
 <?php
+require '../chat/scripts/app_config.php';
+require '../chat/scripts/functions.php';
+
 if (isset($_POST['username']) && isset($_POST['passwd'])) 
-{
+{	
 	session_start();
-	$username = $_POST['username'];
+
+	$user = $_POST['username'];
 	$passwd = $_POST['passwd'];
 
-	$username = htmlentities($username);
-	$passwd = htmlentities($passwd);
+	$user = fix_String($user);
+	$passwd = fix_String($passwd);
 	
-	$jenya_login = 'jenya.cats@gmail.com';
-	$time_login = 'timur.cats@gmail.com';
-	$passwd_cats = 'cats 123';
-
-	if ($username == $jenya_login || $username == $time_login && $passwd == $passwd_cats) 
+	if (empty($user) || empty($passwd)) 
 	{
-		$_SESSION['admin'] = $username;
-		
-		if (!empty($_SESSION['admin'])) 
-		{
-			header('Location:cats.html');
-		}
+        echo "<span class='error'>Имя или Пароль пусты</span><br><br>";
+	}else
+	{
+    $result_salt=queryMysql("SELECT salt FROM admin WHERE username='$user'");
 	}
+	if($result_salt->num_rows!=0) 
+	{
+        $rows = $result_salt->fetch_array(MYSQLI_ASSOC);
+        $salt = $rows['salt'];
+    }
+        $hashpasswd = hash('ripemd128',$passwd);
+        $result = queryMySQL("SELECT username,passwd FROM admin WHERE username='$user' AND passwd='$hashpasswd$salt'");
+	  
+	if ($result->num_rows == 0)
+    {	
+        echo "<br><span class='error'><i>Имя или Пароль не совпадают</i></span><br>";
+    }
+    else
+    { 
+     	$_SESSION['admin']  = $user;
+     	header("Location:../chat/index.php");
+    }
 }	
 ?>

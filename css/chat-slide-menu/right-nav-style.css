@@ -13,8 +13,8 @@
     right: 273px;
     top: 4em;
     padding: 0.5em;
-    background: #007BFF;
-    color: #dadada;
+    background: #4AB8FF;
+    color: white;
     cursor: pointer;
     font-size: 1.4em;
     line-height: 1;
@@ -25,7 +25,7 @@
     border-radius: 0px 0px 10px 10px;
 }
 .nav-toggle:hover {
-    color: #f4f4f4;
+    color: #e5e5e5;
 }
 .nav-toggle:after {
     content: '\2630';

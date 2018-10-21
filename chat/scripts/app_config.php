@@ -6,8 +6,8 @@ define("DB_NAME", "science");
 
 $conn = new mysqli(DB_HOST,USER_N,U_PASSWD,DB_NAME);
 
-if ($conn->connect_error) 
+if (mysqli_connect_errno()) 
 {
-	echo "возникла проблема с конфигурацией нашей базы данных.".mysql_error();
+	printf("возникла проблема с конфигурацией нашей базы данных.".mysqli_connect_error());
 }
 ?>

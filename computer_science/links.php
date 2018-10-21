@@ -9,4 +9,7 @@ define('BNR',		'bin_number_reverse.php');
 
 define('HN',		'hex_number.php');
 define('HNR',		'hex_number_reverse.php');
+
+// dop
+define('ENC', '../encryption/index.php')
 ?>

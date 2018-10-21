@@ -1,4 +1,6 @@
 <?
+require_once 'app_config.php';
+
 function fix_String($all)
 	{
 		global $conn;
