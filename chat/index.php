@@ -12,7 +12,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>The Science | Решай базовые задачи по основным техническим наукам онлайн</title>
-	<link rel="stylesheet" type="text/css" href="../css/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
@@ -77,46 +77,46 @@
 	</style>
 
 	<script>
-	function funcSend() {
-      $('#load').append('<img src="img/loader/6.gif" style="width:250px; height:128px;">');
-    }
-    function funcComplete() {
-      $('#load').remove();                              
-    }
-    function funcSuccess(data) {
-    	elText = $("#body")
-    	elText.remove()
-    	$('#done').html(data);
-    }
-    function funcReset(data) {
-    	elText = $("#body")
-		elText.html(data);
-}
-	$(document).ready (function () {
-        $('#enter').bind("click", function () {
-       	 $.ajax({
-	         url: 'scripts/update_chat.php',
-	         type: "POST",
-	         data:({
-	          author : $('#username').val(),
-	          text : $('#text').val()
-        	}),
-	         dataType: "html",
-	         beforeSend: funcSend,
-	         complete: funcComplete,
-	         success:funcSuccess
-          });
-        });
-      });
-$(document).ready (function () {
-  	 $.ajax({
-	         url: 'scripts/update_chat.php',
-	         dataType: "html",
-	         beforeSend: funcSend,
-	         complete: funcComplete,
-	         success:funcReset
-          });
-        });
+		function funcSend() {
+	      $('#load').append('<img src="img/loader/6.gif" style="width:250px; height:128px;">');
+	    }
+	    function funcComplete() {
+	      $('#load').remove();                              
+	    }
+	    function funcSuccess(data) {
+	    	elText = $("#body")
+	    	elText.remove()
+	    	$('#done').html(data);
+	    }
+	    function funcReset(data) {
+	    	elText = $("#body")
+			elText.html(data);
+		}
+		$(document).ready (function () {
+	        $('#enter').bind("click", function () {
+	       	 $.ajax({
+		         url: 'scripts/update_chat.php',
+		         type: "POST",
+		         data:({
+		          author : $('#username').val(),
+		          text : $('#text').val()
+	        	}),
+		         dataType: "html",
+		         beforeSend: funcSend,
+		         complete: funcComplete,
+		         success:funcSuccess
+	          	});
+	        });
+	     });
+		$(document).ready (function () {
+		  	$.ajax({
+			         url: 'scripts/update_chat.php',
+			         dataType: "html",
+			         beforeSend: funcSend,
+			         complete: funcComplete,
+			         success:funcReset
+		    });
+		});
 	</script>
 </head>
 <body class="bg-light">
@@ -165,19 +165,19 @@ $(document).ready (function () {
 </center>
 
 <fieldset>		
-			<div id="load">
-				
-			</div>	
-			<div id="done">
-			
-			</div>
-			<div id="body">
+	<div id="load">
+		
+	</div>
+	<div id="done">
+	
+	</div>
+	<div id="body">
 
-			</div>
+	</div>
 </fieldset>
 
 <!-- Scripts! -->
-	<script src="../js/js/bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 <!-- END -->
 
 </body>

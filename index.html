@@ -9,9 +9,7 @@
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-
     <link rel="stylesheet" href="css/chat-slide-menu/right-nav-style.css">
-    <link rel="stylesheet" type="text/css" href="css/for-icon/main.css">
 
     <script type="text/javascript" src="js/holder.js"></script>
 
@@ -32,6 +30,12 @@
 	    	margin-bottom: 20px;
 	    	font-weight: 400;
 	    }
+	    small {
+        	color: green;
+    	}
+    	iframe {
+      		border: none;
+    	}
 	    .gray-coloud {
 	    	color: gray;
 	    	font-size: 22px;
@@ -46,26 +50,6 @@
 	    		font-size: 15px;
 	    	}
 	    }
-	    h5 {
-	     	color: #007BFF;
-	    }
-	    .carousel {
-	     	max-width: 700px;
-	    	margin-bottom: 20px;
-	    }
-	    .group-fix {
-	     	max-width: 700px;
-	    }
-    	small {
-        	color: green;
-    	}
-    	iframe {
-      		border: none;
-    	}
-    	.form-cats {
-      		margin-bottom: -250px;
-      		margin-top: 50px;
-      	}
 	</style>
 </head>
 <body>
@@ -73,45 +57,44 @@
 	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
 </script>
 
-<!-- CHAT -->
+<!-- Chat -->
 <input type="checkbox" id="nav-toggle" hidden>
 <nav class="nav">
-	<label for="nav-toggle" class="nav-toggle" onclick><span class="text-chat">CHAT</span></label>
+	<label for="nav-toggle" class="nav-toggle" onclick><span class="text-chat">ЧАТ</span></label>
 
 	<iframe src="chat/index.php" align="left">
     	Ваш браузер не поддерживает плавающие фреймы!
  	</iframe>
 </nav>
-<!-- END -->
-
+<!-- End -->
 
 <main role="main">
 	<!-- <article> При открытие меню - содержимое будет сдвигаться -->
-	<!-- МЕНЮ -->
+	<!-- Menu -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  	<a class="navbar-brand" href="#" style="color: #007BFF;">THE SCIENCE</a>
+	  	<a class="navbar-brand" href="#" style="color: #007BFF; font-weight: 600;">THE SCIENCE</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    	<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="math/index.php">АЛГЕБРА</a>
+					<a href="math/index.php" class="nav-link" style="color: #f93b3b;">АЛГЕБРА</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">ГЕОМЕТРИЯ</a>
+					<a href="#" class="nav-link" style="color: #4AB8FF;">ГЕОМЕТРИЯ</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="computer_science/index.html">ИНФОРМАТИКА</a>
+					<a href="computer_science/index.php" class="nav-link" style="color: #A024E2;">ИНФОРМАТИКА</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">ФИЗИКА</a>
+					<a href="#" class="nav-link" style="color: #434CF9;">ФИЗИКА</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">ХИМИЯ</a>
+					<a href="#" class="nav-link" style="color: #58FF4C;">ХИМИЯ</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">ЭКОНОМИКА</a>
+					<a href="#" class="nav-link" style="color: #FFDE23;">ЭКОНОМИКА</a>
 				</li>
 	    	</ul>
 		</div>
@@ -122,35 +105,14 @@
 		<h2 class="display-4 gray-coloud">Сайт, который решит за вас все задачи</h2>
 	</center>
 
-	<!-- СТАРЫЙ СЛАЙД -->
-	<!-- <div id="carouselExampleFade" class="carousel slide carousel-fade mx-auto" data-ride="carousel">
-
-	  <div class="carousel-inner">
-
-	    <div class="carousel-item active">
-	      <img class="d-block w-100" src="img/bg/einstein.gif" alt="Second slide">
-	    </div>
-
-	  </div>
-
-	   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	    <span class="sr-only">Назад</span>
-	  </a>
-
-	  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	    <span class="sr-only">Вперед</span>
-	    </div>
-	  </a> -->
-
+	<!-- Album -->
 	<div class="album py-5">
     	<div class="container">
 			<div class="row">
 		        <div class="col-md-4">
 		          <div class="card mb-4 shadow-sm">
 		          	<a href="math/index.php">
-		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=4ab8ff&fg=eceeef&text=АЛГЕБРА" alt="Card image cap">
+		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=f93b3b&fg=eceeef&text=АЛГЕБРА" alt="Card image cap">
 		            </a>
 
 		            <div class="card-body">
@@ -163,7 +125,7 @@
 		        <div class="col-md-4">
 		          <div class="card mb-4 shadow-sm">
 		          	<a href="#">
-		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=58ff4c&fg=eceeef&text=ГЕОМЕТРИЯ" alt="Card image cap">
+		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=4ab8ff&fg=eceeef&text=ГЕОМЕТРИЯ" alt="Card image cap">
 		            </a>
 
 		            <div class="card-body">
@@ -175,7 +137,7 @@
 		        <div class="col-md-4">
 		          <div class="card mb-4 shadow-sm">
 		          	<a href="computer_science/index.php">
-		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=b44cff&fg=eceeef&text=ИНФОРМАТИКА" alt="Card image cap">
+		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=a024e2&fg=eceeef&text=ИНФОРМАТИКА" alt="Card image cap">
 		            </a>
 
 		            <div class="card-body">
@@ -188,7 +150,7 @@
 		        <div class="col-md-4">
 		          <div class="card mb-4 shadow-sm">
 		          	<a href="#">
-		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=704cff&fg=eceeef&text=ФИЗИКА" alt="Card image cap">
+		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=434cf9&fg=eceeef&text=ФИЗИКА" alt="Card image cap">
 		            </a>
 
 		            <div class="card-body">
@@ -201,7 +163,20 @@
 		        <div class="col-md-4">
 		          <div class="card mb-4 shadow-sm">
 		          	<a href="#">
-		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=fcff4c&fg=eceeef&text=ЭКОНОМИКА" alt="Card image cap">
+		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=58ff4c&fg=eceeef&text=ХИМИЯ" alt="Card image cap">
+		            </a>
+
+		            <div class="card-body">
+		              <p class="card-text">[Coming soon]</p>
+		              <!--<span class="badge badge-pill badge-danger" style="height: 20px; float: right;">New!</span>-->
+		            </div>
+		          </div>
+		        </div>
+
+		        <div class="col-md-4">
+		          <div class="card mb-4 shadow-sm">
+		          	<a href="#">
+		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=ffde23&fg=eceeef&text=ЭКОНОМИКА" alt="Card image cap">
 		            </a>
 
 		            <div class="card-body">
@@ -210,123 +185,52 @@
 		            </div>
 		          </div>
 		        </div>
-
-		        <div class="col-md-4">
-		          <div class="card mb-4 shadow-sm">
-		          	<a href="#">
-		            	<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=f93b3b&fg=eceeef&text=ХИМИЯ" alt="Card image cap">
-		            </a>
-
-		            <div class="card-body">
-		              <p class="card-text">[Coming soon]</p>
-		              <!--<span class="badge badge-pill badge-danger" style="height: 20px; float: right;">New!</span>-->
-		            </div>
-		          </div>
-		        </div>
 			</div>
+	<!-- End -->
 
-			<center><h1 style="margin-bottom: 40px;">Новости</h1></center>
-			<div class="row mb-2">
-				<div class="col-md-6">
-					<div class="card flex-md-row mb-4 shadow-sm h-md-250">
-						<div class="card-body d-flex flex-column align-items-start">
-							<strong class="d-inline-block mb-2 text-primary">Соц. сети</strong>
-							<h3 class="mb-0">
-							<a class="text-dark" href="#">Telegram Bot</a>
-							</h3>
-							<div class="mb-1 text-muted">Oct 21</div>
-							<p class="card-text mb-auto">Мы создали новго Telegram Бота для Кодирования текста! Он доступен в Telegram под именем <span style="color: #007BFF">@encoder_bot</span></p>
-							<!-- <a href="#">Continue reading</a> -->
-						</div>
-						<img class="card-img-right flex-auto d-none d-lg-block" src="img/bot.jpg" alt="Card image cap">
-					</div>
+	<!-- News -->
+	<center><h1 style="margin-bottom: 40px;">Новости</h1></center>
+	<div class="row mb-2">
+		<div class="col-md-6">
+			<div class="card flex-md-row mb-4 shadow-sm h-md-250">
+				<div class="card-body d-flex flex-column align-items-start">
+					<strong class="d-inline-block mb-2 text-primary">Соц. сети</strong>
+					<h3 class="mb-0">
+					<a class="text-dark" href="#">Telegram Bot</a>
+					</h3>
+					<div class="mb-1 text-muted">Oct 21</div>
+					<p class="card-text mb-auto">Мы создали новго Telegram Бота для Кодирования текста! Он доступен в Telegram под именем <span style="color: #007BFF">@bincode_bot</span></p>
+					<a href="https://t.me/bincode_bot">Перейти в Telegram</a>
 				</div>
-				<div class="col-md-6">
-					<div class="card flex-md-row mb-4 shadow-sm h-md-250">
-						<div class="card-body d-flex flex-column align-items-start">
-							<strong class="d-inline-block mb-2 text-success">Видео</strong>
-							<h3 class="mb-0">
-							<a class="text-dark" href="https://mover.uz/watch/Yl5y5m1m/">Канал на Mover</a>
-							</h3>
-							<div class="mb-1 text-muted">Oct 11</div>
-							<p class="card-text mb-auto">Для сайта открыт канал на Mover c примерами видео!</p>
-							<a href="https://mover.uz/watch/Yl5y5m1m/">Перейти на сайт</a>
-						</div>
-						<img class="card-img-right flex-auto d-none d-lg-block" src="img/video.jpeg" alt="Card image cap">
-					</div>
-				</div>
+				<img class="card-img-right flex-auto d-none d-lg-block" src="img/bot.jpg" alt="Card image cap">
 			</div>
+		</div>
 
+		<div class="col-md-6">
+			<div class="card flex-md-row mb-4 shadow-sm h-md-250">
+				<div class="card-body d-flex flex-column align-items-start">
+					<strong class="d-inline-block mb-2 text-success">Видео</strong>
+					<h3 class="mb-0">
+					<a class="text-dark" href="https://mover.uz/watch/Yl5y5m1m/">Канал на Mover</a>
+					</h3>
+					<div class="mb-1 text-muted">Oct 11</div>
+					<p class="card-text mb-auto">Для сайта открыт канал на Mover c примерами видео!</p>
+					<a href="https://mover.uz/watch/Yl5y5m1m/">Перейти на сайт</a>
+				</div>
+				<img class="card-img-right flex-auto d-none d-lg-block" src="img/video.png" alt="Card image cap">
+			</div>
+		</div>
+	</div>
     	</div>
   </div>
-<!-- СТАРАЯ МЕНЮШКА
-	<div class="group-fix mx-auto">
-	<div class="list-group">
-	  <a href="math/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
-	    <div class="d-flex w-100 justify-content-between">
-	      <h5 class="mb-1">АЛГЕБРА</h5>
-	      <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>
-	    </div>
-	    <p class="mb-1">Список возможностей:</p>
-	    <small>- Решение уравнений, систем уравнений, неравенств</small><br>
-	    <small>- Решение арифметических и геометрических прогрессий, etc...</small>
-	  </a>
 
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-	    <div class="d-flex w-100 justify-content-between">
-	      <h5 class="mb-1">ГЕОМЕТРИЯ</h5>
-	      
-	    </div>
-	    <p class="mb-1">Список возможностей:</p>
-	    <small class="text-muted">- Пока неизвестно</small>
-	  </a>
-
-	  <a href="computer_science/index.php" class="list-group-item list-group-item-action flex-column align-items-start">
-	    <div class="d-flex w-100 justify-content-between">
-	      <h5 class="mb-1">ИНФОРМАТИКА</h5>
-	      <span class="badge badge-pill badge-danger" style="height: 20px;">New!</span>
-	    </div>
-	    <p class="mb-1">Список возможностей:</p>
-	    <small>- Кодирование и декодирование текста-бинарного кода</small><br>
-	    <small>- Перевод чисел в разные системы счисления, etc...</small>
-	  </a>
-
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-	    <div class="d-flex w-100 justify-content-between">
-	      <h5 class="mb-1">ФИЗИКА</h5>
-	      
-	    </div>
-	    <p class="mb-1">Список возможностей:</p>
-	    <small class="text-muted">- Пока неизвестно</small>
-	  </a>
-
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-	    <div class="d-flex w-100 justify-content-between">
-	      <h5 class="mb-1">ХИМИЯ</h5>
-	      
-	    </div>
-	    <p class="mb-1">Список возможностей:</p>
-	    <small class="text-muted">- Пока неизвестно</small>
-	  </a>
-
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-	    <div class="d-flex w-100 justify-content-between">
-	      <h5 class="mb-1">ЭКОНОМИКА</h5>
-	      
-	    </div>
-	    <p class="mb-1">Список возможностей:</p>
-	    <small class="text-muted">- Пока неизвестно</small>
-	  </a>
-
-	</div>
-	</div> -->
 <!-- </article> -->
 </main>
 
-<!-- Scripts! -->
-<script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- End -->
+<!-- Scripts
+	<script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+End -->
 
 </body>
 </html>
