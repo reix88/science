@@ -1,10 +1,33 @@
 <?php
 	session_start();
-	if (isset($_POST['delete']) && isset($_POST['id']) && isset($_SESSION['admin'])) 
-	{
+	session_save_path("/path/to/custom/directory");
+	define("MAX_IDLE_TIME", 3);
+
+	function getOnlineUsers() {
+		if($directory_handle = opendir(session_save_path())) {
+			$count = 0;
+			while (false !== ($file = readdir($directory_handle))) {
+				if($file != '.' && $file != '..') {
+					if(time()- filemtime(session_save_path() . '' . $file) < MAX_IDLE_TIME * 60) {
+						$count++;
+					}
+				}
+			}
+			closedir($directory_handle);
+			return $count;
+		} else {
+			return false;
+		}
+	}
+
+	if (isset($_POST['delete']) && isset($_POST['id']) && isset($_SESSION['admin'])) {
 		$id=fix_String($_POST['id']);
 		queryMysql("DELETE FROM chat WHERE id='$id'");
-	}	
+	}
+	if (isset($_POST['delete']) && isset($_POST['id']) && isset($_SESSION['admin'])) {
+		$id=fix_String($_POST['id']);
+		queryMysql("DELETE FROM chat WHERE id='$id'");
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,10 +71,7 @@
 		.chat-text {
 			font-size: 34px;
 			font-weight: 400;
-		}
-		.text-span {
-			font-size: 20px;
-			font-weight: 400;	
+			margin-top: 100px;
 		}
 		.nav-toggle {
 		    position: absolute;
@@ -81,12 +101,13 @@
 	      $('#load').append('<img src="img/loader/6.gif" style="width:250px; height:128px;">');
 	    }
 	    function funcComplete() {
-	      $('#load').remove();                              
+	      $('#load').remove();
 	    }
 	    function funcSuccess(data) {
 	    	elText = $("#body")
 	    	elText.remove()
-	    	$('#done').html(data);
+	    	$('#done').html(data)
+	    	$('#text').val('')
 	    }
 	    function funcReset(data) {
 	    	elText = $("#body")
@@ -108,6 +129,24 @@
 	          	});
 	        });
 	     });
+		$(document).ready(function() {
+			$("#text").keyup(function(event) {
+			if(event.keyCode==13) {
+			$.ajax({
+		         url: 'scripts/update_chat.php',
+		         type: "POST",
+		         data:({
+		          author : $('#username').val(),
+		          text : $('#text').val()
+	        	}),
+		         dataType: "html",
+		         beforeSend: funcSend,
+		         complete: funcComplete,
+		         success:funcSuccess
+	          	});
+			}
+		});
+	});
 		$(document).ready (function () {
 		  	$.ajax({
 			         url: 'scripts/update_chat.php',
@@ -137,13 +176,14 @@
 	    <div class="form-group">
 	      <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Пароль" name="passwd">
 	    </div>
+	    <a href="logout.php" class="btn btn-primary" style="float: left;">Выйти</a>
 	    <button type="submit" class="btn btn-primary" style="float: right;">Войти</button>
 	  </form>
 	</div>
 </div>
 
 <div class="form-class">
-	<center><p class="text-span">Введите сообщение</p><hr></center>
+
 	<?php if (!isset($_SESSION['admin'])):?>
 		<div class="form-label-group" style="margin-bottom: 10px;">
 	      	<div class="input-group">
@@ -154,31 +194,26 @@
 	    	</div>
 	    </div>
 	<?php endif;?>
-	<textarea class="form-control textarea" rows="3" name="post" placeholder="Начните вводить текст..." id="text"></textarea>
-	<button type="submit" class="btn btn-outline-info" style="margin-top: 10px; height: 40px; margin-left: 64%;" id="enter" name="enter">Отправить</button>
+	<textarea class="form-control textarea" rows="3" name="post" placeholder="Начните вводить текст..." id="text" maxlength="500"></textarea>
+
+	<button type="submit" class="btn btn-info btn-sm" style="margin-top: 10px; height: 40px; margin-left: 70%;" id="enter" name="enter">Отправить</button>
 
 	<hr class="my-4">
 </div>
 
-<center>
-	<span class="chat-text">CHAT</span>
-</center>
-
-<fieldset>		
+<fieldset>
 	<div id="load">
-		
 	</div>
 	<div id="done">
-	
 	</div>
 	<div id="body">
-
 	</div>
 </fieldset>
+
+<p class="text-secondary" style="font-size:12px; margin-left: 5px;"><?php echo 'Онлайн: ' . getOnlineUsers() . '<br />'; ?></p>
 
 <!-- Scripts! -->
 	<script src="../js/bootstrap.min.js"></script>
 <!-- END -->
-
 </body>
 </html>

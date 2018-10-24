@@ -1,6 +1,16 @@
 <?php
 
-	require_once 'app_config.php';
+	define("DB_HOST", "localhost");
+	define("USER_N", "lool");
+	define("U_PASSWD", "1234");
+	define("DB_NAME", "science");
+
+	$conn = new mysqli(DB_HOST,USER_N,U_PASSWD,DB_NAME);
+
+	if (mysqli_connect_errno()) 
+	{
+		printf("возникла проблема с конфигурацией нашей базы данных.".mysqli_connect_error());
+	}
 	session_start();
 	
 	function fix_String($all)
@@ -37,7 +47,7 @@ function queryMysql($query)
 		}elseif (empty($text) && isset($_POST['enter'])) 
 		{
 			echo '<div class="alert alert-danger shadow-sm p-2 mb-2" style="width: 350px;><h5 class="alert-heading">Введите Собщения !</h5></div>';
-		} elseif (!isset($_SESSION['admin']) || empty($text) && empty($author)) {
+		} elseif (!isset($_SESSION['admin']) && empty($text) && empty($author)) {
 			echo '<div class="alert alert-danger shadow-sm p-2 mb-2" style="width: 350px;><h5 class="alert-heading">Введите Собщения и Email !</h5></div>';
 		}
 		else
@@ -45,12 +55,12 @@ function queryMysql($query)
 			if (isset($_SESSION['admin']) && !empty($text)) 
 			{
 			$admin = $_SESSION['admin'];
-			$time = date('Y-m-d H:i:s');
+			$time = date('Y.m.d H:i');
 			$result = queryMysql("INSERT INTO chat(author,text,date)"."VALUES ('$admin','$text','$time')");
 
-			}else 
+			}elseif (!isset($_SESSION['admin']) && !empty($text)) 
 			{
-			$time = date('Y-m-d H:i:s');
+			$time = date('Y.m.d H:i');
 			$result = queryMysql("INSERT INTO chat(author,text,date)"."VALUES ('$author','$text','$time')");
 			}
 		}
@@ -60,24 +70,7 @@ function queryMysql($query)
 		$zero_div = '<div class="alert alert-danger shadow-sm p-1 mb-2" role="alert">'.'<h4 class="alert-heading">Упс.. Записей нет!</h4>'.'</div>';
 	}	
 	$result=queryMysql("SELECT * FROM chat ORDER BY id DESC");
-
-?>
-<?php if (!isset($_POST['delete']) && !isset($_POST['id'])): ?>
-	<?php foreach ($result as $value): ?>
-	<div class="card">
-		<div class="card-header" style="float: left;">
-			<img src="img/bender.jpg" class="ava">
-				<?php if ($value['author'] == 'Admin1' || $value['author'] == 'Admin2'):?>
-					<b style="color:red;"><?php echo $value['author']; ?></b>
-				<?php endif;?>
-				<?php if ($value['author'] != 'Admin1' && $value['author'] != 'Admin2'):?>
-					<?php echo $value['author']; ?>
-				<?php endif;?>
-		</div>
-		<div class="card-body">
-			<?php echo $value['text']; ?>
-		</div>	
-		<div class="card-footer text-secondary">
+	/*
 			<?php if (isset($_SESSION['admin'])) :?>
 			<form action="scripts/update_chat.php" method="post">
 				<input type="hidden" name="id" value="<?php echo $value['id']; ?>">
@@ -86,8 +79,26 @@ function queryMysql($query)
   				</button>
 			</form>
 			<?php endif; ?>
-  			<span style="float: right;"><?php echo $value['date']; ?></span>
-		</div>
-	</div><br>
+  			<span><?php echo $value['date']; ?></span>
+*/
+?>
+<?php if (!isset($_POST['delete']) && !isset($_POST['id'])): ?>
+	<?php foreach ($result as $value): ?>
+ <div class="media text-muted pt-3">
+    <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="img/bender.jpg" data-holder-rendered="true">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <?php if ($value['author'] == 'Tyga' || $value['author'] == 'ZerxDay'):?>
+			<b class="d-block" style="color:#f93b3b;"><?php echo $value['author']; ?></b>
+		<?php endif;?>
+		<?php if ($value['author'] != 'Tyga' && $value['author'] != 'ZerxDay'):?>
+			<?php echo $value['author']; ?><br>
+		<?php endif;?>
+ 			<?php echo $value['text']; ?>
+ 		<br><span style="font-size: 11px; float: right;">
+			Дата: <?php echo $value['date']; ?>
+ 			</span>
+ 	</p>
+ 	
+</div>
 	<?php endforeach; ?>
 <?php endif; ?>

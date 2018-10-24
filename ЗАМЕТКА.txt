@@ -1,6 +1,8 @@
+0. ctrl + shift + c (Color Picker)
 1. Добавить Деление многочленов
 2. Math
 	Logarifm log, ln, lg
-3. CHAT -> 1. Срабатываться на конопку Enter
-	   2. Перенести текст Shift + Eneter
-	   3. Никто не может взять Username - Admin
+3. CHAT -> 1. Перенести текст Shift + Eneter
+	   2. Никто не может взять Username - Tyga и ZerxDay
+	   3. Время: Убарть секунды.
+	
