@@ -89,6 +89,13 @@
 		.nav-toggle:hover {
 		    color: #e5e5e5;
 		}
+		#btn {
+			position: fixed;
+			right: 0px;
+			bottom: 4px;
+			z-index: 99;
+			cursor: pointer;
+		}
 		/* .form-shadow {
 			box-shadow: -3px 0px 10px rgba(100, 100, 100, 0.4);
 		    -moz-box-shadow: -3px 0px 10px rgba(100, 100, 100, 0.4);
@@ -131,7 +138,7 @@
 	     });
 		$(document).ready(function() {
 			$("#text").keyup(function(event) {
-			if(event.keyCode==13) {
+			if(event.keyCode==13 && !event.shiftKey) {
 			$.ajax({
 		         url: 'scripts/update_chat.php',
 		         type: "POST",
@@ -144,6 +151,15 @@
 		         complete: funcComplete,
 		         success:funcSuccess
 	          	});
+			}
+		});
+	});
+				$(document).ready(function() {
+			$("#text").keyup(function(event) {
+			if(event.keyCode==13 && event.shiftKey) {
+				rep = $('#text')
+				space = $('#text').replace(rep,rep+'\n')
+				$('#text').val(space)
 			}
 		});
 	});
@@ -210,9 +226,24 @@
 	</div>
 </fieldset>
 
+<a class="btn" id="btn"><img src="img/back-to-top.png" width="70"></a>
+
 <p class="text-secondary" style="font-size:12px; margin-left: 5px;"><?php echo 'Онлайн: ' . getOnlineUsers() . '<br />'; ?></p>
 
 <!-- Scripts! -->
+	<script type="text/javascript">
+		btnTop = $('#btn')
+		$(window).on('scroll', function() {
+			if ($(window).scrollTop() >= 100) {
+				btnTop.fadeIn();
+			}else {
+				btnTop.fadeOut();
+			}
+		});
+		btnTop.on('click', function() {
+			$('html,body').animate({scrollTop:0}, 200)
+		});
+	</script>
 	<script src="../js/bootstrap.min.js"></script>
 <!-- END -->
 </body>

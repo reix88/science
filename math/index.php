@@ -65,7 +65,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.php">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -111,8 +111,8 @@
 </nav>
 
 <div class="jumbotron">
-  <h1 class="display-4 h1-size" style="color: #007BFF;">Математика</h1>
-  <p class="lead">Сайт который решит за вас все математические задачи. Впешите значения уравнений, а остальное мы сделаем за вас. Используйте разумно и не злоупотребляйте!</p>
+  <h1 class="display-4 h1-size" style="color: #007BFF; margin: 0px;">Алгебра</h1>
+  <p class="lead"><span style="color: #007BFF;">Элементарная алгебра</span> — раздел алгебры, который изучает самые базовые понятия. Обычно изучается после изучения основных понятий арифметики. В арифметике изучаются числа и простейшие (+, −, ×, ÷) действия с ними. В алгебре числа заменяются на переменные (a, b, c, x, y и так далее).</p>
   <hr class="my-4">
   <p style="color: #007BFF;"><cite title="Source Title">- Администрация сайта</cite></p>
 </div>

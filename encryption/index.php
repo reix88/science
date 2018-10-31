@@ -65,7 +65,7 @@ require_once 'links.php';
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.php">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,14 +104,14 @@ require_once 'links.php';
   </div>
 </nav>
 
-<center><h2 class="margin-top-kek">Какую задачу вам нужно решить?</h2></center>
+<center><h2 class="margin-top-kek">Выберите способ шифрования:</h2></center>
 
 <div class="list-group">
   <a class="list-group-item list-group-item-action" href="<?php echo CAE; ?>">Шифр Цезаря <span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo BCR; ?>">...<span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo BN; ?>">...<span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo BNR; ?>">...<span style="float: right">✓</span></a>
-  <a class="list-group-item list-group-item-action" href="<?php echo HN; ?>">...<span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="#">...<span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="#">...<span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="#">...<span style="float: right">✓</span></a>
+  <a class="list-group-item list-group-item-action" href="#">...<span style="float: right">✓</span></a>
 </div>
 
 <!-- Scripts! -->

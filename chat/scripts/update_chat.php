@@ -12,7 +12,7 @@
 		printf("возникла проблема с конфигурацией нашей базы данных.".mysqli_connect_error());
 	}
 	session_start();
-	
+
 	function fix_String($all)
 	{
 		global $conn;
@@ -34,13 +34,18 @@ function queryMysql($query)
 		$id=fix_String($_POST['id']);
 		queryMysql("DELETE FROM chat WHERE id='$id'");
 		header("Location:../index.php");
-	}	
+	}
 
 	if (isset($_POST['text']) && isset($_POST['author']) || isset($_SESSION['admin'])) 
 	{
 		$author = fix_String($_POST['author']);
 		$text = fix_String($_POST['text']);
 
+		$admin_name = queryMysql("SELECT username FROM admin WHERE username ='$author'");
+
+		if ($admin_name->num_rows>0) {
+			echo '<div class="alert alert-danger shadow-sm p-2 mb-2" style="width: 350px;><h5 class="alert-heading">Имя не доступно !</h5></div>';
+		}else {
 		if (empty($author) && !isset($_SESSION['admin'])) 
 		{
 			echo '<div class="alert alert-danger shadow-sm p-2 mb-2" style="width: 350px;><h5 class="alert-heading">Введите Email !</h5></div>';	
@@ -58,29 +63,19 @@ function queryMysql($query)
 			$time = date('Y.m.d H:i');
 			$result = queryMysql("INSERT INTO chat(author,text,date)"."VALUES ('$admin','$text','$time')");
 
-			}elseif (!isset($_SESSION['admin']) && !empty($text)) 
+			}elseif (!isset($_SESSION['admin']) && !empty($author) && !empty($text)) 
 			{
 			$time = date('Y.m.d H:i');
 			$result = queryMysql("INSERT INTO chat(author,text,date)"."VALUES ('$author','$text','$time')");
 			}
 		}
 	}
+}
 	if ($result->num_rows == 0 ) 
 	{
 		$zero_div = '<div class="alert alert-danger shadow-sm p-1 mb-2" role="alert">'.'<h4 class="alert-heading">Упс.. Записей нет!</h4>'.'</div>';
 	}	
 	$result=queryMysql("SELECT * FROM chat ORDER BY id DESC");
-	/*
-			<?php if (isset($_SESSION['admin'])) :?>
-			<form action="scripts/update_chat.php" method="post">
-				<input type="hidden" name="id" value="<?php echo $value['id']; ?>">
-  				<button type="submit" name="delete" class="btn btn-outline-secondary delete-btn">
-  					Удалить
-  				</button>
-			</form>
-			<?php endif; ?>
-  			<span><?php echo $value['date']; ?></span>
-*/
 ?>
 <?php if (!isset($_POST['delete']) && !isset($_POST['id'])): ?>
 	<?php foreach ($result as $value): ?>

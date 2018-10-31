@@ -62,7 +62,7 @@ require_once 'links.php';
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../index.html">Главная страница<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.php">Главная страница<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,8 +102,13 @@ require_once 'links.php';
 </nav>
 
 <div class="jumbotron">
-  <h1 class="display-4 h1-size" style="color: #007BFF;">Информатика</h1>
-  <p class="lead">Сайт который решит за вас все информатические задачи. Впешите значения, а остальное мы сделаем за вас. Используйте разумно и не злоупотребляйте!</p>
+  <h1 class="display-4 h1-size" style="color: #007BFF; margin: 0px;">Информатика</h1>
+  <p class="lead">Как дисциплина, информатика охватывает широкий круг тем от теоретических исследований алгоритмов и пределов вычислений до практической реализации вычислительных систем в области аппаратного и программного обеспечения. Информатика делится на ряд разделов: <br><br>
+  - Теоретическая информатика<br>
+  - Теория алгоритмов<br>
+  - Информация и теория кодирования<br>
+  - Алгоритмы и структуры данных<br>
+  - Теория языков программирования</p>
   <hr class="my-4">
   <p style="color: #007BFF;"><cite title="Source Title">- Администрация сайта</cite></p>
 </div>
