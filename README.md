@@ -11,5 +11,5 @@
 
 	На данный момент готово только Математика (70%) и Информатика (100%)
 
-	![Alt text](img/screen.png?raw=true "Screen")
+![Alt text](img/screen.png?raw=true "Screen")
 </p>
