@@ -29,6 +29,7 @@
 		queryMysql("DELETE FROM chat WHERE id='$id'");
 	}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

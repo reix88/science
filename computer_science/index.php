@@ -5,10 +5,10 @@ require_once 'links.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Информатика | Основная страница</title>
-  	<meta name="description" content="Выберите из списка - какую задачу вам нужно решить">
+  <meta name="description" content="Выберите из списка - какую задачу вам нужно решить">
   	<meta name="keywords" content="Кодирование текста, кодирование цифр, декодирование">
 
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
@@ -90,6 +90,7 @@ require_once 'links.php';
           <a class="dropdown-item" href="#" style="color: #007BFF;">Увидеть больше</a>
         </div>
       </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="#">Справка</a>
       </li>

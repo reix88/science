@@ -1,4 +1,5 @@
 <?php
+	// Заменить на "свои".
 	define("DB_HOST", "localhost");
 	define("USER_N", "lool");
 	define("U_PASSWD", "1234");
@@ -20,13 +21,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>The Science | Решай базовые задачи по основным техническим наукам онлайн</title>
-	<meta name="description" content="Помогаем решить задачи по математике, физике, информатике, химии и экономике!">
-	<meta name="keywords" content="The Sci, The Science, Решить задачи онлайн, Решить задачи по математики, Решить задачи по физике, Решить задачи по информатике, Решить задачи по химии, Решить задачи по экономике, решить онлайн, наука">
+	<title>The Science</title>
+	<!-- <meta name="description" content="Помогаем решить задачи по математике, физике, информатике, химии и экономике!">
+	<meta name="keywords" content="The Sci, The Science, Решить задачи онлайн, Решить задачи по математики, Решить задачи по физике, Решить задачи по информатике, Решить задачи по химии, Решить задачи по экономике, решить онлайн, наука"> -->
 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/chat-slide-menu/right-nav-style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <link rel="shortcut icon" type="text/css" href="favicon.ico">
   	<link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -65,6 +67,9 @@
 	    		font-size: 15px;
 	    	}
 	    }
+	    nav {
+	    	background-image: linear-gradient(45deg, #ffffff, #4AB8FF);
+	    }
 	</style>
 
 	<script type="text/javascript" src="js/holder.js"></script>
@@ -77,7 +82,7 @@
 <!-- Chat -->
 <input type="checkbox" id="nav-toggle" hidden>
 <nav class="nav">
-	<label for="nav-toggle" class="nav-toggle" onclick><span class="text-chat">ЧАТ</span></label>
+	<label for="nav-toggle" class="nav-toggle" onclick><span class="text-chat">CHAT</span></label>
 
 	<iframe src="chat/index.php" align="left">
     	Ваш браузер не поддерживает плавающие фреймы!
@@ -88,30 +93,30 @@
 <main role="main">
 	<!-- <article> При открытие меню - содержимое будет сдвигаться -->
 	<!-- Menu -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  	<a class="navbar-brand" href="#" style="color: #007BFF; font-weight: 600;">THE SCIENCE</a>
+	<nav class="navbar navbar-expand-lg navbar-light ">
+	  	<a class="navbar-brand" href="#" style="color: #007BFF; font-weight: 600; text-decoration: underline;">#THE SCIENCE</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    	<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a href="math/index.php" class="nav-link" style="color: #f93b3b;">АЛГЕБРА</a>
+					<a href="math/index.php" class="nav-link" style="color: #4AB8FF;">АЛГЕБРА</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link" style="color: #4AB8FF;">ГЕОМЕТРИЯ</a>
+					<a href="#" class="nav-link" style="color: #fff;">ГЕОМЕТРИЯ</a>
 				</li>
 				<li class="nav-item">
-					<a href="computer_science/index.php" class="nav-link" style="color: #A024E2;">ИНФОРМАТИКА</a>
+					<a href="computer_science/index.php" class="nav-link" style="color: #4AB8FF;">ИНФОРМАТИКА</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link" style="color: #434CF9;">ФИЗИКА</a>
+					<a href="#" class="nav-link" style="color: #fff;">ФИЗИКА</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link" style="color: #58FF4C;">ХИМИЯ</a>
+					<a href="#" class="nav-link" style="color: #fff;">ХИМИЯ</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link" style="color: #FFDE23;">ЭКОНОМИКА</a>
+					<a href="#" class="nav-link" style="color: #fff;">ЭКОНОМИКА</a>
 				</li>
 	    	</ul>
 		</div>
@@ -119,7 +124,7 @@
 
 	<center>
 		<h1 class="display-4">The Science</h1>
-		<h2 class="display-4 gray-coloud">Сайт, который решит за вас все задачи</h2>
+		<h2 class="display-4 gray-coloud">Поможем решить элементарные задачи</h2>
 	</center>
 
 	<!-- Album -->
@@ -206,7 +211,7 @@
 	<!-- End -->
 
 	<!-- News -->
-	<center><h1 style="margin-bottom: 40px;">Новости</h1></center>
+	<!-- <center><h1 style="margin-bottom: 40px;">Новости</h1></center>
 	<div class="row mb-2">
 	<?php foreach ($result as $value): ?>
 		<div class="col-md-6">
@@ -224,8 +229,16 @@
 			</div>
 		</div>
 	<?php endforeach;?>
-	</div>
+	</div> -->
 	<!-- End News -->
+
+	<hr>
+	<h3 style="color: silver">Follow to:&#160;
+		<a href="https://github.com/akashi-root/" target="_blanc"><i class="fab fa-github"></i></a>&#160;
+		<a href="https://vk.com/watchdog_inc" target="_blanc"><i class="fab fa-vk"></i></a>&#160;
+		<a href="#"><i class="fab fa-instagram"></i></a>
+	</h3>
+
     	</div>
   </div>
 

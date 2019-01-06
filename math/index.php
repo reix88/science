@@ -8,47 +8,47 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Математика | Основная страница</title>
-  <meta name="description" content="Выберить из списка - какую задачу нужно решить!">
-  <meta name="keywords" content="решить линейные уравнения, решить квадратные уравнения, арифметическая прогрессия онлайн, геометрическая прогрессия онлайн">
+	<!-- <meta name="description" content="Выберить из списка - какую задачу нужно решить!">
+	<meta name="keywords" content="решить линейные уравнения, решить квадратные уравнения, арифметическая прогрессия онлайн, геометрическая прогрессия онлайн"> -->
 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+	<link rel="icon" type="image/x-icon" href="../favicon.ico">
 
-  <style>
-    h1, h2 {
-      font-weight: 400;
-      width: 100%;
-    }
-    @media (max-width: 460px) {
-      .h1-size {
-        font-size: 40px;
-      }
-      h2 {
-        font-size: 22px;
-      }
-    }
-  	.jumbotron {
-  		margin-top: 10%;
-  	}
-  	.list-group {
-  		margin-left: auto;
-  		margin-right: auto;
-  		width: 90%;
-  		max-width: 600px;
-  		margin-bottom: 100px;
-  	}
-  	.list-group-item:hover {
-  		color: #007BFF;
-  	}
-    .button-circle {
-      border-radius: 20px;
-    }
-    span {
-      color: green;
-      font-weight: 600;
-    }
+	<style>
+	    h1, h2 {
+	      font-weight: 400;
+	      width: 100%;
+	    }
+	    @media (max-width: 460px) {
+	      .h1-size {
+	        font-size: 40px;
+	      }
+	      h2 {
+	        font-size: 22px;
+	      }
+	    }
+	  	.jumbotron {
+	  		margin-top: 10%;
+	  	}
+	  	.list-group {
+	  		margin-left: auto;
+	  		margin-right: auto;
+	  		width: 90%;
+	  		max-width: 600px;
+	  		margin-bottom: 100px;
+	  	}
+	  	.list-group-item:hover {
+	  		color: #007BFF;
+	  	}
+	    .button-circle {
+	      border-radius: 20px;
+	    }
+	    span {
+	      color: green;
+	      font-weight: 600;
+	    }
 	</style>
 </head>
 <body>

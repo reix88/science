@@ -1,4 +1,6 @@
 <?php
+
+# lol
 define("DB_HOST", "localhost");
 define("USER_N", "lool");
 define("U_PASSWD", "1234");

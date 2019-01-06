@@ -8,48 +8,48 @@ require_once 'links.php';
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Шифрование | Основная страница</title>
-  	<meta name="description" content="Выберите из списка - каким способом шифрование воспользоваться">
-  	<meta name="keywords" content="Шифрование текста, шифрование цифр, декодирование">
+	<!--<meta name="description" content="Выберите из списка - каким способом шифрование воспользоваться">
+	<meta name="keywords" content="Шифрование текста, шифрование цифр, декодирование">-->
 
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-  	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 
-  	<link rel="icon" type="image/x-icon" href="../favicon.ico">
+	<link rel="icon" type="image/x-icon" href="../favicon.ico">
 
-  	<style>
-	    h1, h2 {
-	      font-weight: 400;
-	      width: 100%;
-	    }
-	    @media (max-width: 460px) {
-	      .h1-size {
-	        font-size: 40px;
-	      }
-	      h2 {
-	        font-size: 22px;
-	      }
-	    }
-	  	.jumbotron {
-	  		margin-top: 10%;
-	  	}
-	  	.list-group {
-	  		margin-left: auto;
-	  		margin-right: auto;
-	  		width: 90%;
-	  		max-width: 600px;
-	  		margin-bottom: 100px;
-	  	}
-	  	.list-group-item:hover {
-	  		color: #007BFF;
-	  	}
-      span {
-        color: green;
-        font-weight: 600;
+	<style>
+    h1, h2 {
+      font-weight: 400;
+      width: 100%;
+    }
+    @media (max-width: 460px) {
+      .h1-size {
+        font-size: 40px;
       }
-      .margin-top-kek {
-        margin-top: 150px;
+      h2 {
+        font-size: 22px;
       }
-	</style>
+    }
+  	.jumbotron {
+  		margin-top: 10%;
+  	}
+  	.list-group {
+  		margin-left: auto;
+  		margin-right: auto;
+  		width: 90%;
+  		max-width: 600px;
+  		margin-bottom: 100px;
+  	}
+  	.list-group-item:hover {
+  		color: #007BFF;
+  	}
+    span {
+      color: green;
+      font-weight: 600;
+    }
+    .margin-top-kek {
+      margin-top: 150px;
+    }
+  </style>
 </head>
 <body>
 <script>

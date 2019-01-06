@@ -22,7 +22,7 @@
     -moz-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     -o-transform: rotate(90deg);
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 6px 6px;
 }
 .nav-toggle:hover {
     color: #e5e5e5;
