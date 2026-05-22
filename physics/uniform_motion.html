@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Равномерное движение | Физика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Равномерное движение</h1>
+    <p class="subtitle">Заполните два поля из трёх — третье вычислится</p>
+    <div class="formula-hint">s = v · t,&nbsp; v = s / t,&nbsp; t = s / v</div>
+
+    <div class="form">
+      <div class="form-row cols-3">
+        <div class="field"><label for="s">Путь s (м)</label><input type="text" id="s" inputmode="decimal"></div>
+        <div class="field"><label for="v">Скорость v (м/с)</label><input type="text" id="v" inputmode="decimal"></div>
+        <div class="field"><label for="t">Время t (с)</label><input type="text" id="t" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Вычислить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Заполните два поля из трёх</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-physics.js"></script>
+<script>
+  Sci.initShell({ active: 'physics', depth: 1 });
+  Sci.attachLiveValidation(['s','v','t']);
+  document.getElementById('solve').addEventListener('click', () => {
+    const s = Sci.num('s'), v = Sci.num('v'), t = Sci.num('t');
+    const res = SciPhys.uniform({ s, v, t });
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'Равном. движ.', input: `s=${s||'?'}, v=${v||'?'}, t=${t||'?'}`, answer: res.answers.map(x => `${x.label}=${x.value}`).join('; ') });
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    ['s','v','t'].forEach(id => { const el = document.getElementById(id); el.value=''; el.classList.remove('valid','invalid'); });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

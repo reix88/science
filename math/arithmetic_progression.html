@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Арифметическая прогрессия: n-й член | Алгебра</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Арифметическая прогрессия</h1>
+    <p class="subtitle">Найти n-й член прогрессии: aₙ = a₁ + d·(n − 1)</p>
+
+    <div class="formula-hint">
+      Введите первые два члена a₁, a₂ — разность d вычислится автоматически.
+    </div>
+
+    <div class="tabs">
+      <a class="btn" href="arithmetic_progression.html" style="flex:1;background:var(--surface);color:var(--text)"><b>n-й член</b></a>
+      <a class="btn" href="arithmetic_progression_sum.html" style="flex:1;background:transparent;color:var(--text-muted)">Сумма n членов</a>
+    </div>
+
+    <div class="form">
+      <div class="form-row cols-3">
+        <div class="field"><label for="a1">a₁</label><input type="text" id="a1" inputmode="decimal"></div>
+        <div class="field"><label for="a2">a₂</label><input type="text" id="a2" inputmode="decimal"></div>
+        <div class="field"><label for="n">n</label><input type="text" id="n" inputmode="numeric" placeholder="натуральное"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Найти</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Заполните a₁, a₂ и n</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-math.js"></script>
+<script>
+  Sci.initShell({ active: 'math', depth: 1 });
+  Sci.attachLiveValidation(['a1', 'a2', 'n']);
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const a1 = Sci.num('a1'), a2 = Sci.num('a2'), n = Sci.int('n');
+    const res = SciMath.apTerm(a1, a2, n);
+    Sci.renderResult('result', res);
+    if (!res.error) {
+      Sci.History.add({
+        section: 'Ариф. прог.',
+        input: `a₁=${a1}, a₂=${a2}, n=${n}`,
+        answer: res.answers.map(x => `${x.label}=${x.value}`).join(', '),
+      });
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    ['a1','a2','n'].forEach(id => {
+      const el = document.getElementById(id);
+      el.value = '';
+      el.classList.remove('invalid', 'valid');
+    });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

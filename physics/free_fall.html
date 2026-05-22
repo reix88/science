@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Свободное падение | Физика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Свободное падение</h1>
+    <p class="subtitle">Высота и скорость через t секунд (g = 9.81 м/с²)</p>
+    <div class="formula-hint">h = g·t²/2,&nbsp; v = g·t</div>
+
+    <div class="form">
+      <div class="form-row">
+        <div class="field"><label for="t">Время t (с)</label><input type="text" id="t" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Вычислить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите время</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-physics.js"></script>
+<script>
+  Sci.initShell({ active: 'physics', depth: 1 });
+  Sci.attachLiveValidation(['t']);
+  document.getElementById('solve').addEventListener('click', () => {
+    const t = Sci.num('t');
+    const res = SciPhys.freeFall(t);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'Свободн. падение', input: `t=${t}`, answer: res.answers.map(x => `${x.label}=${x.value}`).join('; ') });
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    const el = document.getElementById('t'); el.value=''; el.classList.remove('valid','invalid');
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

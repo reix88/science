@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atbash | Шифрование</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Шифр Atbash</h1>
+    <p class="subtitle">Зеркальный шифр: первая буква ↔ последняя (A↔Z, А↔Я)</p>
+    <div class="formula-hint">Симметричный: зашифровать = расшифровать</div>
+
+    <div class="form">
+      <div class="field">
+        <label for="text">Текст</label>
+        <textarea id="text" rows="4" placeholder="Введите текст…"></textarea>
+      </div>
+      <div class="btn-row" style="margin-top: 1rem">
+        <button class="btn btn-primary" id="solve">Применить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите текст</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-encryption.js"></script>
+<script>
+  Sci.initShell({ active: 'enc', depth: 1 });
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const text = Sci.str('text');
+    const res  = SciEnc.atbash(text);
+    Sci.renderResult('result', res);
+    if (!res.error) {
+      Sci.History.add({
+        section: 'Atbash',
+        input: text.slice(0, 40),
+        answer: res.answers[0].value.slice(0, 60),
+      });
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    document.getElementById('text').value = '';
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

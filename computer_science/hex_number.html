@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEC → HEX | Информатика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Десятичная → шестнадцатеричная</h1>
+    <p class="subtitle">Перевод десятичного числа в HEX</p>
+
+    <div class="form">
+      <div class="field"><label for="input">Десятичное число</label>
+        <input type="text" id="input" inputmode="decimal" placeholder="например, 255">
+      </div>
+      <div class="btn-row" style="margin-top: 1rem">
+        <button class="btn btn-primary" id="solve">Перевести</button>
+        <a class="btn btn-secondary" href="hex_number_reverse.html">↔ обратно</a>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите число</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-cs.js"></script>
+<script>
+  Sci.initShell({ active: 'cs', depth: 1 });
+  document.getElementById('solve').addEventListener('click', () => {
+    const v = Sci.str('input');
+    const res = SciCS.decToHex(v);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'DEC→HEX', input: v, answer: res.answers[0].value });
+  });
+  document.getElementById('input').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('solve').click(); });
+</script>
+</body>
+</html>

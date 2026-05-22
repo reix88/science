@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Science — решай задачи онлайн</title>
+<meta name="description" content="Сборник интерактивных калькуляторов по алгебре, геометрии, физике, информатике и шифрованию. Работает без сервера, прямо в браузере.">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<main>
+  <div class="container">
+    <section class="hero">
+      <h1>The <span class="text-primary">Science</span></h1>
+      <p>Сборник учебных калькуляторов. Решает задачи по алгебре, геометрии, физике, информатике и шифрованию — прямо в браузере, без сервера.</p>
+    </section>
+
+    <div class="card-grid">
+      <a class="card card-math" href="math/index.html">
+        <div class="card-icon">∑</div>
+        <h3>Алгебра</h3>
+        <p>Уравнения, системы, прогрессии, НОД, НОК, разложение на множители.</p>
+      </a>
+
+      <a class="card card-geo" href="geometry/index.html">
+        <div class="card-icon">△</div>
+        <h3>Геометрия</h3>
+        <p>Площади и периметры фигур, объёмы тел: треугольник, круг, куб, сфера, цилиндр.</p>
+      </a>
+
+      <a class="card card-phys" href="physics/index.html">
+        <div class="card-icon">⚛</div>
+        <h3>Физика</h3>
+        <p>Кинематика, законы Ньютона, энергия, закон Ома, плотность.</p>
+      </a>
+
+      <a class="card card-cs" href="computer_science/index.html">
+        <div class="card-icon">01</div>
+        <h3>Информатика</h3>
+        <p>Перевод между системами счисления, кодирование текста, универсальный конвертер баз.</p>
+      </a>
+
+      <a class="card card-enc" href="encryption/index.html">
+        <div class="card-icon">🔒</div>
+        <h3>Шифрование</h3>
+        <p>Шифры Цезаря, Виженера, Atbash, ROT13, Base64.</p>
+      </a>
+
+      <a class="card card-calc" href="calculator/index.html">
+        <div class="card-icon">±</div>
+        <h3>Калькулятор</h3>
+        <p>Простой арифметический калькулятор с поддержкой скобок и истории.</p>
+      </a>
+    </div>
+  </div>
+</main>
+
+<script src="assets/js/core.js"></script>
+<script>Sci.initShell({ active: null, depth: 0 });</script>
+</body>
+</html>

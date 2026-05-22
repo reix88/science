@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Линейное уравнение | Алгебра</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Линейное уравнение</h1>
+    <p class="subtitle">Решение уравнения вида ax + b = 0</p>
+
+    <div class="formula-hint">
+      <b>a</b>·x + <b>b</b> = 0  →  x = −b / a
+    </div>
+
+    <div class="form">
+      <div class="form-row cols-2">
+        <div class="field">
+          <label for="a">Коэффициент a</label>
+          <input type="text" id="a" inputmode="decimal" placeholder="например, 2">
+        </div>
+        <div class="field">
+          <label for="b">Свободный член b</label>
+          <input type="text" id="b" inputmode="decimal" placeholder="например, -6">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Решить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите коэффициенты и нажмите «Решить»</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-math.js"></script>
+<script>
+  Sci.initShell({ active: 'math', depth: 1 });
+  Sci.attachLiveValidation(['a', 'b']);
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const a = Sci.num('a'), b = Sci.num('b');
+    const res = SciMath.linear(a, b);
+    Sci.renderResult('result', res);
+    if (!res.error) {
+      Sci.History.add({
+        section: 'Линейное ур.',
+        input: `${a}x + ${b} = 0`,
+        answer: res.answers.map(x => `${x.label}=${x.value}`).join(', '),
+      });
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    ['a', 'b'].forEach(id => {
+      const el = document.getElementById(id);
+      el.value = '';
+      el.classList.remove('invalid', 'valid');
+    });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

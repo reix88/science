@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Цилиндр | Геометрия</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Цилиндр</h1>
+    <p class="subtitle">Объём, боковая и полная поверхность</p>
+    <div class="formula-hint">V = π·r²·h,&nbsp; Sб = 2π·r·h,&nbsp; S = 2π·r·(r + h)</div>
+
+    <div class="form">
+      <div class="form-row cols-2">
+        <div class="field"><label for="r">Радиус r</label><input type="text" id="r" inputmode="decimal"></div>
+        <div class="field"><label for="h">Высота h</label><input type="text" id="h" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Вычислить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите r и h</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-geometry.js"></script>
+<script>
+  Sci.initShell({ active: 'geometry', depth: 1 });
+  Sci.attachLiveValidation(['r','h']);
+  document.getElementById('solve').addEventListener('click', () => {
+    const r = Sci.num('r'), h = Sci.num('h');
+    const res = SciGeo.cylinder(r, h);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'Цилиндр', input: `r=${r}, h=${h}`, answer: res.answers.map(x => `${x.label}=${x.value}`).join('; ') });
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    ['r','h'].forEach(id => { const el = document.getElementById(id); el.value=''; el.classList.remove('valid','invalid'); });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

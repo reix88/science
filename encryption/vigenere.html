@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Шифр Виженера | Шифрование</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Шифр Виженера</h1>
+    <p class="subtitle">Полиалфавитный шифр с ключевым словом</p>
+    <div class="formula-hint">Каждая буква сдвигается на позицию соответствующей буквы ключа</div>
+
+    <div class="tabs">
+      <button class="active" data-mode="encode">Зашифровать</button>
+      <button data-mode="decode">Расшифровать</button>
+    </div>
+
+    <div class="form">
+      <div class="field mb-2">
+        <label for="text">Текст</label>
+        <textarea id="text" rows="4" placeholder="Введите текст…"></textarea>
+      </div>
+      <div class="field">
+        <label for="key">Ключ (только буквы)</label>
+        <input type="text" id="key" placeholder="например, КЛЮЧ или KEY">
+      </div>
+      <div class="btn-row" style="margin-top: 1rem">
+        <button class="btn btn-primary" id="solve">Применить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите текст и ключ</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-encryption.js"></script>
+<script>
+  Sci.initShell({ active: 'enc', depth: 1 });
+  let mode = 'encode';
+
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      mode = btn.dataset.mode;
+    });
+  });
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const text = Sci.str('text');
+    const key  = Sci.str('key');
+    const res  = SciEnc.vigenere(text, key, mode);
+    Sci.renderResult('result', res);
+    if (!res.error) {
+      Sci.History.add({
+        section: 'Виженер',
+        input: `ключ=${key}, ${mode === 'encode' ? 'шифр' : 'расш.'}: ${text.slice(0, 30)}`,
+        answer: res.answers[0].value.slice(0, 60),
+      });
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    document.getElementById('text').value = '';
+    document.getElementById('key').value  = '';
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>
