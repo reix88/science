@@ -90,10 +90,10 @@ const SciCS = {
     const bytes = [];
     for (let i = 0; i < s.length; i += 8) bytes.push(parseInt(s.slice(i, i + 8), 2));
     try {
-      const text = new TextDecoder('utf-8', { fatal: false }).decode(new Uint8Array(bytes));
+      const text = new TextDecoder('utf-8', { fatal: true }).decode(new Uint8Array(bytes));
       return { answers: [{ label: 'TEXT', value: text }] };
     } catch {
-      return { error: 'Невозможно декодировать как UTF-8 текст.' };
+      return { error: 'Последовательность бит не является валидным UTF-8 текстом.' };
     }
   },
 
@@ -103,12 +103,20 @@ const SciCS = {
     if (!Number.isInteger(toBase) || toBase < 2 || toBase > 36) return { error: 'Целевая система должна быть от 2 до 36.' };
     const s = input.trim();
     if (!s) return { error: 'Введите число.' };
-    const n = parseInt(s, fromBase);
-    if (!Number.isFinite(n) || n.toString(fromBase).toUpperCase() !== s.toUpperCase().replace(/^-/, ''))
-      return { error: `Некорректное число для системы по основанию ${fromBase}.` };
+    const sign = s.startsWith('-') ? -1 : 1;
+    const body = s.replace(/^-/, '').toUpperCase();
+    if (!body) return { error: 'Введите число.' };
+    const validChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.slice(0, fromBase);
+    for (const ch of body) {
+      if (!validChars.includes(ch)) {
+        return { error: `Некорректное число для системы по основанию ${fromBase}: символ "${ch}".` };
+      }
+    }
+    const n = sign * parseInt(body, fromBase);
+    const out = (sign < 0 ? '-' : '') + Math.abs(n).toString(toBase).toUpperCase();
     return {
-      answers: [{ label: `Base ${toBase}`, value: n.toString(toBase).toUpperCase() }],
-      steps: [`${s} (по основанию ${fromBase}) = ${n} (десятичное) = ${n.toString(toBase).toUpperCase()} (по основанию ${toBase})`],
+      answers: [{ label: `Base ${toBase}`, value: out }],
+      steps: [`${s} (по основанию ${fromBase}) = ${n} (десятичное) = ${out} (по основанию ${toBase})`],
     };
   },
 };

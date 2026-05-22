@@ -188,21 +188,24 @@ const SciMath = {
     };
   },
 
-  /* Геометрическая прогрессия: произведение первых n членов */
+  /* Геометрическая прогрессия: произведение первых n членов
+     P_n = b1^n · q^(n(n-1)/2) — корректно для отрицательных q */
   gpProduct(b1, b2, n) {
     if ([b1, b2].some(x => !Number.isFinite(x)) || !Number.isInteger(n) || n < 1)
       return { error: 'Введите b₁, b₂ и натуральное n.' };
     if (b1 === 0) return { error: 'b₁ не может быть 0.' };
     const q = b2 / b1;
     const bn = b1 * Math.pow(q, n - 1);
-    const product = Math.pow(b1 * bn, n / 2);
+    // Перемножаем итеративно, чтобы корректно обрабатывать чередующиеся знаки
+    let product = 1;
+    for (let i = 0; i < n; i++) product *= b1 * Math.pow(q, i);
     const type = gpType(q);
     return {
       answers: [{ label: `P${sub(n)}`, value: Sci.fmt(product) }],
       note: `Тип прогрессии: <span class="badge ${type.cls}">${type.name}</span>, q = ${Sci.fmt(q)}`,
       steps: [
         `q = ${Sci.fmt(q)},  bₙ = ${Sci.fmt(bn)}`,
-        `Pₙ = (b₁ · bₙ)^(n/2) = (${b1} · ${Sci.fmt(bn)})^${n / 2} = ${Sci.fmt(product)}`,
+        `Pₙ = b₁ⁿ · q^(n(n−1)/2) = ${b1}^${n} · ${Sci.fmt(q)}^${n * (n - 1) / 2} = ${Sci.fmt(product)}`,
       ],
     };
   },
@@ -242,18 +245,23 @@ const SciMath = {
     if ([a, b, c].some(x => !Number.isFinite(x))) return { error: 'Заполните a, b, c.' };
     if (a === 0) return { error: 'При a=0 это не квадратный трёхчлен.' };
     const d = b * b - 4 * a * c;
-    if (d < 0) return { error: 'D < 0 — над ℝ разложить нельзя.', steps: [`D = ${d}`] };
+    if (d < 0) return { error: `D = ${d} < 0 — над ℝ разложить нельзя.` };
     const sqrtD = Math.sqrt(d);
     const x1 = (-b + sqrtD) / (2 * a);
     const x2 = (-b - sqrtD) / (2 * a);
     const asign = a === 1 ? '' : (a === -1 ? '−' : `${a}·`);
-    const fmtFactor = (x) => x >= 0 ? `(x − ${Sci.fmt(x)})` : `(x + ${Sci.fmt(-x)})`;
-    const expr = `${asign}${fmtFactor(x1)}${fmtFactor(x2)}`;
+    const fmtFactor = (x) => {
+      if (x === 0) return 'x';
+      return x > 0 ? `(x − ${Sci.fmt(x)})` : `(x + ${Sci.fmt(-x)})`;
+    };
+    const expr = (x1 === x2)
+      ? `${asign}${fmtFactor(x1)}²`
+      : `${asign}${fmtFactor(x1)}${fmtFactor(x2)}`;
     return {
       answers: [expr],
       steps: [
-        `D = b² − 4ac = ${d}`,
-        `x₁ = ${Sci.fmt(x1)}, x₂ = ${Sci.fmt(x2)}`,
+        `D = b² − 4ac = ${b}² − 4·${a}·${c} = ${d}`,
+        x1 === x2 ? `x₁ = x₂ = ${Sci.fmt(x1)}` : `x₁ = ${Sci.fmt(x1)}, x₂ = ${Sci.fmt(x2)}`,
         `${a}x² + ${b}x + ${c} = ${expr}`,
       ],
     };
