@@ -601,3 +601,92 @@ sub, sup { font-size: 0.7em; }
   font-family: var(--mono);
   font-size: 0.85em;
 }
+
+/* ---------- Mobile adjustments ---------- */
+/* 2-column layout for cols-3/cols-4 on intermediate (480–559px) screens */
+@media (min-width: 480px) and (max-width: 559px) {
+  .form-row.cols-3 { grid-template-columns: 1fr 1fr; }
+  .form-row.cols-4 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Phones (≤ 480px) */
+@media (max-width: 480px) {
+  main { padding: 1rem 0 2rem; }
+
+  .container, .container-narrow { padding: 0 0.85rem; }
+
+  .hero { padding: 1.5rem 0.5rem 1rem; }
+  .hero h1 { font-size: 1.85rem; }
+  .hero p { font-size: 0.98rem; }
+
+  .calc-page h1 { font-size: 1.4rem; }
+  .calc-page .subtitle { margin-bottom: 1.25rem; font-size: 0.94rem; }
+
+  .navbar-inner { padding: 0 0.85rem; }
+  .brand { font-size: 1.05rem; }
+
+  .card { padding: 1.25rem; }
+  .card h3 { font-size: 1.1rem; }
+  .card-grid { gap: 1rem; margin: 1.25rem 0; }
+
+  .form { padding: 1rem; }
+  .form-row { gap: 0.75rem; margin-bottom: 0.75rem; }
+
+  .result-panel { padding: 1.1rem; }
+  .result-answer { font-size: 1.25rem; }
+  .result-steps ol li { font-size: 0.88rem; }
+
+  .formula-hint {
+    font-size: 0.88rem;
+    padding: 0.6rem 0.85rem;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Touch-friendly buttons (≥ 44px) */
+  .btn { padding: 0.75rem 1.25rem; min-height: 44px; }
+  .btn-row { gap: 0.5rem; }
+
+  /* Prevent iOS auto-zoom on input focus by using 16px font */
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .field label { font-size: 0.85rem; }
+
+  /* List-group: a bit more breathing room on mobile */
+  .list-group a { padding: 0.85rem 1rem; font-size: 0.95rem; }
+
+  /* Tabs: ensure they don't get crushed */
+  .tabs button, .tabs .btn { font-size: 0.88rem; padding: 0.55rem 0.5rem; }
+
+  /* History panel takes full width */
+  .history-panel { width: 100%; }
+
+  /* Calculator tweaks */
+  .calc-wrap { padding: 0; }
+  .calc-display { padding: 0.85rem 1rem; }
+  .calc-val { font-size: 1.7rem; }
+  .calc-grid { gap: 0.4rem; }
+  .k { height: 52px; font-size: 1.15rem; }
+}
+
+/* Very small phones (≤ 360px) */
+@media (max-width: 360px) {
+  .hero h1 { font-size: 1.6rem; }
+  .calc-page h1 { font-size: 1.25rem; }
+  .nav-links a { padding: 0.5rem 0.65rem; }
+  .formula-hint { font-size: 0.82rem; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
