@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HEX → DEC | Информатика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Шестнадцатеричная → десятичная</h1>
+    <p class="subtitle">Перевод HEX в десятичное (0–9, A–F)</p>
+
+    <div class="form">
+      <div class="field"><label for="input">HEX число</label>
+        <input type="text" id="input" placeholder="например, FF или 0xFF">
+      </div>
+      <div class="btn-row" style="margin-top: 1rem">
+        <button class="btn btn-primary" id="solve">Перевести</button>
+        <a class="btn btn-secondary" href="hex_number.html">↔ обратно</a>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите HEX число</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-cs.js"></script>
+<script>
+  Sci.initShell({ active: 'cs', depth: 1 });
+  document.getElementById('solve').addEventListener('click', () => {
+    const v = Sci.str('input');
+    const res = SciCS.hexToDec(v);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'HEX→DEC', input: v, answer: res.answers[0].value });
+  });
+  document.getElementById('input').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('solve').click(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Калькулятор | The Science</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+  .calc-wrap { max-width: 380px; margin: 0 auto; }
+  .calc-display {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    text-align: right;
+  }
+  .calc-expr {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    min-height: 1.2em;
+    word-break: break-all;
+  }
+  .calc-val {
+    font-family: var(--mono);
+    font-size: 2rem;
+    color: var(--text);
+    word-break: break-all;
+    min-height: 1.2em;
+  }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  .k {
+    height: 58px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.2rem;
+    font-family: var(--mono);
+    cursor: pointer;
+    transition: background var(--transition), transform 60ms;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .k:hover { background: var(--surface-2); }
+  .k:active { transform: scale(0.95); }
+  .k.op  { color: var(--primary); font-weight: 600; }
+  .k.eq  { background: var(--primary); color: white; border-color: var(--primary); }
+  .k.eq:hover { background: var(--primary-hover); }
+  .k.clr { color: var(--danger); }
+  .k.span2 { grid-column: span 2; }
+  .calc-history {
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+  .calc-history h3 { font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .calc-history-list { list-style: none; padding: 0; margin: 0; }
+  .calc-history-list li {
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .calc-history-list li:hover { color: var(--primary); }
+  .calc-history-list li span { float: right; color: var(--text); }
+</style>
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container calc-page">
+    <h1>Калькулятор</h1>
+    <p class="subtitle">Поддержка скобок, операций и клавиатуры</p>
+
+    <div class="calc-wrap">
+      <div class="calc-display">
+        <div class="calc-expr" id="expr">&nbsp;</div>
+        <div class="calc-val" id="val">0</div>
+      </div>
+
+      <div class="calc-grid">
+        <button class="k clr" data-k="AC">AC</button>
+        <button class="k op"  data-k="⌫">⌫</button>
+        <button class="k op"  data-k="%">%</button>
+        <button class="k op"  data-k="÷">÷</button>
+
+        <button class="k" data-k="7">7</button>
+        <button class="k" data-k="8">8</button>
+        <button class="k" data-k="9">9</button>
+        <button class="k op" data-k="×">×</button>
+
+        <button class="k" data-k="4">4</button>
+        <button class="k" data-k="5">5</button>
+        <button class="k" data-k="6">6</button>
+        <button class="k op" data-k="−">−</button>
+
+        <button class="k" data-k="1">1</button>
+        <button class="k" data-k="2">2</button>
+        <button class="k" data-k="3">3</button>
+        <button class="k op" data-k="+">+</button>
+
+        <button class="k op" data-k="(">(</button>
+        <button class="k op" data-k=")">)</button>
+        <button class="k" data-k="0">0</button>
+        <button class="k" data-k=".">.</button>
+
+        <button class="k eq span2" data-k="=" style="grid-column:span 4">=</button>
+      </div>
+
+      <div class="calc-history">
+        <h3>История</h3>
+        <ul class="calc-history-list" id="history-list"></ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script>
+  Sci.initShell({ active: 'calc', depth: 1 });
+
+  let expr   = '';
+  let result = '0';
+  let justEvaled = false;
+  const localHist = [];
+
+  const exprEl = document.getElementById('expr');
+  const valEl  = document.getElementById('val');
+
+  function display() {
+    exprEl.textContent = expr || ' ';
+    valEl.textContent  = result;
+  }
+
+  function safeEval(e) {
+    const sanitized = e
+      .replace(/÷/g, '/')
+      .replace(/×/g, '*')
+      .replace(/−/g, '-');
+    try {
+      /* Use Function instead of eval for slightly better scoping */
+      const val = Function('"use strict"; return (' + sanitized + ')')();
+      if (!Number.isFinite(val)) return null;
+      return String(Number(val.toFixed(10)));
+    } catch {
+      return null;
+    }
+  }
+
+  function pushHistory(e, r) {
+    localHist.unshift({ e, r });
+    if (localHist.length > 10) localHist.pop();
+    const list = document.getElementById('history-list');
+    list.innerHTML = localHist.map(h =>
+      `<li data-expr="${Sci.escapeHtml(h.e)}">${Sci.escapeHtml(h.e)}<span>${Sci.escapeHtml(h.r)}</span></li>`
+    ).join('');
+    list.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        expr = li.dataset.expr;
+        result = safeEval(expr) ?? 'Ошибка';
+        justEvaled = false;
+        display();
+      });
+    });
+  }
+
+  document.querySelectorAll('.k').forEach(btn => {
+    btn.addEventListener('click', () => handle(btn.dataset.k));
+  });
+
+  document.addEventListener('keydown', e => {
+    const map = { 'Enter':'=', 'Backspace':'⌫', 'Escape':'AC', '/':'÷', '*':'×', '-':'−' };
+    const k = map[e.key] ?? e.key;
+    if ('0123456789.+-=÷×−()%'.includes(k) || k === 'AC' || k === '⌫') {
+      e.preventDefault();
+      handle(k);
+    }
+  });
+
+  function handle(k) {
+    if (k === 'AC') { expr = ''; result = '0'; justEvaled = false; display(); return; }
+    if (k === '⌫') {
+      expr = expr.slice(0, -1);
+      result = expr ? (safeEval(expr) ?? result) : '0';
+      display();
+      return;
+    }
+    if (k === '=') {
+      if (!expr) return;
+      const r = safeEval(expr);
+      if (r === null) { result = 'Ошибка'; display(); return; }
+      pushHistory(expr, r);
+      exprEl.textContent = expr + ' =';
+      expr = r;
+      result = r;
+      justEvaled = true;
+      valEl.textContent = r;
+      return;
+    }
+    if (k === '±') {
+      if (result !== '0' && result !== 'Ошибка') {
+        if (expr.startsWith('-')) expr = expr.slice(1);
+        else expr = '-' + expr;
+        result = safeEval(expr) ?? result;
+      }
+      display();
+      return;
+    }
+    if (k === '%') {
+      const r = safeEval(expr);
+      if (r !== null) { expr = String(Number(r) / 100); result = expr; }
+      display();
+      return;
+    }
+
+    if (justEvaled && '0123456789.('.includes(k)) { expr = ''; justEvaled = false; }
+    else if (justEvaled) justEvaled = false;
+
+    if (k === '(') {
+      expr += '(';
+    } else {
+      expr += k;
+    }
+    const r = safeEval(expr);
+    if (r !== null) result = r;
+    display();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кинетическая энергия | Физика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Кинетическая энергия</h1>
+    <p class="subtitle">Энергия движущегося тела</p>
+    <div class="formula-hint">E = m·v² / 2</div>
+
+    <div class="form">
+      <div class="form-row cols-2">
+        <div class="field"><label for="m">m (кг)</label><input type="text" id="m" inputmode="decimal"></div>
+        <div class="field"><label for="v">v (м/с)</label><input type="text" id="v" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Вычислить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите m и v</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-physics.js"></script>
+<script>
+  Sci.initShell({ active: 'physics', depth: 1 });
+  Sci.attachLiveValidation(['m','v']);
+  document.getElementById('solve').addEventListener('click', () => {
+    const m = Sci.num('m'), v = Sci.num('v');
+    const res = SciPhys.kinetic(m, v);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'Кин. энергия', input: `m=${m}, v=${v}`, answer: res.answers.map(x => `${x.label}=${x.value}`).join('; ') });
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    ['m','v'].forEach(id => { const el = document.getElementById(id); el.value=''; el.classList.remove('valid','invalid'); });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

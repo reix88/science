@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Универсальный конвертер | Информатика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Универсальный конвертер</h1>
+    <p class="subtitle">Перевод чисел между системами счисления от 2 до 36</p>
+
+    <div class="form">
+      <div class="form-row cols-3">
+        <div class="field"><label for="input">Число</label>
+          <input type="text" id="input" placeholder="например, 1010">
+        </div>
+        <div class="field"><label for="from">Из системы</label>
+          <select id="from">
+            <option value="2" selected>2 (двоичная)</option>
+            <option value="8">8 (восьмеричная)</option>
+            <option value="10">10 (десятичная)</option>
+            <option value="16">16 (шестнадцатеричная)</option>
+            <option value="36">36 (макс)</option>
+          </select>
+        </div>
+        <div class="field"><label for="to">В систему</label>
+          <select id="to">
+            <option value="2">2 (двоичная)</option>
+            <option value="8">8 (восьмеричная)</option>
+            <option value="10" selected>10 (десятичная)</option>
+            <option value="16">16 (шестнадцатеричная)</option>
+            <option value="36">36 (макс)</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Перевести</button>
+        <button class="btn btn-ghost" id="swap">↕ Поменять местами</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите число и выберите системы</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-cs.js"></script>
+<script>
+  Sci.initShell({ active: 'cs', depth: 1 });
+  document.getElementById('solve').addEventListener('click', () => {
+    const v = Sci.str('input');
+    const from = parseInt(document.getElementById('from').value, 10);
+    const to = parseInt(document.getElementById('to').value, 10);
+    const res = SciCS.baseConvert(v, from, to);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'Конвертер', input: `${v} (base ${from})`, answer: `${res.answers[0].value} (base ${to})` });
+  });
+  document.getElementById('swap').addEventListener('click', () => {
+    const f = document.getElementById('from'), t = document.getElementById('to');
+    [f.value, t.value] = [t.value, f.value];
+  });
+</script>
+</body>
+</html>

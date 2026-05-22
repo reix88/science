@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Закон Ома | Физика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Закон Ома</h1>
+    <p class="subtitle">Заполните два поля из трёх</p>
+    <div class="formula-hint">U = I · R,&nbsp; I = U / R,&nbsp; R = U / I</div>
+
+    <div class="form">
+      <div class="form-row cols-3">
+        <div class="field"><label for="U">U (В)</label><input type="text" id="U" inputmode="decimal"></div>
+        <div class="field"><label for="I">I (А)</label><input type="text" id="I" inputmode="decimal"></div>
+        <div class="field"><label for="R">R (Ом)</label><input type="text" id="R" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Вычислить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Заполните два поля из трёх</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-physics.js"></script>
+<script>
+  Sci.initShell({ active: 'physics', depth: 1 });
+  Sci.attachLiveValidation(['U','I','R']);
+  document.getElementById('solve').addEventListener('click', () => {
+    const U = Sci.num('U'), I = Sci.num('I'), R = Sci.num('R');
+    const res = SciPhys.ohm({ U, I, R });
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'Закон Ома', input: `U=${U||'?'}, I=${I||'?'}, R=${R||'?'}`, answer: res.answers.map(x => `${x.label}=${x.value}`).join('; ') });
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    ['U','I','R'].forEach(id => { const el = document.getElementById(id); el.value=''; el.classList.remove('valid','invalid'); });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Равноускоренное движение | Физика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Равноускоренное движение</h1>
+    <p class="subtitle">Находим конечную скорость и путь</p>
+    <div class="formula-hint">v = v₀ + a·t,&nbsp; s = v₀·t + a·t²/2</div>
+
+    <div class="form">
+      <div class="form-row cols-3">
+        <div class="field"><label for="v0">v₀ (м/с)</label><input type="text" id="v0" inputmode="decimal"></div>
+        <div class="field"><label for="a">a (м/с²)</label><input type="text" id="a" inputmode="decimal"></div>
+        <div class="field"><label for="t">t (с)</label><input type="text" id="t" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Вычислить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Заполните v₀, a и t</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-physics.js"></script>
+<script>
+  Sci.initShell({ active: 'physics', depth: 1 });
+  Sci.attachLiveValidation(['v0','a','t']);
+  document.getElementById('solve').addEventListener('click', () => {
+    const v0 = Sci.num('v0'), a = Sci.num('a'), t = Sci.num('t');
+    const res = SciPhys.accelerated(v0, a, t);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({ section: 'Равноуск. движ.', input: `v₀=${v0}, a=${a}, t=${t}`, answer: res.answers.map(x => `${x.label}=${x.value}`).join('; ') });
+  });
+  document.getElementById('reset').addEventListener('click', () => {
+    ['v0','a','t'].forEach(id => { const el = document.getElementById(id); el.value=''; el.classList.remove('valid','invalid'); });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

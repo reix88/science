@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Система 3×3 | Алгебра</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Система линейных уравнений с 3 неизвестными</h1>
+    <p class="subtitle">Решение методом Крамера</p>
+
+    <div class="formula-hint">
+      a₁x + b₁y + c₁z = d₁<br>
+      a₂x + b₂y + c₂z = d₂<br>
+      a₃x + b₃y + c₃z = d₃
+    </div>
+
+    <div class="form">
+      <p class="text-muted mb-1">1-е уравнение</p>
+      <div class="form-row cols-4">
+        <div class="field"><label for="a1">a₁</label><input type="text" id="a1" inputmode="decimal"></div>
+        <div class="field"><label for="b1">b₁</label><input type="text" id="b1" inputmode="decimal"></div>
+        <div class="field"><label for="c1">c₁</label><input type="text" id="c1" inputmode="decimal"></div>
+        <div class="field"><label for="d1">d₁</label><input type="text" id="d1" inputmode="decimal"></div>
+      </div>
+      <p class="text-muted mb-1">2-е уравнение</p>
+      <div class="form-row cols-4">
+        <div class="field"><label for="a2">a₂</label><input type="text" id="a2" inputmode="decimal"></div>
+        <div class="field"><label for="b2">b₂</label><input type="text" id="b2" inputmode="decimal"></div>
+        <div class="field"><label for="c2">c₂</label><input type="text" id="c2" inputmode="decimal"></div>
+        <div class="field"><label for="d2">d₂</label><input type="text" id="d2" inputmode="decimal"></div>
+      </div>
+      <p class="text-muted mb-1">3-е уравнение</p>
+      <div class="form-row cols-4">
+        <div class="field"><label for="a3">a₃</label><input type="text" id="a3" inputmode="decimal"></div>
+        <div class="field"><label for="b3">b₃</label><input type="text" id="b3" inputmode="decimal"></div>
+        <div class="field"><label for="c3">c₃</label><input type="text" id="c3" inputmode="decimal"></div>
+        <div class="field"><label for="d3">d₃</label><input type="text" id="d3" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Решить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Заполните коэффициенты и нажмите «Решить»</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-math.js"></script>
+<script>
+  Sci.initShell({ active: 'math', depth: 1 });
+  const ids = ['a1','b1','c1','d1','a2','b2','c2','d2','a3','b3','c3','d3'];
+  Sci.attachLiveValidation(ids);
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const vals = ids.map(Sci.num);
+    const res = SciMath.system3(...vals);
+    Sci.renderResult('result', res);
+    if (!res.error && res.answers) {
+      Sci.History.add({
+        section: 'Система 3×3',
+        input: `3×3 [${vals.join(', ')}]`,
+        answer: res.answers.map(x => `${x.label}=${x.value}`).join(', '),
+      });
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      el.value = '';
+      el.classList.remove('invalid', 'valid');
+    });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

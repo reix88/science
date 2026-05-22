@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Текст ↔ двоичный код | Информатика</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Текст ↔ двоичный код</h1>
+    <p class="subtitle">Кодирование текста в биты UTF-8 и обратно</p>
+
+    <div class="tabs">
+      <button class="active" data-mode="encode">Текст → биты</button>
+      <button data-mode="decode">Биты → текст</button>
+    </div>
+
+    <div class="form">
+      <div class="field"><label id="lbl-input" for="input">Текст</label>
+        <textarea id="input" rows="4" placeholder="Введите текст или последовательность 0 и 1..."></textarea>
+      </div>
+      <div class="btn-row" style="margin-top: 1rem">
+        <button class="btn btn-primary" id="solve">Преобразовать</button>
+        <button class="btn btn-ghost" id="swap">↕ Поменять местами</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите данные</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-cs.js"></script>
+<script>
+  Sci.initShell({ active: 'cs', depth: 1 });
+  let mode = 'encode';
+
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      mode = btn.dataset.mode;
+      document.getElementById('lbl-input').textContent = mode === 'encode' ? 'Текст' : 'Двоичный код';
+    });
+  });
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const v = Sci.str('input');
+    const res = mode === 'encode' ? SciCS.textToBin(v) : SciCS.binToText(v);
+    Sci.renderResult('result', res);
+    if (!res.error) Sci.History.add({
+      section: mode === 'encode' ? 'TEXT→BIN' : 'BIN→TEXT',
+      input: v.length > 40 ? v.slice(0, 40) + '…' : v,
+      answer: String(res.answers[0].value).length > 60 ? String(res.answers[0].value).slice(0, 60) + '…' : String(res.answers[0].value),
+    });
+  });
+
+  document.getElementById('swap').addEventListener('click', () => {
+    const input = document.getElementById('input');
+    const resultEl = document.querySelector('#result .result-answer');
+    if (resultEl) {
+      input.value = resultEl.textContent.replace(/^[^=]*=\s*/, '');
+      Sci.renderResult('result', {});
+    }
+  });
+</script>
+</body>
+</html>

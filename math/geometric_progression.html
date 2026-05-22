@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Геометрическая прогрессия: n-й член | Алгебра</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Геометрическая прогрессия</h1>
+    <p class="subtitle">bₙ = b₁ · qⁿ⁻¹</p>
+
+    <div class="tabs">
+      <a class="btn" href="geometric_progression.html" style="flex:1;background:var(--surface);color:var(--text)"><b>n-й член</b></a>
+      <a class="btn" href="geometric_progression_sum.html" style="flex:1;background:transparent;color:var(--text-muted)">Сумма</a>
+      <a class="btn" href="geometric_progression_composition.html" style="flex:1;background:transparent;color:var(--text-muted)">Произведение</a>
+    </div>
+
+    <div class="form">
+      <div class="form-row cols-3">
+        <div class="field"><label for="b1">b₁</label><input type="text" id="b1" inputmode="decimal"></div>
+        <div class="field"><label for="b2">b₂</label><input type="text" id="b2" inputmode="decimal"></div>
+        <div class="field"><label for="n">n</label><input type="text" id="n" inputmode="numeric"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="solve">Найти</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Заполните b₁, b₂ и n</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-math.js"></script>
+<script>
+  Sci.initShell({ active: 'math', depth: 1 });
+  Sci.attachLiveValidation(['b1', 'b2', 'n']);
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const b1 = Sci.num('b1'), b2 = Sci.num('b2'), n = Sci.int('n');
+    const res = SciMath.gpTerm(b1, b2, n);
+    Sci.renderResult('result', res);
+    if (!res.error) {
+      Sci.History.add({
+        section: 'Геом. прог.',
+        input: `b₁=${b1}, b₂=${b2}, n=${n}`,
+        answer: res.answers.map(x => `${x.label}=${x.value}`).join(', '),
+      });
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    ['b1','b2','n'].forEach(id => {
+      const el = document.getElementById(id);
+      el.value = '';
+      el.classList.remove('invalid', 'valid');
+    });
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base64 | Шифрование</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem("sci.theme");if(!t&&window.matchMedia)t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t||"light";}catch(e){}})();/*sci-theme-init*/</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow calc-page">
+    <h1>Base64</h1>
+    <p class="subtitle">Кодирование текста в Base64 и обратная декодировка</p>
+
+    <div class="tabs">
+      <button class="active" data-mode="encode">Кодировать</button>
+      <button data-mode="decode">Декодировать</button>
+    </div>
+
+    <div class="form">
+      <div class="field">
+        <label id="lbl" for="text">Текст</label>
+        <textarea id="text" rows="4" placeholder="Введите текст…"></textarea>
+      </div>
+      <div class="btn-row" style="margin-top: 1rem">
+        <button class="btn btn-primary" id="solve">Применить</button>
+        <button class="btn btn-ghost" id="reset">Очистить</button>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h3>Ответ</h3>
+      <div id="result"><div class="result-empty">Введите текст</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/solvers-encryption.js"></script>
+<script>
+  Sci.initShell({ active: 'enc', depth: 1 });
+  let mode = 'encode';
+
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      mode = btn.dataset.mode;
+      document.getElementById('lbl').textContent = mode === 'encode' ? 'Текст' : 'Base64';
+    });
+  });
+
+  document.getElementById('solve').addEventListener('click', () => {
+    const text = Sci.str('text');
+    const res  = SciEnc.base64(text, mode);
+    Sci.renderResult('result', res);
+    if (!res.error) {
+      Sci.History.add({
+        section: 'Base64',
+        input: text.slice(0, 40),
+        answer: res.answers[0].value.slice(0, 60),
+      });
+    }
+  });
+
+  document.getElementById('reset').addEventListener('click', () => {
+    document.getElementById('text').value = '';
+    Sci.renderResult('result', {});
+  });
+</script>
+</body>
+</html>
